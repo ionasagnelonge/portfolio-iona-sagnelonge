@@ -9,8 +9,8 @@
   <body>
     <div class="navbar">
       <span>Iona Sagnelonge</span>
-
-      <div class="categories" aria-label="Categories">
+      <div class="categories" aria-label="Categories"></div>
+      <!-- <div class="categories" aria-label="Categories">
         <button class="category-button" type="button" data-category="illustration" aria-pressed="false">
           Illustration,
         </button>
@@ -32,9 +32,36 @@
         <button class="category-button" type="button" data-category="didactique" aria-pressed="false">
           didactique.
         </button>
-      </div>
+      </div> -->
 
       <span>Infos</span>
+    </div>
+
+    <div class="gallery-shell">
+      <div class="gallery-background" aria-label="Images du projet">
+        <div class="carousel-frame">
+          <button class="carousel-arrow carousel-arrow--left" type="button" aria-label="Image précédente">
+            &#x1F41B;
+          </button>
+          <div class="carousel-track" tabindex="0" aria-label="Carrousel d'images du projet"></div>
+          <button class="carousel-arrow carousel-arrow--right" type="button" aria-label="Image suivante">
+            &#x1F41B;
+          </button>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <section class="gallery-column gallery-column--projects" aria-labelledby="projects-title">
+          <div class="project-list" aria-label="Liste des projets"></div>
+        </section>
+
+        <section class="gallery-column gallery-column--spacer" aria-hidden="true"></section>
+        <section class="gallery-column gallery-column--spacer" aria-hidden="true"></section>
+
+        <section class="gallery-column gallery-column--text" aria-labelledby="project-text-title">
+          <div class="project-text"></div>
+        </section>
+      </div>
     </div>
   </body>
 </html>
