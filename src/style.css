@@ -40,6 +40,8 @@ body {
   padding: 1.25rem;
   color: var(--color-text);
   font-family: var(--font-family-base);
+  font-style: italic;
+  font-weight: 500;
   font-size: 1.3rem;
 }
 
