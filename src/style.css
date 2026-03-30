@@ -18,7 +18,7 @@
   --color-photographie: #ff0000;
   --color-didactique: #f0d61d;
   --carousel-peek: 2.5rem;
-  --carousel-image-max-width: calc(50vw - 2rem);
+  --carousel-image-max-width: 50vw;
   --carousel-height: min(calc(50vw * 9 / 16), calc(100vh - 7rem));
 }
 
@@ -40,8 +40,6 @@ body {
   padding: 1.25rem;
   color: var(--color-text);
   font-family: var(--font-family-base);
-  font-style: italic;
-  font-weight: 500;
   font-size: 1.3rem;
 }
 
@@ -268,7 +266,7 @@ body {
 .gallery-column--projects,
 .gallery-column--text {
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 .project-text {
