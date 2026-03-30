@@ -1,121 +1,121 @@
-:root {
-  font-family: "Courier New", monospace;
-  background: #ffffff;
+@font-face {
+  font-family: "Feroniapi";
+  src: url("./assets/fonts/Feroniapi-MediumItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
 }
 
-* {
+:root {
+  color-scheme: light;
+  --font-family-base: "Feroniapi", serif;
+  --color-text: #111111;
+  --color-illustration: #00cdec;
+  --color-affiche: #9756dc;
+  --color-cartographie: #0000ff;
+  --color-volume: #e7a5e5;
+  --color-edition: #00ff00;
+  --color-photographie: #ff0000;
+  --color-didactique: #f0d61d;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html,
 body {
   margin: 0;
-  width: 100%;
   min-height: 100%;
-  overflow: hidden;
-  background: #ffffff;
 }
 
 body {
-  cursor: crosshair;
-}
-
-.scene {
-  display: block;
-  width: 100vw;
-  height: 100vh;
-}
-
-.print-button {
-  position: fixed;
-  left: 50%;
-  bottom: 24px;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 58px;
-  height: 58px;
-  padding: 0;
-  border: 1px solid #111111;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #111111;
-  cursor: pointer;
-  transform: translateX(-50%);
-}
-
-.print-button svg {
-  width: 26px;
-  height: 26px;
-  fill: currentColor;
-}
-
-.contact-card {
-  position: fixed;
-  top: 24px;
-  right: 24px;
-  z-index: 2;
-  display: none;
-  width: min(360px, calc(100vw - 48px));
-  border: 1px solid #111111;
+  min-height: 100vh;
   background: #ffffff;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  padding: 1.25rem;
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  font-size: 1.4rem;
 }
 
-.contact-card.is-visible {
-  display: block;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.contact-card__art {
-  height: 180px;
-  border-bottom: 1px solid #111111;
-  background-color: #ffffff;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem 0.5rem;
 }
 
-.contact-card__content {
-  display: grid;
-  gap: 10px;
-  padding: 18px;
-  color: #111111;
+.category-button {
+  --category-color: var(--color-text);
+  padding: 0;
+  border: 0;
+  border-bottom: 0.08em solid transparent;
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color 140ms ease,
+    border-color 140ms ease;
 }
 
-.contact-card__label,
-.contact-card__content p,
-.contact-card__content h1 {
-  margin: 0;
+.category-button:hover,
+.category-button:focus-visible {
+  color: var(--category-color);
+  outline: none;
 }
 
-.contact-card__label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+.category-button[aria-pressed="true"] {
+  color: var(--category-color);
+  border-bottom-color: var(--category-color);
 }
 
-.contact-card__content h1 {
-  font-size: 28px;
-  font-weight: 400;
+.category-button[data-category="illustration"] {
+  --category-color: var(--color-illustration);
 }
 
-.contact-card__content a {
-  width: fit-content;
-  color: #111111;
-  text-decoration: none;
+.category-button[data-category="affiche"] {
+  --category-color: var(--color-affiche);
 }
 
-.contact-card__download {
-  margin-top: 6px;
-  padding: 10px 12px;
-  border: 1px solid #111111;
+.category-button[data-category="cartographie"] {
+  --category-color: var(--color-cartographie);
 }
 
-@media (max-width: 640px) {
-  .contact-card {
-    top: 20px;
-    right: 20px;
-    left: 20px;
-    width: auto;
+.category-button[data-category="volume"] {
+  --category-color: var(--color-volume);
+}
+
+.category-button[data-category="edition"] {
+  --category-color: var(--color-edition);
+}
+
+.category-button[data-category="photographie"] {
+  --category-color: var(--color-photographie);
+}
+
+.category-button[data-category="didactique"] {
+  --category-color: var(--color-didactique);
+}
+
+@media (max-width: 960px) {
+  .navbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .categories {
+    justify-content: flex-start;
   }
 }
