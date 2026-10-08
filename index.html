@@ -2,66 +2,46 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iona</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Iona Sagnelonge — illustration, édition, didactique</title>
+    <meta
+      name="description"
+      content="Portfolio d’Iona Sagnelonge : illustration, affiche, cartographie, volume, édition, photographie, didactique."
+    />
+    <meta name="theme-color" content="#f3eee4" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/src/style.css" />
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
-    <div class="navbar">
-      <span>Iona Sagnelonge</span>
-      <div class="categories" aria-label="Categories"></div>
-      <!-- <div class="categories" aria-label="Categories">
-        <button class="category-button" type="button" data-category="illustration" aria-pressed="false">
-          Illustration,
-        </button>
-        <button class="category-button" type="button" data-category="affiche" aria-pressed="false">
-          affiche,
-        </button>
-        <button class="category-button" type="button" data-category="cartographie" aria-pressed="false">
-          cartographie,
-        </button>
-        <button class="category-button" type="button" data-category="volume" aria-pressed="false">
-          volume,
-        </button>
-        <button class="category-button" type="button" data-category="edition" aria-pressed="false">
-          &eacute;dition,
-        </button>
-        <button class="category-button" type="button" data-category="photographie" aria-pressed="false">
-          photographie,
-        </button>
-        <button class="category-button" type="button" data-category="didactique" aria-pressed="false">
-          didactique.
-        </button>
-      </div> -->
+    <a class="skip-link" href="#main">Aller au contenu</a>
 
-      <span>Infos</span>
-    </div>
+    <header class="site-header">
+      <a class="site-header__name" href="#/" data-nav>Iona Sagnelonge</a>
+      <nav class="site-header__nav" aria-label="Navigation principale">
+        <a href="#/" data-nav data-route="home">Projets</a>
+        <a href="#/infos" data-nav data-route="infos">Infos</a>
+      </nav>
+    </header>
 
-    <div class="gallery-shell">
-      <div class="gallery-background" aria-label="Images du projet">
-        <div class="carousel-frame">
-          <button class="carousel-arrow carousel-arrow--left" type="button" aria-label="Image précédente">
-            &#x1F41B;
-          </button>
-          <div class="carousel-track" tabindex="0" aria-label="Carrousel d'images du projet"></div>
-          <button class="carousel-arrow carousel-arrow--right" type="button" aria-label="Image suivante">
-            &#x1F41B;
-          </button>
-        </div>
-      </div>
+    <canvas class="sowing" aria-hidden="true"></canvas>
 
-      <div class="gallery">
-        <section class="gallery-column gallery-column--projects" aria-labelledby="projects-title">
-          <div class="project-list" aria-label="Liste des projets"></div>
-        </section>
+    <main id="main" class="view" tabindex="-1"></main>
 
-        <section class="gallery-column gallery-column--spacer" aria-hidden="true"></section>
-        <section class="gallery-column gallery-column--spacer" aria-hidden="true"></section>
+    <footer class="site-footer">
+      <span class="site-footer__crawler" aria-hidden="true"></span>
+      <span>© <span data-year></span> Iona Sagnelonge</span>
+      <a href="#/infos" data-nav>Contact</a>
+    </footer>
 
-        <section class="gallery-column gallery-column--text" aria-labelledby="project-text-title">
-          <div class="project-text"></div>
-        </section>
-      </div>
-    </div>
+    <dialog class="lightbox" aria-label="Visionneuse d’images">
+      <figure class="lightbox__figure">
+        <img class="lightbox__image" alt="" />
+        <figcaption class="lightbox__caption"></figcaption>
+      </figure>
+      <button class="lightbox__close" type="button" aria-label="Fermer">×</button>
+      <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Image précédente"></button>
+      <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Image suivante"></button>
+    </dialog>
   </body>
 </html>
