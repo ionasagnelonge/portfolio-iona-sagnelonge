@@ -8,7 +8,7 @@
       name="description"
       content="Portfolio d’Iona Sagnelonge : illustration, affiche, cartographie, volume, édition, photographie, didactique."
     />
-    <meta name="theme-color" content="#f3eee4" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/src/style.css" />
     <script type="module" src="/src/main.js"></script>
@@ -17,10 +17,12 @@
     <a class="skip-link" href="#main">Aller au contenu</a>
 
     <header class="site-header">
-      <a class="site-header__name" href="#/" data-nav>Iona Sagnelonge</a>
+      <a class="site-header__name nav-word" href="#/" data-route="home">Iona Sagnelonge</a>
       <nav class="site-header__nav" aria-label="Navigation principale">
-        <a href="#/" data-nav data-route="home">Projets</a>
-        <a href="#/infos" data-nav data-route="infos">Infos</a>
+        <a class="nav-word" href="#/projets" data-route="projects">Projets</a>
+        <a class="nav-word" href="#/infos" data-route="infos">Infos</a>
+        <a class="nav-word" href="#/competences" data-route="competences">Compétences</a>
+        <a class="nav-word" href="#/contact" data-route="contact">Contact</a>
       </nav>
     </header>
 
@@ -29,10 +31,15 @@
     <main id="main" class="view" tabindex="-1"></main>
 
     <footer class="site-footer">
-      <span class="site-footer__crawler" aria-hidden="true"></span>
-      <span>© <span data-year></span> Iona Sagnelonge</span>
-      <a href="#/infos" data-nav>Contact</a>
+      <span class="crawler" role="button" tabindex="0" aria-label="La chenille : cliquez pour un looping, attrapez-la pour la déplacer">
+        <span class="crawler__body"></span>
+      </span>
+      <span class="site-footer__copy">© <span data-year></span> Iona Sagnelonge</span>
     </footer>
+
+    <div class="scrollbar" aria-hidden="true">
+      <div class="scrollbar__thumb"></div>
+    </div>
 
     <dialog class="lightbox" aria-label="Visionneuse d’images">
       <figure class="lightbox__figure">

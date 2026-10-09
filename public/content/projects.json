@@ -1,39 +1,155 @@
 {
   "site": {
     "name": "Iona Sagnelonge",
-    "tagline": "Illustration, affiche, cartographie, volume, édition, photographie, didactique.",
     "bio": [
       "Iona Sagnelonge est designer graphique et illustratrice. Elle conçoit des images, des objets et des dispositifs de médiation qui rendent sensibles le vivant, les sciences et les territoires.",
       "Entre papier fait main, cartes en volume, livres pop-up et affiches, son travail cherche à transmettre : faire manipuler, observer, sentir, pour mieux comprendre."
     ],
     "email": "",
     "instagram": "",
-    "milestones": [
-      { "year": "2026", "text": "Mémoire de DNSEP Communication — « Carte blanche »" },
-      { "year": "2026", "text": "Installation didactique pour l’exposition ZOOM, musée Würth" },
-      { "year": "2025", "text": "Biennale Internationale du Design de Saint-Étienne — « Ultimate very last hope »" },
-      { "year": "2025", "text": "« Un point bleu pâle », Bibliothèque d’Orsay (Fête de la science), LUMEN, Laboratoire de Physique des Solides" },
-      { "year": "2025", "text": "Identité des 50 ans du Conservatoire d’Espaces Naturels d’Alsace" },
-      { "year": "2024", "text": "Cité dans « Graphisme en France » n°30, 30e anniversaire" },
-      { "year": "2023", "text": "Mémoire de DNMADe Graphisme — « Images sensorielles »" }
+    "cv": [
+      {
+        "title": "Formation",
+        "items": [
+          {
+            "year": "2026",
+            "text": "DNSEP Communication — mémoire « Carte blanche »"
+          },
+          {
+            "year": "2023",
+            "text": "DNMADe Graphisme — mémoire « Images sensorielles »"
+          }
+        ]
+      },
+      {
+        "title": "Expériences & commandes",
+        "items": [
+          {
+            "year": "2026",
+            "text": "Musée Würth — installation didactique pour l’exposition ZOOM"
+          },
+          {
+            "year": "2025",
+            "text": "La Physique Autrement (stage) — exposition « Un point bleu pâle »"
+          },
+          {
+            "year": "2025",
+            "text": "Conservatoire d’Espaces Naturels d’Alsace — identité des 50 ans"
+          },
+          {
+            "year": "2024",
+            "text": "Office français de la biodiversité (partenariat) — installation « Phytoplanctons »"
+          },
+          {
+            "year": "2024",
+            "text": "Bärenpark (collaboration) — livre pop-up « Ours »"
+          }
+        ]
+      },
+      {
+        "title": "Expositions & publications",
+        "items": [
+          {
+            "year": "2025",
+            "text": "Biennale Internationale du Design de Saint-Étienne — « Ultimate very last hope »"
+          },
+          {
+            "year": "2025",
+            "text": "Bibliothèque d’Orsay (Fête de la science), LUMEN, Laboratoire de Physique des Solides — « Un point bleu pâle »"
+          },
+          {
+            "year": "2024",
+            "text": "« Graphisme en France » n°30, 30e anniversaire"
+          }
+        ]
+      }
+    ],
+    "skills": [
+      {
+        "title": "Savoir-faire",
+        "items": [
+          "Médiation scientifique et dispositifs didactiques",
+          "Scénographie et installation",
+          "Livre pop-up et jeux en papier",
+          "Papier fait main et sculpture de papier",
+          "Identité visuelle",
+          "Contre-cartographie et cartes en volume",
+          "Prise de vue argentique",
+          "Animation"
+        ]
+      },
+      {
+        "title": "Outils",
+        "items": []
+      }
+    ],
+    "credits": [
+      {
+        "label": "Typographies",
+        "text": "Feroniapi, Peter Wiegel & Julienne Richard — Newsreader, Production Type (SIL Open Font License)"
+      },
+      {
+        "label": "Photographies",
+        "text": "« Le lien à l’eau » © Bartosch Salmanski"
+      }
     ]
   },
+  "home": {
+    "folder": "accueil",
+    "images": []
+  },
   "categories": {
-    "illustration": { "label": "Illustration", "glyph": "feuilleradis", "color": "#00cdec" },
-    "affiche": { "label": "Affiche", "glyph": "myrtilles", "color": "#9756dc" },
-    "cartographie": { "label": "Cartographie", "glyph": "pasteque", "color": "#2a2aff" },
-    "volume": { "label": "Volume", "glyph": "fraise", "color": "#e7a5e5" },
-    "edition": { "label": "Édition", "glyph": "petitspois", "color": "#2bd94f" },
-    "photographie": { "label": "Photographie", "glyph": "pommeverreuse", "color": "#ff3b2f" },
-    "didactique": { "label": "Didactique", "glyph": "poire", "color": "#f0d61d" },
-    "animation": { "label": "Animation", "glyph": "peche", "color": "#ff9a5c" }
+    "illustration": {
+      "label": "Illustration",
+      "glyph": "feuilleradis",
+      "color": "#00cdec"
+    },
+    "affiche": {
+      "label": "Affiche",
+      "glyph": "myrtilles",
+      "color": "#9756dc"
+    },
+    "cartographie": {
+      "label": "Cartographie",
+      "glyph": "pasteque",
+      "color": "#2a2aff"
+    },
+    "volume": {
+      "label": "Volume",
+      "glyph": "fraise",
+      "color": "#e7a5e5"
+    },
+    "edition": {
+      "label": "Édition",
+      "glyph": "petitspois",
+      "color": "#2bd94f"
+    },
+    "photographie": {
+      "label": "Photographie",
+      "glyph": "pommeverreuse",
+      "color": "#ff3b2f"
+    },
+    "didactique": {
+      "label": "Didactique",
+      "glyph": "poire",
+      "color": "#f0d61d"
+    },
+    "animation": {
+      "label": "Animation",
+      "glyph": "peche",
+      "color": "#ff9a5c"
+    }
   },
   "projects": [
     {
       "slug": "carte-blanche",
       "title": "Carte blanche",
       "year": "2026",
-      "categories": ["cartographie", "edition", "didactique"],
+      "categories": [
+        "cartographie",
+        "edition",
+        "didactique"
+      ],
       "summary": "Repenser la carte comme témoin de notre cohabitation avec les animaux",
       "body": "Mémoire de DNSEP Communication.\n\nQu’ils rampent, volent ou s’immergent dans les profondeurs, les animaux partagent notre quotidien. Malgré sa présence constante dans tous les écosystèmes, la faune reste la grande absente de nos outils cartographiques traditionnels. Envisager l’animal comme un « alter-vivant » impose une mutation de nos modes de représentation.\n\nEn développant une cartographie dynamique, narrative et vivante, nous pouvons rendre compte de l’interdépendance des espèces et inciter à une planification du territoire qui respecte enfin le maillage du vivant.",
       "folder": "",
@@ -45,7 +161,11 @@
       "slug": "zoom",
       "title": "ZOOM",
       "year": "2026",
-      "categories": ["photographie", "didactique", "illustration"],
+      "categories": [
+        "photographie",
+        "didactique",
+        "illustration"
+      ],
       "summary": "Installation didactique pour le musée Würth",
       "body": "Dans le cadre de sa nouvelle exposition ZOOM, le musée Würth met en avant une collection de photographies argentiques de portraits d’artistes. À cette occasion, j’ai conçu un dispositif de médiation autour de la photographie argentique mêlant illustrations et prise de vues.\n\nComme l’exposition valorise principalement le sujet photographié et non le photographe, cette installation explore la technique du photographe, et son espace de travail : le laboratoire. L’installation reprend donc l’organisation d’un labo photo : un éclairage sombre, des clichés qui sèchent, une zone de prise de vue…",
       "folder": "ZOOM",
@@ -66,7 +186,11 @@
       "slug": "un-point-bleu-pale",
       "title": "Un point bleu pâle",
       "year": "2025",
-      "categories": ["didactique", "illustration", "volume"],
+      "categories": [
+        "didactique",
+        "illustration",
+        "volume"
+      ],
       "summary": "9 cubes pour découvrir le globe",
       "body": "Capturée par le satellite Voyager 1, « Pale Blue Dot » reste à ce jour la photographie la plus lointaine de la Terre, prise à près de 6 milliards de km. Cette image a donné son nom à cette exposition, qui occupe le musée d’un mètre carré conçu par Alexandre Echasseriau. Ce projet a été réalisé dans le cadre d’un stage à La Physique Autrement.\n\nÀ vous d’ouvrir, observer, retourner les 9 cubes du musée pour redécouvrir la Terre sous de nouveaux angles. En illustrations, en vidéo, en BD ou en sculptures, toute l’exposition est réalisée à la main sur du papier maison recyclé.\n\nCe dispositif a été exposé à la Bibliothèque d’Orsay à l’occasion des fêtes de la science du campus de Paris-Saclay en 2025, au LUMEN, et au Laboratoire de Physique des Solides d’Orsay.",
       "folder": "un point bleu pâle",
@@ -83,14 +207,21 @@
         "320A0762.JPG"
       ],
       "links": [
-        { "label": "Le projet sur vulgarisation.fr", "url": "https://vulgarisation.fr/projet/un_point_bleu_pale/" }
+        {
+          "label": "Le projet sur vulgarisation.fr",
+          "url": "https://vulgarisation.fr/projet/un_point_bleu_pale/"
+        }
       ]
     },
     {
       "slug": "un-point-bleu-pale-la-suite",
       "title": "Un point bleu pâle, la suite…",
       "year": "2025",
-      "categories": ["illustration", "affiche", "didactique"],
+      "categories": [
+        "illustration",
+        "affiche",
+        "didactique"
+      ],
       "summary": "9 posters pour redécouvrir la Terre",
       "body": "Suite à l’exposition éponyme, une série de 9 affiches a été réalisée pour permettre à tous d’accéder à son contenu. N’hésitez pas à télécharger cette série puis l’imprimer, c’est gratuit !",
       "folder": "un point bleu pâle la suite____",
@@ -108,26 +239,40 @@
       ],
       "layout": "grid",
       "links": [
-        { "label": "Télécharger les posters", "url": "https://vulgarisation.fr/projet/un_point_bleu_pale_les_posters/" }
+        {
+          "label": "Télécharger les posters",
+          "url": "https://vulgarisation.fr/projet/un_point_bleu_pale_les_posters/"
+        }
       ]
     },
     {
       "slug": "50-ans-pour-la-biodiversite",
       "title": "50 ans d’actions pour la biodiversité",
       "year": "2025",
-      "categories": ["illustration", "affiche", "edition"],
+      "categories": [
+        "illustration",
+        "affiche",
+        "edition"
+      ],
       "summary": "Conservatoire d’Espaces Naturels Alsace",
       "body": "À l’occasion des 50 ans du Conservatoire d’Espaces Naturels d’Alsace, j’ai réalisé la nouvelle identité festive de l’association, elle sera utilisée toute l’année 2026.\n\nInventorier, protéger, gérer, rassembler, partager, observer, sont les missions que le conservatoire vise à transmettre. Cette identité inspirée des plans de gestion de l’association, a été détournée sur divers supports : affiche, brochure, programme, étiquettes de boissons, invitation, cartes postales…",
       "folder": "50 ans pour la biodiversité_",
       "cover": "Poster Mockup proposition 1.png",
-      "images": ["Poster Mockup proposition 1.png", "mock up bouteille jus.png"],
+      "images": [
+        "Poster Mockup proposition 1.png",
+        "mock up bouteille jus.png"
+      ],
       "links": []
     },
     {
       "slug": "le-lien-a-l-eau",
       "title": "Le lien à l’eau",
       "year": "2025",
-      "categories": ["didactique", "cartographie", "volume"],
+      "categories": [
+        "didactique",
+        "cartographie",
+        "volume"
+      ],
       "summary": "Contre-cartographie de la nappe rhénane",
       "body": "Sous le Rhin, se cache la plus grande réserve d’eau d’Europe de l’Ouest. Cette carte en trois dimensions propose une vision d’ensemble de l’état de la nappe. Elle invite à réfléchir aux conséquences de la contamination de celle-ci.\n\nSelon l’Aprona, 5,6 millions de personnes réparties sur trois pays, l’Allemagne, la Suisse et la France, consomment son eau. Elles sont ici représentées par 560 rivets argentés. La longueur du fil en dessous indique la profondeur de la nappe à cet endroit, et sa couleur si le seuil de potabilité y a déjà été dépassé. Le projet StocaMine, en orange fluo et situé à 550 mètres sous terre, représente un risque de contamination qui ne s’arrêtera pas aux frontières et impactera directement la population.",
       "credits": "Avec Garance Coppens et Chloé Pesnec. Photographies © Bartosch Salmanski.",
@@ -146,7 +291,9 @@
       "slug": "ultimate-very-last-hope",
       "title": "Ultimate very last hope",
       "year": "2024",
-      "categories": ["edition"],
+      "categories": [
+        "edition"
+      ],
       "summary": "A desperate artist’s guide to surviving AI in 2050",
       "body": "Face à l’avènement des IA ultra performantes, sommes-nous condamnés à l’inutilité en tant qu’artiste ? Prendront-elles nos emplois ? Voleront-elles nos identités ? Pas de soucis, l’IA va répondre à ces questions.\n\nCette édition réalisée à 8 mains, lors d’un workshop avec Étienne Mineur, expose des recherches autour de la question de censure dans l’IA. Avec une touche d’humour, nous vous proposons une solution pour contrer l’IA.\n\nCe travail a été cité dans « Graphisme en France : 30e anniversaire », puis présenté en 2025 à la Biennale Internationale du Design de Saint-Étienne.",
       "credits": "Avec Garance Coppens, Giuliano Alzerreca et Noémie Oury.",
@@ -170,19 +317,29 @@
       "slug": "phytoplanctons",
       "title": "Phytoplanctons",
       "year": "2024",
-      "categories": ["volume", "didactique"],
+      "categories": [
+        "volume",
+        "didactique"
+      ],
       "summary": "Minuscules mais essentiels",
       "body": "Très discrets, les phytoplanctons sont partout. Ce sont des micro-algues qui jouent un rôle crucial dans l’écosystème aquatique. Le Rhin et l’Ill, qui traversent Strasbourg, en sont riches. Ces algues sont des indicateurs précieux de la qualité de l’eau.\n\nCette installation vise à donner de la visibilité à ces organismes fascinants et souvent méconnus. En sculptant le papier et les perles, j’ai créé une réinterprétation des taxons phytoplanctoniques que l’on pourrait observer au microscope dans les environs de Strasbourg.\n\nCette installation a été réalisée dans le cadre d’un partenariat avec l’OFB afin de présenter la biodiversité aquatique locale, et d’explorer les questions liées aux milieux, à leur protection et à leur gestion, qui doivent simultanément prendre en compte les contraintes environnementales et techniques, et répondre aux exigences sociales.",
       "folder": "Phytoplanctons",
       "cover": "phyto 1.jpg",
-      "images": ["phyto 1.jpg", "photo intalation phyto.jpg", "illustration taxon phyto.jpg"],
+      "images": [
+        "phyto 1.jpg",
+        "photo intalation phyto.jpg",
+        "illustration taxon phyto.jpg"
+      ],
       "links": []
     },
     {
       "slug": "des-petits-problemes",
       "title": "Des petits problèmes",
       "year": "2024",
-      "categories": ["illustration", "animation"],
+      "categories": [
+        "illustration",
+        "animation"
+      ],
       "summary": "Animer l’emprise",
       "body": "Fruit d’une collaboration avec Lina et Léa, étudiantes en électroacoustique, « Des petits problèmes » donne vie à un récit familial, celui d’une femme victime de violences. Loin d’être une simple spectatrice, elle a subi de plein fouet les affres de l’addiction de son compagnon, vivant l’enfer aux côtés de sa fille.\n\nL’animation plonge le spectateur dans un univers onirique et énigmatique, où se mêlent des émotions fortes et contradictoires : peur, angoisse, amour, passion et douleur. Le contraste entre la douceur du texte et les visuels sombres accentue le trouble et l’ambivalence de cette expérience. Le paysage flou et étrange reflète l’univers glauque de la drogue qui engloutit petit à petit la mère et sa fille dans une sorte de tourbillon oppressant.",
       "folder": "Des petits problèmes_",
@@ -200,7 +357,10 @@
       "slug": "ours",
       "title": "Ours",
       "year": "2024",
-      "categories": ["illustration", "didactique"],
+      "categories": [
+        "illustration",
+        "didactique"
+      ],
       "summary": "Quand l’ours rencontre l’humain",
       "body": "Jurka vivait une existence paisible dans la nature sauvage, loin de l’agitation humaine. Mais son destin bascule lorsqu’elle croise le chemin de l’homme. Ce livre pop-up, réalisé en collaboration avec le parc allemand Bärenpark, raconte son histoire à travers un récit sur le ton de l’humour noir et des jeux en papier.\n\nCe livre nous incite à réfléchir à notre impact sur l’environnement et à adopter un comportement plus responsable envers les animaux sauvages.",
       "folder": "ours",
@@ -219,7 +379,10 @@
       "slug": "imagerie-olfactive",
       "title": "Imagerie olfactive",
       "year": "2023",
-      "categories": ["didactique", "illustration"],
+      "categories": [
+        "didactique",
+        "illustration"
+      ],
       "summary": "Apprendre à décrire les odeurs",
       "body": "Ce coffret est un kit pédagogique qui invite à s’approprier les odeurs et à prendre conscience de notre environnement olfactif. Grâce à des cartes et une application numérique, il développe le langage par le biais de modules visuels. Chaque module retranscrit différentes sensations ressenties lors de l’olfaction.\n\nEn les manipulant, vous donnez vie à des créatures hybrides qui incarnent les émotions et les odeurs perçues. Les modules visuels sont des traductions illustrées d’un vocabulaire utilisé dans le domaine olfactif. Pour définir ces formes, l’imagerie a été illustrée et définie d’après un questionnaire distribué à plus de 70 personnes, afin d’avoir la représentation la plus fidèle des odeurs.",
       "folder": "imagerie olfactive",
@@ -236,31 +399,49 @@
       "slug": "images-sensorielles",
       "title": "Images sensorielles",
       "year": "2023",
-      "categories": ["edition", "didactique"],
+      "categories": [
+        "edition",
+        "didactique"
+      ],
       "summary": "Augmenter l’impact des illustrations par l’implication des sens",
       "body": "Mémoire de DNMADe Graphisme.\n\nNotre société offre à nos yeux une immensité d’images sur tous supports : nous avons tendance à délaisser l’usage de nos autres sens pourtant précieux dans la traduction du monde. Sans eux, la représentation que l’on s’en fait ne peut exister. L’illustration est un moyen qui permet de retranscrire un univers. Mais elle pourrait élargir son exploration en dehors du visuel, en intégrant d’autres sens : elle pourrait offrir une communication plus forte de l’imaginaire en intégrant le corps dans toutes ses acceptions au cœur de l’image. Il s’agirait alors de placer l’homme dans la perception de nouvelles facettes de l’image.\n\nTel sera donc l’objet de notre réflexion : en quoi l’implication des sens dans l’illustration augmente-t-elle l’expérience de l’image ?",
       "folder": "images sensorielles",
       "cover": "DSC_0016ok.jpg",
-      "images": ["DSC_0016ok.jpg", "set design 5-12.jpg", "set design 5-15.jpg", "set design 5-21.jpg"],
+      "images": [
+        "DSC_0016ok.jpg",
+        "set design 5-12.jpg",
+        "set design 5-15.jpg",
+        "set design 5-21.jpg"
+      ],
       "links": []
     },
     {
       "slug": "intervalles",
       "title": "Intervalles",
       "year": "",
-      "categories": ["edition", "photographie"],
+      "categories": [
+        "edition",
+        "photographie"
+      ],
       "summary": "",
       "body": "",
       "folder": "Intervalles",
       "cover": "revue couv.png",
-      "images": ["revue couv.png", "revue image.png", "intervalle_bleu.jpg", "saison 4.jpg"],
+      "images": [
+        "revue couv.png",
+        "revue image.png",
+        "intervalle_bleu.jpg",
+        "saison 4.jpg"
+      ],
       "links": []
     },
     {
       "slug": "mais-punaise",
       "title": "Mais punaise !",
       "year": "",
-      "categories": ["illustration"],
+      "categories": [
+        "illustration"
+      ],
       "summary": "",
       "body": "",
       "folder": "Mais punaise !",
@@ -279,36 +460,55 @@
       "slug": "par-enchantement",
       "title": "Par enchantement",
       "year": "",
-      "categories": ["edition", "volume"],
+      "categories": [
+        "edition",
+        "volume"
+      ],
       "summary": "",
       "body": "",
       "folder": "Par enchantemet_",
       "cover": "DSC_0331.jpg",
-      "images": ["DSC_0331.jpg", "DSC_0194.jpg", "photo docu 5.jpg"],
+      "images": [
+        "DSC_0331.jpg",
+        "DSC_0194.jpg",
+        "photo docu 5.jpg"
+      ],
       "links": []
     },
     {
       "slug": "reves",
       "title": "Rêves",
       "year": "",
-      "categories": ["affiche"],
+      "categories": [
+        "affiche"
+      ],
       "summary": "",
       "body": "",
       "folder": "rêves",
       "cover": "affiche r^ve.jpg",
-      "images": ["affiche r^ve.jpg", "reve.jpg"],
+      "images": [
+        "affiche r^ve.jpg",
+        "reve.jpg"
+      ],
       "links": []
     },
     {
       "slug": "formation-anatomie",
       "title": "Formation anatomie",
       "year": "",
-      "categories": ["illustration"],
+      "categories": [
+        "illustration"
+      ],
       "summary": "",
       "body": "",
       "folder": "formation anatomie",
       "cover": "IMG_5179.jpg",
-      "images": ["IMG_5179.jpg", "IMG_5168.jpg", "IMG_5182.jpg", "IMG_5186.jpg"],
+      "images": [
+        "IMG_5179.jpg",
+        "IMG_5168.jpg",
+        "IMG_5182.jpg",
+        "IMG_5186.jpg"
+      ],
       "links": []
     }
   ]

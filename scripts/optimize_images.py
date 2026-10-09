@@ -176,7 +176,13 @@ def main():
     parser.add_argument("--force", action="store_true", help="régénère toutes les images")
     args = parser.parse_args()
 
-    projects = json.loads(PROJECTS_FILE.read_text(encoding="utf-8"))["projects"]
+    content = json.loads(PROJECTS_FILE.read_text(encoding="utf-8"))
+    projects = list(content["projects"])
+    # Les photos du carrousel d'accueil sont traitées comme un projet « accueil ».
+    home = content.get("home") or {}
+    home_images = [item["file"] if isinstance(item, dict) else item for item in home.get("images", [])]
+    if home_images:
+        projects.append({"slug": "accueil", "folder": home["folder"], "images": home_images})
     previous = {}
     if MANIFEST_FILE.exists() and not args.force:
         previous = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))

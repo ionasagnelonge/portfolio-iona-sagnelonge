@@ -6,7 +6,7 @@ Site statique (Vite), déployé automatiquement sur GitHub Pages à chaque push 
 
 Tout le contenu est dans **`public/content/projects.json`** :
 
-- `site` : bio, e-mail, Instagram, repères (page Infos). Le bloc contact n’apparaît que si `email` ou `instagram` est rempli.
+- `site` : bio et `cv` (page Infos), `skills` (page Compétences), `email`, `instagram` et `credits` (page Contact).
 - `categories` : disciplines, avec leur glyphe (dessin tiré de la police Feroniapi) et leur couleur.
 - `projects` : un objet par projet, **dans l’ordre d’affichage**.
   - `folder` : nom du dossier dans `data/` contenant les originaux.
@@ -15,6 +15,27 @@ Tout le contenu est dans **`public/content/projects.json`** :
   - `summary`, `body` (paragraphes séparés par une ligne vide), `credits`, `links`.
 
 Modifier un texte ne nécessite rien d’autre que d’éditer ce fichier.
+
+## Photos de la page d’accueil
+
+Le carrousel de l’accueil affiche les couvertures des projets tant qu’aucune photo n’est choisie.
+Pour choisir ses propres photos :
+
+1. Créer le dossier `data/accueil/` et y déposer les photos.
+2. Les lister dans `projects.json`, dans l’ordre de défilement :
+
+   ```json
+   "home": {
+     "folder": "accueil",
+     "images": [
+       { "file": "atelier.jpg" },
+       { "file": "ours-livre.jpg", "project": "ours" }
+     ]
+   }
+   ```
+
+   `project` (facultatif) est le `slug` du projet ouvert au clic sur la photo.
+3. Lancer l’optimisation des images (ci-dessous).
 
 ## Ajouter ou changer des images
 
