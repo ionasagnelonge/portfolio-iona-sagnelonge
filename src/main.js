@@ -4,9 +4,15 @@ const view = document.querySelector(".view");
 const lightbox = document.querySelector(".lightbox");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+// La hauteur réelle du bandeau sert de repère aux éléments collants (barre de défilement, panneaux).
+const siteHeader = document.querySelector(".site-header");
+new ResizeObserver(() => {
+  document.documentElement.style.setProperty("--header-h", `${siteHeader.offsetHeight}px`);
+  if (state.route?.name === "project") stickyPanels.update();
+}).observe(siteHeader);
+
 const state = {
   site: null,
-  home: null,
   categories: {},
   projects: [],
   images: {},
@@ -97,77 +103,75 @@ function categoryLabels(project) {
     .join(", ");
 }
 
-/* ---------- Accueil : carrousel ---------- */
+/* ---------- Stickers ---------- */
 
-function homeSlides() {
-  // Photos choisies dans data/accueil/ (projects.json > home.images), sinon les couvertures des projets.
-  const chosen = (state.home?.images ?? [])
-    .map((item) => (typeof item === "string" ? { file: item } : item))
-    .map((item) => ({
-      meta: imageMeta("accueil", item.file),
-      project: state.projects.find((project) => project.slug === item.project)
-    }))
-    .filter((slide) => slide.meta);
-
-  if (chosen.length) {
-    return chosen;
-  }
-
-  return state.projects
-    .filter((project) => project.cover)
-    .map((project) => ({ meta: imageMeta(project.slug, project.cover), project }))
-    .filter((slide) => slide.meta);
+// Sticker détouré du projet (data/stickers/), sinon sa couverture façon « photo-sticker ».
+function stickerOf(project) {
+  const cutout = project.sticker ? imageMeta("stickers", project.sticker) : null;
+  if (cutout) return { meta: cutout, cutout: true };
+  const cover = project.cover ? imageMeta(project.slug, project.cover) : null;
+  return cover ? { meta: cover, cutout: false } : null;
 }
+
+function stickerImg(sticker, sizes, alt = "") {
+  return `<img class="sticker__img${sticker.cutout ? "" : " sticker__img--photo"}" src="${sticker.meta.srcset.at(-1).src}" srcset="${srcsetOf(sticker.meta)}"
+    sizes="${sizes}" width="${sticker.meta.w}" height="${sticker.meta.h}" alt="${escapeHtml(alt)}" draggable="false" decoding="async" />`;
+}
+
+/* ---------- Accueil : mur de stickers + projets ---------- */
 
 function renderHome() {
   setTitle();
-  const slides = homeSlides();
-  const cardHtml = (slide, index) => {
-    const tag = slide.project ? "a" : "div";
-    const href = slide.project ? ` href="#/projet/${slide.project.slug}"` : "";
-    const label = slide.project ? ` data-label="${escapeHtml(slide.project.title)}" aria-label="${escapeHtml(slide.project.title)}"` : "";
-    return `<li class="deck__slot">
-      <${tag} class="deck__card"${href}${label} draggable="false" data-index="${index}">
-        <span class="deck__image" style="${placeholderStyle(slide.meta)}">
-          ${imgTag(slide.meta, { sizes: "(max-width: 600px) 92vw, (max-width: 1000px) 31vw, 23vw", alt: "", eager: index < 8 })}
-        </span>
-      </${tag}>
-      ${slide.project ? `<span class="deck__caption" aria-hidden="true">${escapeHtml(slide.project.title)}</span>` : ""}
-    </li>`;
-  };
+  const stickers = state.projects
+    .map((project) => ({ project, sticker: stickerOf(project) }))
+    .filter((item) => item.sticker);
 
   view.innerHTML = `
     <h1 class="visually-hidden">Iona Sagnelonge — portfolio</h1>
-    <ul class="deck" aria-label="Projets">${slides.map(cardHtml).join("")}</ul>
-    <button class="deck__tidy" type="button" hidden><span class="nav-word">ranger</span></button>`;
+    <section class="wall" aria-label="Mur de stickers des projets">
+      ${stickers
+        .map(
+          ({ project, sticker }) => `<a class="sticker${sticker.cutout ? "" : " sticker--photo"}" href="#/projet/${project.slug}" draggable="false"
+            data-label="${escapeHtml(project.title)}" style="--ratio: ${sticker.meta.w / sticker.meta.h}">
+            ${stickerImg(sticker, "(max-width: 600px) 40vw, 16vw", project.title)}
+          </a>`
+        )
+        .join("")}
+      <a class="wall__more" href="#/projets"><span class="nav-word">projets</span> ↓</a>
+    </section>
+    ${projectsSection()}`;
 
   revealImages(view);
-  deck.mount(view.querySelector(".deck"));
+  wall.mount(view.querySelector(".wall"));
+  applyFilter();
 }
 
-/* Collection de cartes : grille régulière, cartes attrapables et lançables à la souris */
-const deck = (() => {
+/* Mur d'atelier : stickers éparpillés, qu'on attrape et déplace (souris ou doigt) */
+const wall = (() => {
   const tooltip = document.createElement("span");
-  tooltip.className = "deck__tooltip";
+  tooltip.className = "tooltip";
   tooltip.setAttribute("aria-hidden", "true");
   document.body.append(tooltip);
 
-  const canDrag = window.matchMedia("(hover: hover) and (pointer: fine)");
   let root = null;
-  let cards = [];
+  let stickers = [];
   let topZ = 10;
+  let lastWidth = 0;
 
-  function render(card) {
-    const s = card._state;
-    card.style.setProperty("--x", `${s.x}px`);
-    card.style.setProperty("--y", `${s.y}px`);
-    card.style.setProperty("--tilt", `${s.tilt}deg`);
+  const random = (min, max) => min + Math.random() * (max - min);
+
+  function render(sticker) {
+    const s = sticker._state;
+    sticker.style.transform = `translate(${s.x}px, ${s.y}px) rotate(${s.r}deg)`;
   }
 
-  function showTooltip(card, event) {
-    if (!card.dataset.label || !canDrag.matches) return;
-    tooltip.textContent = card.dataset.label;
-    tooltip.style.transform = `translate(${event.clientX + 14}px, ${event.clientY + 16}px)`;
+  function showTooltip(label, event) {
+    tooltip.textContent = label;
+    // Près du bord droit, l'étiquette passe à gauche du curseur.
+    const x = event.clientX + 16 + tooltip.offsetWidth > window.innerWidth - 12
+      ? event.clientX - 16 - tooltip.offsetWidth
+      : event.clientX + 16;
+    tooltip.style.transform = `translate(${x}px, ${event.clientY + 18}px)`;
     tooltip.classList.add("is-visible");
   }
 
@@ -175,102 +179,166 @@ const deck = (() => {
     tooltip.classList.remove("is-visible");
   }
 
-  function glide(card) {
-    const s = card._state;
+  // Grille irrégulière : chaque sticker occupe une case, décalé, tourné, de taille variable.
+  function scatter() {
+    const width = root.clientWidth;
+    const height = root.clientHeight;
+    const narrow = width < 600;
+    const count = stickers.length;
+    const rows = Math.max(1, Math.round(Math.sqrt((count * height) / width)));
+    const cols = Math.ceil(count / rows);
+    const cellW = width / cols;
+    const cellH = height / rows;
+    const slots = Array.from({ length: rows * cols }, (_, index) => index)
+      .sort(() => Math.random() - 0.5)
+      .slice(0, count);
+
+    stickers.forEach((sticker, index) => {
+      const ratio = Number(sticker.style.getPropertyValue("--ratio")) || 1;
+      const slot = slots[index];
+      const col = slot % cols;
+      const row = Math.floor(slot / cols);
+      // Taille : la plus grande dimension remplit 70 à 105 % de la case.
+      const box = Math.min(cellW, cellH) * random(narrow ? 0.72 : 0.7, narrow ? 0.98 : 1.05);
+      const w = ratio >= 1 ? box : box * ratio;
+      const h = w / ratio;
+      sticker.style.width = `${w}px`;
+      const cx = (col + 0.5) * cellW + random(-0.2, 0.2) * cellW;
+      const cy = (row + 0.5) * cellH + random(-0.2, 0.2) * cellH;
+      sticker._state = {
+        x: Math.max(-w * 0.1, Math.min(width - w * 0.9, cx - w / 2)),
+        y: Math.max(0, Math.min(height - h, cy - h / 2)),
+        r: random(-12, 12),
+        vx: 0,
+        vy: 0,
+        frame: 0
+      };
+      sticker.style.zIndex = String(1 + Math.floor(Math.random() * count));
+      render(sticker);
+    });
+    topZ = count + 10;
+    lastWidth = width;
+  }
+
+  function glide(sticker) {
+    const s = sticker._state;
     cancelAnimationFrame(s.frame);
     const step = () => {
       s.vx *= 0.9;
       s.vy *= 0.9;
       s.x += s.vx;
       s.y += s.vy;
-      s.tilt += (s.rest - s.tilt) * 0.12;
-      render(card);
-      if (Math.abs(s.vx) + Math.abs(s.vy) > 0.3 || Math.abs(s.rest - s.tilt) > 0.1) {
-        s.frame = requestAnimationFrame(step);
-      }
+      render(sticker);
+      if (Math.abs(s.vx) + Math.abs(s.vy) > 0.3) s.frame = requestAnimationFrame(step);
     };
     s.frame = requestAnimationFrame(step);
   }
 
-  function bind(card) {
-    card._state = { x: 0, y: 0, vx: 0, vy: 0, tilt: 0, rest: 0, frame: 0 };
+  function bind(sticker) {
     let drag = null;
+    let holdTimer = 0;
 
-    card.addEventListener("dragstart", (event) => event.preventDefault());
-    card.addEventListener("pointermove", (event) => {
-      if (event.pointerType === "mouse") showTooltip(card, event);
+    function grab() {
+      drag.active = true;
+      sticker.classList.add("is-grabbed");
+      topZ += 1;
+      sticker.style.zIndex = String(topZ);
+    }
+
+    sticker.addEventListener("dragstart", (event) => event.preventDefault());
+    sticker.addEventListener("contextmenu", (event) => {
+      if (drag) event.preventDefault();
+    });
+    sticker.addEventListener("pointermove", (event) => {
+      if (event.pointerType === "mouse") showTooltip(sticker.dataset.label, event);
       if (!drag) return;
-      const s = card._state;
+      const s = sticker._state;
       const dx = event.clientX - drag.lastX;
       const dy = event.clientY - drag.lastY;
       drag.moved += Math.hypot(dx, dy);
       drag.lastX = event.clientX;
       drag.lastY = event.clientY;
-      if (drag.moved < 5) return;
-      if (!drag.started) {
-        drag.started = true;
-        card.classList.add("is-grabbed");
-        view.querySelector(".deck__tidy").hidden = false;
+      if (!drag.active) {
+        // Au doigt, un mouvement avant la fin de l'appui = on fait défiler la page.
+        if (drag.moved > 8) {
+          clearTimeout(holdTimer);
+          drag = null;
+        }
+        return;
       }
+      if (drag.moved < 5) return;
+      drag.started = true;
       s.x += dx;
       s.y += dy;
       s.vx = dx;
       s.vy = dy;
-      // La carte penche dans le sens du mouvement.
-      s.tilt = Math.max(-14, Math.min(14, s.rest + dx * 0.6));
-      render(card);
+      render(sticker);
     });
-    card.addEventListener("pointerleave", hideTooltip);
-    card.addEventListener("pointerdown", (event) => {
-      if (event.pointerType !== "mouse" || event.button !== 0 || !canDrag.matches) return;
-      cancelAnimationFrame(card._state.frame);
-      drag = { lastX: event.clientX, lastY: event.clientY, moved: 0, started: false };
-      topZ += 1;
-      card.style.zIndex = String(topZ);
-      capturePointer(card, event);
+    sticker.addEventListener(
+      "touchmove",
+      (event) => {
+        if (drag?.active) event.preventDefault();
+      },
+      { passive: false }
+    );
+    sticker.addEventListener("pointerleave", hideTooltip);
+    sticker.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0) return;
+      cancelAnimationFrame(sticker._state.frame);
+      drag = { lastX: event.clientX, lastY: event.clientY, moved: 0, started: false, active: false, touch: event.pointerType !== "mouse" };
+      capturePointer(sticker, event);
+      if (event.pointerType === "mouse") {
+        grab();
+      } else {
+        // Au doigt : court appui pour décoller le sticker.
+        holdTimer = setTimeout(() => {
+          if (drag) {
+            grab();
+            navigator.vibrate?.(8);
+          }
+        }, 220);
+      }
     });
     const release = () => {
+      clearTimeout(holdTimer);
       if (!drag) return;
-      const { started } = drag;
+      const { started, active, touch } = drag;
       drag = null;
-      card.classList.remove("is-grabbed");
+      sticker.classList.remove("is-grabbed");
+      // Un sticker déplacé (ou décollé au doigt) n'ouvre pas le projet.
+      if (started || (active && touch)) {
+        // Après un déplacement, on recolle le sticker sans ouvrir le projet.
+        sticker.addEventListener("click", (event) => event.preventDefault(), { capture: true, once: true });
+      }
       if (started) {
-        // Après un lancer, on ne suit pas le lien.
-        card.addEventListener("click", (event) => event.preventDefault(), { capture: true, once: true });
-        card._state.rest = (Math.random() - 0.5) * 8;
-        glide(card);
+        sticker._state.r += random(-6, 6);
+        glide(sticker);
       }
     };
-    card.addEventListener("pointerup", release);
-    card.addEventListener("pointercancel", release);
+    sticker.addEventListener("pointerup", release);
+    sticker.addEventListener("pointercancel", release);
   }
 
-  function tidy() {
-    cards.forEach((card) => {
-      cancelAnimationFrame(card._state.frame);
-      Object.assign(card._state, { x: 0, y: 0, vx: 0, vy: 0, tilt: 0, rest: 0 });
-      card.classList.add("is-tidying");
-      render(card);
-      setTimeout(() => card.classList.remove("is-tidying"), 800);
-    });
-    view.querySelector(".deck__tidy").hidden = true;
-  }
-
+  window.addEventListener("resize", () => {
+    if (root?.isConnected && Math.abs(root.clientWidth - lastWidth) > 60) scatter();
+  });
   window.addEventListener("hashchange", hideTooltip);
   window.addEventListener("scroll", hideTooltip, { passive: true });
 
   return {
     mount(element) {
       root = element;
-      cards = [...root.querySelectorAll(".deck__card")];
-      cards.forEach(bind);
-      view.querySelector(".deck__tidy").addEventListener("click", tidy);
-    }
+      stickers = [...root.querySelectorAll(".sticker")];
+      stickers.forEach(bind);
+      scatter();
+      root.classList.add("is-ready");
+    },
+    showTooltip,
+    hideTooltip
   };
 })();
 
-
-/* ---------- Projets ---------- */
+/* ---------- Projets (sous le mur, sur l'accueil) ---------- */
 
 function projectCard(project) {
   const cover = project.cover ? imageMeta(project.slug, project.cover) : null;
@@ -300,7 +368,7 @@ function filterBar() {
     keys
       .map((key) => {
         const category = state.categories[key];
-        return `<li><button class="filter" type="button" data-filter="${key}" aria-pressed="${state.filter === key}" style="--accent: ${category.color}"><span class="nav-word">${escapeHtml(category.label.toLowerCase())}</span></button></li>`;
+        return `<li><button class="filter" type="button" data-filter="${key}" aria-pressed="${state.filter === key}"><span class="nav-word">${escapeHtml(category.label.toLowerCase())}</span></button></li>`;
       })
       .join("")
   );
@@ -318,70 +386,55 @@ function applyFilter() {
   });
 }
 
-function renderProjects() {
-  setTitle("Projets");
-  view.innerHTML = `
-    <section class="projects">
-      <h1 class="visually-hidden">Projets</h1>
-      <ul class="filters" aria-label="Filtrer par discipline">${filterBar()}</ul>
-      <div class="grid">${state.projects.map(projectCard).join("")}</div>
-    </section>`;
-  revealImages(view);
-  applyFilter();
+function projectsSection() {
+  return `<section class="projects" id="projets" aria-labelledby="projets-title">
+    <h2 class="visually-hidden" id="projets-title">Projets</h2>
+    <ul class="filters" aria-label="Filtrer par discipline">${filterBar()}</ul>
+    <div class="grid">${state.projects.map(projectCard).join("")}</div>
+  </section>`;
 }
+
+function scrollToProjects(behavior = "smooth") {
+  const section = view.querySelector("#projets");
+  if (!section) return;
+  const top = section.getBoundingClientRect().top + window.scrollY - siteHeader.offsetHeight;
+  window.scrollTo({ top, behavior: reducedMotion.matches ? "auto" : behavior });
+}
+
 
 /* ---------- Projet ---------- */
 
-function galleryRows(project) {
-  const metas = project.images
-    .map((file, index) => ({ file, index, meta: imageMeta(project.slug, file) }))
+function renderStrip(project) {
+  const items = project.images
+    .map((file, index) => ({ index, meta: imageMeta(project.slug, file) }))
     .filter((item) => item.meta);
-  const isPortrait = (item) => item.meta.h > item.meta.w * 1.05;
-  const rows = [];
 
-  for (let i = 0; i < metas.length; i += 1) {
-    const current = metas[i];
-    const next = metas[i + 1];
-    if (isPortrait(current) && next && isPortrait(next)) {
-      rows.push({ items: [current, next], kind: "pair" });
-      i += 1;
-    } else {
-      rows.push({ items: [current], kind: isPortrait(current) ? "solo-portrait" : "solo" });
-    }
-  }
-  return rows;
-}
-
-function galleryItem(project, item, sizes, eager) {
-  return `<button class="gallery__item" type="button" data-index="${item.index}" aria-label="Agrandir l’image ${item.index + 1}">
-    ${media(item.meta, { sizes, alt: `${project.title}, image ${item.index + 1}`, eager })}
-  </button>`;
-}
-
-function renderGallery(project) {
-  if (!project.images.length) {
+  if (!items.length) {
     const names = project.categories.map((key) => state.categories[key]?.glyph).filter(Boolean);
-    return `<div class="gallery__placeholder">
-      <div class="gallery__placeholder-glyphs">${names.map((name) => glyph(name)).join("")}</div>
-      <p>Projet en cours — images à venir</p>
+    return `<div class="strip strip--empty">
+      <div class="strip__placeholder">${names.map((name) => glyph(name)).join("")}<p>Projet en cours — images à venir</p></div>
     </div>`;
   }
 
-  if (project.layout === "grid") {
-    return `<div class="gallery gallery--grid">${project.images
-      .map((file, index) => ({ file, index, meta: imageMeta(project.slug, file) }))
-      .filter((item) => item.meta)
-      .map((item) => galleryItem(project, item, "(max-width: 600px) 46vw, (max-width: 900px) 31vw, 22vw", item.index < 3))
-      .join("")}</div>`;
-  }
-
-  return `<div class="gallery">${galleryRows(project)
-    .map((row, rowIndex) => {
-      const sizes = row.kind === "pair" ? "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 32vw" : "(max-width: 900px) 94vw, 66vw";
-      const items = row.items.map((item) => galleryItem(project, item, sizes, rowIndex === 0)).join("");
-      return `<div class="gallery__row gallery__row--${row.kind}" style="--cols: ${row.items.length}">${items}</div>`;
-    })
-    .join("")}</div>`;
+  return `<div class="strip">
+    <div class="strip__track">
+      ${items
+        .map(
+          (item) => `<button class="strip__item" type="button" data-index="${item.index}" aria-label="Agrandir l’image ${item.index + 1}"
+            style="aspect-ratio: ${item.meta.w} / ${item.meta.h}; --ratio: ${item.meta.w / item.meta.h}; ${placeholderStyle(item.meta)}">
+            ${imgTag(item.meta, { sizes: "(max-width: 600px) 90vw, 70vw", alt: `${project.title}, image ${item.index + 1}`, eager: item.index < 3 })}
+          </button>`
+        )
+        .join("")}
+    </div>
+    ${items.length > 1
+      ? `<div class="strip__controls">
+          <button class="strip__arrow strip__arrow--prev" type="button" aria-label="Image précédente">${glyph("chenille")}</button>
+          <span class="strip__count">1 / ${items.length}</span>
+          <button class="strip__arrow strip__arrow--next" type="button" aria-label="Image suivante">${glyph("chenille")}</button>
+        </div>`
+      : ""}
+  </div>`;
 }
 
 function renderProject(slug) {
@@ -393,16 +446,9 @@ function renderProject(slug) {
 
   const project = state.projects[index];
   const next = state.projects[(index + 1) % state.projects.length];
-  const nextCover = next.cover ? imageMeta(next.slug, next.cover) : null;
+  const sticker = stickerOf(project);
+  const nextSticker = stickerOf(next);
   setTitle(project.title);
-
-  const categories = project.categories
-    .filter((key) => state.categories[key])
-    .map((key) => {
-      const category = state.categories[key];
-      return `<li><a href="#/projets" data-filter-link="${key}" style="--c: ${category.color}">${glyph(category.glyph)}${escapeHtml(category.label)}</a></li>`;
-    })
-    .join("");
 
   const links = (project.links ?? [])
     .map((link) => `<li><a href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${escapeHtml(link.label)}</a></li>`)
@@ -410,27 +456,130 @@ function renderProject(slug) {
 
   view.innerHTML = `
     <article class="project">
-      <div class="project__text">
-        <a class="back" href="#/projets">${glyph("chenille")}<span>Tous les projets</span></a>
-        ${project.year ? `<p class="project__year">${escapeHtml(project.year)}</p>` : ""}
-        <h1 class="project__title">${escapeHtml(project.title)}</h1>
-        ${project.summary ? `<p class="project__summary">${escapeHtml(project.summary)}</p>` : ""}
-        ${categories ? `<ul class="project__cats" aria-label="Disciplines">${categories}</ul>` : ""}
-        ${project.body ? `<div class="project__body">${paragraphs(project.body)}</div>` : ""}
-        ${project.credits ? `<p class="project__credits">${escapeHtml(project.credits)}</p>` : ""}
-        ${links ? `<ul class="project__links">${links}</ul>` : ""}
-      </div>
-      ${renderGallery(project)}
-      <a class="next-project" href="#/projet/${next.slug}">
-        <span class="next-project__label">Projet suivant</span>
-        <span class="next-project__title">${escapeHtml(next.title)}</span>
-        ${nextCover ? media(nextCover, { sizes: "11rem", alt: "" }) : ""}
+      <section class="project__panel project__panel--media" aria-label="Images">
+        ${renderStrip(project)}
+      </section>
+
+      <section class="project__panel project__panel--info">
+        <div class="project__text">
+          <h1 class="project__title">${escapeHtml(project.title)}${project.year ? ` <span class="project__year">${escapeHtml(project.year)}</span>` : ""}</h1>
+          ${project.summary ? `<p class="project__summary">${escapeHtml(project.summary)}</p>` : ""}
+          ${project.categories.length ? `<p class="project__cats">${escapeHtml(categoryLabels(project))}</p>` : ""}
+          ${project.body ? `<div class="project__body">${paragraphs(project.body)}</div>` : ""}
+          ${project.credits ? `<p class="project__credits">${escapeHtml(project.credits)}</p>` : ""}
+          ${links ? `<ul class="project__links">${links}</ul>` : ""}
+        </div>
+        ${sticker ? `<div class="project__sticker${sticker.cutout ? "" : " sticker--photo"}">${stickerImg(sticker, "(max-width: 900px) 60vw, 26vw")}</div>` : ""}
+      </section>
+
+      <a class="project__panel project__panel--next" href="#/projet/${next.slug}">
+        <span class="next__label">Projet suivant</span>
+        <span class="next__title"><span class="card__title-text">${escapeHtml(next.title)}</span></span>
+        ${nextSticker ? `<span class="next__sticker${nextSticker.cutout ? "" : " sticker--photo"}">${stickerImg(nextSticker, "(max-width: 900px) 50vw, 20vw")}</span>` : ""}
       </a>
     </article>`;
 
   revealImages(view);
   view.querySelector(".project")._project = project;
+  strip.mount(view.querySelector(".strip"), project);
+  stickyPanels.update();
 }
+
+/* Bandeau d'images horizontal : défilement, glisser à la souris, flèches, compteur */
+const strip = (() => {
+  let track = null;
+  let drag = null;
+
+  function items() {
+    return [...track.querySelectorAll(".strip__item")];
+  }
+
+  function current() {
+    const center = track.scrollLeft + track.clientWidth / 2;
+    let best = 0;
+    let distance = Infinity;
+    items().forEach((item, index) => {
+      const d = Math.abs(item.offsetLeft + item.offsetWidth / 2 - center);
+      if (d < distance) {
+        distance = d;
+        best = index;
+      }
+    });
+    return best;
+  }
+
+  function go(index) {
+    const list = items();
+    const target = list[Math.max(0, Math.min(list.length - 1, index))];
+    if (!target) return;
+    track.scrollTo({
+      left: target.offsetLeft - (track.clientWidth - target.offsetWidth) / 2,
+      behavior: reducedMotion.matches ? "auto" : "smooth"
+    });
+  }
+
+  function update() {
+    const count = track.closest(".strip").querySelector(".strip__count");
+    if (count) count.textContent = `${current() + 1} / ${items().length}`;
+  }
+
+  return {
+    mount(element, project) {
+      if (!element || element.classList.contains("strip--empty")) return;
+      track = element.querySelector(".strip__track");
+      track.addEventListener("scroll", update, { passive: true });
+      element.querySelector(".strip__arrow--prev")?.addEventListener("click", () => go(current() - 1));
+      element.querySelector(".strip__arrow--next")?.addEventListener("click", () => go(current() + 1));
+
+      // Glisser à la souris pour faire défiler les images.
+      track.addEventListener("pointerdown", (event) => {
+        if (event.pointerType !== "mouse" || event.button !== 0) return;
+        drag = { x: event.clientX, left: track.scrollLeft, moved: 0 };
+      });
+      track.addEventListener("pointermove", (event) => {
+        if (!drag) return;
+        const dx = event.clientX - drag.x;
+        drag.moved = Math.max(drag.moved, Math.abs(dx));
+        if (drag.moved > 5) {
+          track.classList.add("is-dragging");
+          track.scrollLeft = drag.left - dx;
+        }
+      });
+      const stop = () => {
+        if (!drag) return;
+        if (drag.moved > 5) {
+          track.addEventListener("click", (event) => event.stopPropagation(), { capture: true, once: true });
+          setTimeout(() => go(current()), 0);
+        }
+        drag = null;
+        track.classList.remove("is-dragging");
+      };
+      track.addEventListener("pointerup", stop);
+      track.addEventListener("pointerleave", stop);
+      track.addEventListener("dragstart", (event) => event.preventDefault());
+      track.addEventListener("click", (event) => {
+        const item = event.target.closest(".strip__item");
+        if (item) openLightbox(project, Number(item.dataset.index));
+      });
+    }
+  };
+})();
+
+/* Panneaux superposés : chacun reste collé en haut pendant que le suivant glisse par-dessus.
+   Un panneau plus haut que l'écran colle par le bas, pour qu'on puisse lire toute sa hauteur. */
+const stickyPanels = (() => {
+  function update() {
+    const headerHeight = siteHeader.offsetHeight;
+    document.querySelectorAll(".project__panel").forEach((panel) => {
+      const top = Math.min(headerHeight, window.innerHeight - panel.offsetHeight);
+      panel.style.top = `${top}px`;
+    });
+  }
+  window.addEventListener("resize", update);
+  document.fonts?.ready.then(update);
+  return { update };
+})();
+
 
 /* ---------- Infos, compétences, contact ---------- */
 
@@ -506,7 +655,7 @@ function renderContact() {
 
 const routes = {
   home: renderHome,
-  projects: renderProjects,
+  projects: renderHome,
   infos: renderInfos,
   competences: renderSkills,
   contact: renderContact
@@ -526,8 +675,10 @@ function render() {
   const route = parseRoute();
   state.route = route;
 
+  // Accueil et « Projets » sont la même page : on ne la reconstruit pas, on fait juste défiler.
+  const samePage = ["home", "projects"].includes(route.name) && ["home", "projects"].includes(previous?.name);
   if (route.name === "project") renderProject(route.slug);
-  else routes[route.name]();
+  else if (!samePage) routes[route.name]();
 
   document.body.dataset.view = route.name;
   document.querySelectorAll("[data-route]").forEach((link) => {
@@ -536,14 +687,21 @@ function render() {
     else link.removeAttribute("aria-current");
   });
 
-  sowing.setEnabled(!["project", "projects"].includes(route.name));
+  sowing.setEnabled(["infos", "competences", "contact"].includes(route.name));
 
-  // Retour à la liste depuis un projet : on revient à hauteur du projet quitté.
+  // Retour depuis un projet : on revient sur sa carte dans la grille.
   const card = route.name === "projects" && previous?.name === "project"
     ? view.querySelector(`.card[href="#/projet/${CSS.escape(previous.slug)}"]`)
     : null;
   if (card) card.scrollIntoView({ block: "center" });
+  else if (route.name === "projects") requestAnimationFrame(() => scrollToProjects(samePage ? "smooth" : "auto"));
+  else if (route.name === "home" && samePage) window.scrollTo({ top: 0, behavior: reducedMotion.matches ? "auto" : "smooth" });
   else window.scrollTo(0, 0);
+
+  if (samePage) {
+    scrollbar.update();
+    return;
+  }
 
   if (previous && !reducedMotion.matches) {
     view.classList.remove("is-entering");
@@ -921,12 +1079,6 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  const galleryButton = event.target.closest(".gallery__item");
-  if (galleryButton) {
-    const project = view.querySelector(".project")?._project;
-    if (project) openLightbox(project, Number(galleryButton.dataset.index));
-    return;
-  }
 
   if (event.target.closest(".skip-link")) {
     event.preventDefault();
@@ -950,7 +1102,6 @@ async function loadJson(url) {
 try {
   const [content, images] = await Promise.all([loadJson("content/projects.json"), loadJson("content/images.json")]);
   state.site = content.site;
-  state.home = content.home;
   state.categories = content.categories;
   state.projects = content.projects;
   state.images = Object.fromEntries(Object.entries(images).map(([key, value]) => [key.normalize("NFC"), value]));

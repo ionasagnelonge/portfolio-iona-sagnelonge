@@ -22,7 +22,7 @@ import unicodedata
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
-from PIL import Image, ImageCms, ImageOps
+from PIL import Image, ImageCms, ImageFilter, ImageOps
 
 Image.MAX_IMAGE_PIXELS = None
 
@@ -33,6 +33,8 @@ MANIFEST_FILE = ROOT / "public/content/images.json"
 OUT_DIR = ROOT / "public/images"
 
 WIDTHS = [640, 1280, 2000]
+STICKER_WIDTHS = [360, 720]
+STICKER_DIR = "stickers"
 ANIMATED_WIDTHS = [640, 1080]
 QUALITY = 80
 LQIP_WIDTH = 24
@@ -113,6 +115,24 @@ def summary(image):
     return "#%02x%02x%02x" % color, "data:image/webp;base64," + base64.b64encode(buffer.getvalue()).decode()
 
 
+def make_sticker(image, width):
+    """Image détourée -> sticker : contour blanc arrondi autour de la forme (fond transparent)."""
+    image = image.convert("RGBA")
+    image = resized(image, min(width, image.width))
+    border = max(4, round(max(image.size) * 0.028))
+    pad = border * 2
+    canvas_size = (image.width + pad * 2, image.height + pad * 2)
+    alpha = Image.new("L", canvas_size, 0)
+    alpha.paste(image.getchannel("A"), (pad, pad))
+    # Dilatation douce de la silhouette : flou puis seuil, puis léger lissage du bord.
+    outline = alpha.filter(ImageFilter.GaussianBlur(border * 0.6))
+    outline = outline.point(lambda v: 255 if v > 6 else 0).filter(ImageFilter.GaussianBlur(1.2))
+    sticker = Image.new("RGBA", canvas_size, (255, 255, 255, 0))
+    sticker.putalpha(outline)
+    sticker.alpha_composite(image, (pad, pad))
+    return sticker.crop(sticker.getbbox() or (0, 0, *canvas_size))
+
+
 def is_fresh(meta, source):
     outputs = [ROOT / "public" / s["src"] for s in (meta or {}).get("srcset", [])]
     if not outputs or not all(p.exists() for p in outputs):
@@ -121,11 +141,24 @@ def is_fresh(meta, source):
 
 
 def process(job):
-    source, out_base, previous = job
+    source, out_base, previous, kind = job
     if is_fresh(previous, source):
         return previous
 
     image = open_source(source)
+
+    if kind == "sticker":
+        image = ImageOps.exif_transpose(image)
+        if image.mode == "CMYK":
+            image = to_rgb(image)
+        largest = make_sticker(image, STICKER_WIDTHS[-1])
+        sources = []
+        for w in target_widths(largest.width, STICKER_WIDTHS):
+            out = out_base.parent / f"{out_base.name}-{w}.webp"
+            resized(largest, w).save(out, "WEBP", quality=QUALITY + 5, method=6)
+            sources.append({"w": w, "src": out.relative_to(ROOT / "public").as_posix()})
+        return {"w": largest.width, "h": largest.height, "color": "transparent", "lqip": "", "srcset": sources}
+
     animated = getattr(image, "is_animated", False) and image.n_frames > 1
 
     if animated:
@@ -183,6 +216,10 @@ def main():
     home_images = [item["file"] if isinstance(item, dict) else item for item in home.get("images", [])]
     if home_images:
         projects.append({"slug": "accueil", "folder": home["folder"], "images": home_images})
+    # Stickers détourés (data/stickers/), un par projet : contour blanc ajouté automatiquement.
+    stickers = [project["sticker"] for project in content["projects"] if project.get("sticker")]
+    if stickers:
+        projects.append({"slug": STICKER_DIR, "folder": STICKER_DIR, "images": stickers, "kind": "sticker"})
     previous = {}
     if MANIFEST_FILE.exists() and not args.force:
         previous = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
@@ -195,6 +232,7 @@ def main():
         out_dir = OUT_DIR / project["slug"]
         out_dir.mkdir(parents=True, exist_ok=True)
         used_names = set()
+        kind = project.get("kind", "image")
         for filename in project["images"]:
             source = find_entry(folder, filename)
             name = slugify(Path(filename).stem)
@@ -202,7 +240,7 @@ def main():
                 name += "-b"
             used_names.add(name)
             key = f"{project['slug']}/{nfc(filename)}"
-            jobs.append((source, out_dir / name, previous.get(key)))
+            jobs.append((source, out_dir / name, previous.get(key), kind))
             keys.append(key)
 
     with ProcessPoolExecutor(max_workers=max(1, (os.cpu_count() or 2) - 1)) as pool:

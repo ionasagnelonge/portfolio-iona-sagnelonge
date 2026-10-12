@@ -86,17 +86,13 @@
     "credits": [
       {
         "label": "Typographies",
-        "text": "Feroniapi, Peter Wiegel & Julienne Richard — Newsreader, Production Type (SIL Open Font License)"
+        "text": "Feroniapi, Peter Wiegel & Julienne Richard"
       },
       {
         "label": "Photographies",
         "text": "« Le lien à l’eau » © Bartosch Salmanski"
       }
     ]
-  },
-  "home": {
-    "folder": "accueil",
-    "images": []
   },
   "categories": {
     "illustration": {
@@ -154,6 +150,7 @@
       "body": "Mémoire de DNSEP Communication.\n\nQu’ils rampent, volent ou s’immergent dans les profondeurs, les animaux partagent notre quotidien. Malgré sa présence constante dans tous les écosystèmes, la faune reste la grande absente de nos outils cartographiques traditionnels. Envisager l’animal comme un « alter-vivant » impose une mutation de nos modes de représentation.\n\nEn développant une cartographie dynamique, narrative et vivante, nous pouvons rendre compte de l’interdépendance des espèces et inciter à une planification du territoire qui respecte enfin le maillage du vivant.",
       "folder": "",
       "cover": "",
+      "sticker": "",
       "images": [],
       "links": []
     },
@@ -170,6 +167,7 @@
       "body": "Dans le cadre de sa nouvelle exposition ZOOM, le musée Würth met en avant une collection de photographies argentiques de portraits d’artistes. À cette occasion, j’ai conçu un dispositif de médiation autour de la photographie argentique mêlant illustrations et prise de vues.\n\nComme l’exposition valorise principalement le sujet photographié et non le photographe, cette installation explore la technique du photographe, et son espace de travail : le laboratoire. L’installation reprend donc l’organisation d’un labo photo : un éclairage sombre, des clichés qui sèchent, une zone de prise de vue…",
       "folder": "ZOOM",
       "cover": "IMG_6186.jpg",
+      "sticker": "",
       "images": [
         "IMG_6186.jpg",
         "illu_photo-01.jpg",
@@ -195,6 +193,7 @@
       "body": "Capturée par le satellite Voyager 1, « Pale Blue Dot » reste à ce jour la photographie la plus lointaine de la Terre, prise à près de 6 milliards de km. Cette image a donné son nom à cette exposition, qui occupe le musée d’un mètre carré conçu par Alexandre Echasseriau. Ce projet a été réalisé dans le cadre d’un stage à La Physique Autrement.\n\nÀ vous d’ouvrir, observer, retourner les 9 cubes du musée pour redécouvrir la Terre sous de nouveaux angles. En illustrations, en vidéo, en BD ou en sculptures, toute l’exposition est réalisée à la main sur du papier maison recyclé.\n\nCe dispositif a été exposé à la Bibliothèque d’Orsay à l’occasion des fêtes de la science du campus de Paris-Saclay en 2025, au LUMEN, et au Laboratoire de Physique des Solides d’Orsay.",
       "folder": "un point bleu pâle",
       "cover": "320A0355.JPG",
+      "sticker": "",
       "images": [
         "320A0355.JPG",
         "320A0400.JPG",
@@ -226,6 +225,7 @@
       "body": "Suite à l’exposition éponyme, une série de 9 affiches a été réalisée pour permettre à tous d’accéder à son contenu. N’hésitez pas à télécharger cette série puis l’imprimer, c’est gratuit !",
       "folder": "un point bleu pâle la suite____",
       "cover": "Sans titre - 1-01.jpg",
+      "sticker": "",
       "images": [
         "Sans titre - 1-01.jpg",
         "Sans titre - 1-02.jpg",
@@ -258,6 +258,7 @@
       "body": "À l’occasion des 50 ans du Conservatoire d’Espaces Naturels d’Alsace, j’ai réalisé la nouvelle identité festive de l’association, elle sera utilisée toute l’année 2026.\n\nInventorier, protéger, gérer, rassembler, partager, observer, sont les missions que le conservatoire vise à transmettre. Cette identité inspirée des plans de gestion de l’association, a été détournée sur divers supports : affiche, brochure, programme, étiquettes de boissons, invitation, cartes postales…",
       "folder": "50 ans pour la biodiversité_",
       "cover": "Poster Mockup proposition 1.png",
+      "sticker": "",
       "images": [
         "Poster Mockup proposition 1.png",
         "mock up bouteille jus.png"
@@ -278,6 +279,7 @@
       "credits": "Avec Garance Coppens et Chloé Pesnec. Photographies © Bartosch Salmanski.",
       "folder": "Sous nos pieds",
       "cover": "25-10-16 PasseMu - ADEUS 0404 © Bartosch Salmanski.jpg",
+      "sticker": "",
       "images": [
         "25-10-16 PasseMu - ADEUS 0404 © Bartosch Salmanski.jpg",
         "25-10-16 PasseMu - ADEUS 0407 © Bartosch Salmanski.jpg",
@@ -299,6 +301,7 @@
       "credits": "Avec Garance Coppens, Giuliano Alzerreca et Noémie Oury.",
       "folder": "ultimate very last hope",
       "cover": "Biennalesvg.svg",
+      "sticker": "",
       "images": [
         "Biennalesvg.svg",
         "IMG_2380.jpg",
@@ -325,6 +328,7 @@
       "body": "Très discrets, les phytoplanctons sont partout. Ce sont des micro-algues qui jouent un rôle crucial dans l’écosystème aquatique. Le Rhin et l’Ill, qui traversent Strasbourg, en sont riches. Ces algues sont des indicateurs précieux de la qualité de l’eau.\n\nCette installation vise à donner de la visibilité à ces organismes fascinants et souvent méconnus. En sculptant le papier et les perles, j’ai créé une réinterprétation des taxons phytoplanctoniques que l’on pourrait observer au microscope dans les environs de Strasbourg.\n\nCette installation a été réalisée dans le cadre d’un partenariat avec l’OFB afin de présenter la biodiversité aquatique locale, et d’explorer les questions liées aux milieux, à leur protection et à leur gestion, qui doivent simultanément prendre en compte les contraintes environnementales et techniques, et répondre aux exigences sociales.",
       "folder": "Phytoplanctons",
       "cover": "phyto 1.jpg",
+      "sticker": "",
       "images": [
         "phyto 1.jpg",
         "photo intalation phyto.jpg",
@@ -344,6 +348,7 @@
       "body": "Fruit d’une collaboration avec Lina et Léa, étudiantes en électroacoustique, « Des petits problèmes » donne vie à un récit familial, celui d’une femme victime de violences. Loin d’être une simple spectatrice, elle a subi de plein fouet les affres de l’addiction de son compagnon, vivant l’enfer aux côtés de sa fille.\n\nL’animation plonge le spectateur dans un univers onirique et énigmatique, où se mêlent des émotions fortes et contradictoires : peur, angoisse, amour, passion et douleur. Le contraste entre la douceur du texte et les visuels sombres accentue le trouble et l’ambivalence de cette expérience. Le paysage flou et étrange reflète l’univers glauque de la drogue qui engloutit petit à petit la mère et sa fille dans une sorte de tourbillon oppressant.",
       "folder": "Des petits problèmes_",
       "cover": "Capture d’écran 2025-11-01 à 12.54.15.png",
+      "sticker": "",
       "images": [
         "Capture d’écran 2025-11-01 à 12.54.15.png",
         "rouge à lèvre 1.gif",
@@ -365,6 +370,7 @@
       "body": "Jurka vivait une existence paisible dans la nature sauvage, loin de l’agitation humaine. Mais son destin bascule lorsqu’elle croise le chemin de l’homme. Ce livre pop-up, réalisé en collaboration avec le parc allemand Bärenpark, raconte son histoire à travers un récit sur le ton de l’humour noir et des jeux en papier.\n\nCe livre nous incite à réfléchir à notre impact sur l’environnement et à adopter un comportement plus responsable envers les animaux sauvages.",
       "folder": "ours",
       "cover": "couverture.jpg",
+      "sticker": "",
       "images": [
         "couverture.jpg",
         "DSC_0593.jpg",
@@ -387,6 +393,7 @@
       "body": "Ce coffret est un kit pédagogique qui invite à s’approprier les odeurs et à prendre conscience de notre environnement olfactif. Grâce à des cartes et une application numérique, il développe le langage par le biais de modules visuels. Chaque module retranscrit différentes sensations ressenties lors de l’olfaction.\n\nEn les manipulant, vous donnez vie à des créatures hybrides qui incarnent les émotions et les odeurs perçues. Les modules visuels sont des traductions illustrées d’un vocabulaire utilisé dans le domaine olfactif. Pour définir ces formes, l’imagerie a été illustrée et définie d’après un questionnaire distribué à plus de 70 personnes, afin d’avoir la représentation la plus fidèle des odeurs.",
       "folder": "imagerie olfactive",
       "cover": "IMAGERIE OLFACTIVE 2.jpg",
+      "sticker": "",
       "images": [
         "IMAGERIE OLFACTIVE 2.jpg",
         "IMAGERIE OLFACTIVE 1.jpg",
@@ -407,6 +414,7 @@
       "body": "Mémoire de DNMADe Graphisme.\n\nNotre société offre à nos yeux une immensité d’images sur tous supports : nous avons tendance à délaisser l’usage de nos autres sens pourtant précieux dans la traduction du monde. Sans eux, la représentation que l’on s’en fait ne peut exister. L’illustration est un moyen qui permet de retranscrire un univers. Mais elle pourrait élargir son exploration en dehors du visuel, en intégrant d’autres sens : elle pourrait offrir une communication plus forte de l’imaginaire en intégrant le corps dans toutes ses acceptions au cœur de l’image. Il s’agirait alors de placer l’homme dans la perception de nouvelles facettes de l’image.\n\nTel sera donc l’objet de notre réflexion : en quoi l’implication des sens dans l’illustration augmente-t-elle l’expérience de l’image ?",
       "folder": "images sensorielles",
       "cover": "DSC_0016ok.jpg",
+      "sticker": "",
       "images": [
         "DSC_0016ok.jpg",
         "set design 5-12.jpg",
@@ -427,6 +435,7 @@
       "body": "",
       "folder": "Intervalles",
       "cover": "revue couv.png",
+      "sticker": "",
       "images": [
         "revue couv.png",
         "revue image.png",
@@ -446,6 +455,7 @@
       "body": "",
       "folder": "Mais punaise !",
       "cover": "Capture d’écran 2024-01-18 à 00.50.24.png",
+      "sticker": "",
       "images": [
         "Capture d’écran 2024-01-18 à 00.50.24.png",
         "Capture d’écran 2024-01-18 à 00.50.47.png",
@@ -468,6 +478,7 @@
       "body": "",
       "folder": "Par enchantemet_",
       "cover": "DSC_0331.jpg",
+      "sticker": "",
       "images": [
         "DSC_0331.jpg",
         "DSC_0194.jpg",
@@ -486,6 +497,7 @@
       "body": "",
       "folder": "rêves",
       "cover": "affiche r^ve.jpg",
+      "sticker": "",
       "images": [
         "affiche r^ve.jpg",
         "reve.jpg"
@@ -503,6 +515,7 @@
       "body": "",
       "folder": "formation anatomie",
       "cover": "IMG_5179.jpg",
+      "sticker": "",
       "images": [
         "IMG_5179.jpg",
         "IMG_5168.jpg",

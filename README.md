@@ -10,32 +10,22 @@ Tout le contenu est dans **`public/content/projects.json`** :
 - `categories` : disciplines, avec leur glyphe (dessin tiré de la police Feroniapi) et leur couleur.
 - `projects` : un objet par projet, **dans l’ordre d’affichage**.
   - `folder` : nom du dossier dans `data/` contenant les originaux.
-  - `images` : noms des fichiers, dans l’ordre voulu. `cover` : l’image de la mosaïque.
-  - `layout: "grid"` : affiche les images en grille (pratique pour une série d’affiches).
+  - `images` : noms des fichiers, dans l’ordre voulu. `cover` : l’image de la grille des projets.
+  - `sticker` : l’image détourée du mur d’accueil (voir plus bas).
   - `summary`, `body` (paragraphes séparés par une ligne vide), `credits`, `links`.
 
 Modifier un texte ne nécessite rien d’autre que d’éditer ce fichier.
 
-## Photos de la page d’accueil
+## Stickers de la page d’accueil
 
-Le carrousel de l’accueil affiche les couvertures des projets tant qu’aucune photo n’est choisie.
-Pour choisir ses propres photos :
+L’accueil est un mur de stickers, un par projet. Tant qu’un projet n’a pas de sticker,
+sa couverture est affichée façon photo à bord blanc.
 
-1. Créer le dossier `data/accueil/` et y déposer les photos.
-2. Les lister dans `projects.json`, dans l’ordre de défilement :
-
-   ```json
-   "home": {
-     "folder": "accueil",
-     "images": [
-       { "file": "atelier.jpg" },
-       { "file": "ours-livre.jpg", "project": "ours" }
-     ]
-   }
-   ```
-
-   `project` (facultatif) est le `slug` du projet ouvert au clic sur la photo.
-3. Lancer l’optimisation des images (ci-dessous).
+1. Exporter l’image détourée en **PNG avec fond transparent** (environ 1500 px de large suffit).
+2. La déposer dans `data/stickers/`.
+3. Dans `projects.json`, renseigner le champ `sticker` du projet : `"sticker": "ours.png"`.
+4. Lancer l’optimisation des images (ci-dessous) : le contour blanc est ajouté automatiquement
+   autour de la silhouette ; l’ombre est ajoutée par le site.
 
 ## Ajouter ou changer des images
 
@@ -67,5 +57,4 @@ utiliser d’autres glyphes — nécessite `pip install fonttools`.
 
 ## Polices
 
-- Feroniapi (titres et glyphes) — `src/assets/fonts/`.
-- Newsreader (texte courant), Production Type, licence SIL Open Font License 1.1 — sous-ensemble latin auto-hébergé.
+- Feroniapi (tous les textes et les glyphes) — `src/assets/fonts/`.
