@@ -137,7 +137,7 @@ function renderHome() {
           </a>`
         )
         .join("")}
-      <a class="wall__more" href="#/projets"><span class="nav-word">projets</span> ↓</a>
+      <a class="wall__more" href="#/projets" aria-label="Voir les projets">↓</a>
     </section>
     ${projectsSection()}`;
 
@@ -429,9 +429,17 @@ function renderStrip(project) {
     </div>
     ${items.length > 1
       ? `<div class="strip__controls">
-          <button class="strip__arrow strip__arrow--prev" type="button" aria-label="Image précédente">${glyph("chenille")}</button>
-          <span class="strip__count">1 / ${items.length}</span>
-          <button class="strip__arrow strip__arrow--next" type="button" aria-label="Image suivante">${glyph("chenille")}</button>
+          <button class="strip__arrow" data-step="-1" type="button" aria-label="Image précédente">←</button>
+          <ol class="strip__thumbs" aria-label="Photos du projet">
+            ${items
+              .map(
+                (item, position) => `<li><button class="strip__thumb" type="button" data-goto="${position}" aria-label="Photo ${position + 1}"${position === 0 ? ' aria-current="true"' : ""}>
+                  <img src="${item.meta.srcset[0].src}" alt="" loading="lazy" decoding="async" draggable="false" />
+                </button></li>`
+              )
+              .join("")}
+          </ol>
+          <button class="strip__arrow" data-step="1" type="button" aria-label="Image suivante">→</button>
         </div>`
       : ""}
   </div>`;
@@ -447,7 +455,6 @@ function renderProject(slug) {
   const project = state.projects[index];
   const next = state.projects[(index + 1) % state.projects.length];
   const sticker = stickerOf(project);
-  const nextSticker = stickerOf(next);
   setTitle(project.title);
 
   const links = (project.links ?? [])
@@ -475,7 +482,6 @@ function renderProject(slug) {
       <a class="project__panel project__panel--next" href="#/projet/${next.slug}">
         <span class="next__label">Projet suivant</span>
         <span class="next__title"><span class="card__title-text">${escapeHtml(next.title)}</span></span>
-        ${nextSticker ? `<span class="next__sticker${nextSticker.cutout ? "" : " sticker--photo"}">${stickerImg(nextSticker, "(max-width: 900px) 50vw, 20vw")}</span>` : ""}
       </a>
     </article>`;
 
@@ -518,9 +524,21 @@ const strip = (() => {
     });
   }
 
+  // La vignette de la photo affichée est mise en avant.
+  let active = -1;
   function update() {
-    const count = track.closest(".strip").querySelector(".strip__count");
-    if (count) count.textContent = `${current() + 1} / ${items().length}`;
+    const index = current();
+    if (index === active) return;
+    active = index;
+    const thumbs = track.closest(".strip").querySelectorAll(".strip__thumb");
+    thumbs.forEach((thumb, position) => {
+      if (position === index) thumb.setAttribute("aria-current", "true");
+      else thumb.removeAttribute("aria-current");
+    });
+    // Garde la vignette active visible dans la rangée (sans faire défiler la page).
+    const thumb = thumbs[index];
+    const row = thumb?.closest(".strip__thumbs");
+    if (row) row.scrollLeft = thumb.offsetLeft - (row.clientWidth - thumb.offsetWidth) / 2;
   }
 
   return {
@@ -528,8 +546,14 @@ const strip = (() => {
       if (!element || element.classList.contains("strip--empty")) return;
       track = element.querySelector(".strip__track");
       track.addEventListener("scroll", update, { passive: true });
-      element.querySelector(".strip__arrow--prev")?.addEventListener("click", () => go(current() - 1));
-      element.querySelector(".strip__arrow--next")?.addEventListener("click", () => go(current() + 1));
+      element.querySelectorAll(".strip__arrow").forEach((arrow) => {
+        arrow.addEventListener("click", () => go(current() + Number(arrow.dataset.step)));
+      });
+      element.querySelectorAll(".strip__thumb").forEach((thumb) => {
+        thumb.addEventListener("click", () => go(Number(thumb.dataset.goto)));
+      });
+      active = -1;
+      requestAnimationFrame(update);
 
       // Glisser à la souris pour faire défiler les images.
       track.addEventListener("pointerdown", (event) => {
@@ -597,33 +621,23 @@ function renderInfos() {
   view.innerHTML = `
     <section class="page page--infos">
       <h1 class="page__title">Infos</h1>
-      <div class="page__bio">${site.bio.map((text) => `<p>${escapeHtml(text)}</p>`).join("")}</div>
+      <div class="page__intro">
+        <div class="page__bio">${site.bio.map((text) => `<p>${escapeHtml(text)}</p>`).join("")}</div>
+        <section class="page__section">
+          <h2 class="page__section-title">Disciplines</h2>
+          <ul class="disciplines">${Object.values(state.categories)
+            .map((category) => `<li class="skill--discipline">${glyph(category.glyph)}<span>${escapeHtml(category.label)}</span></li>`)
+            .join("")}</ul>
+        </section>
+        ${(site.skills ?? [])
+          .map((group) => listSection(group.title, group.items, (item) => `<li><span>${escapeHtml(item)}</span></li>`))
+          .join("")}
+      </div>
       <div class="page__cv">
         ${(site.cv ?? [])
           .map((section) =>
             listSection(section.title, section.items, (item) => `<li><time>${escapeHtml(item.year)}</time><span>${escapeHtml(item.text)}</span></li>`)
           )
-          .join("")}
-      </div>
-    </section>`;
-}
-
-function renderSkills() {
-  setTitle("Compétences");
-  const disciplines = Object.values(state.categories)
-    .map((category) => `<li class="skill--discipline">${glyph(category.glyph)}<span>${escapeHtml(category.label)}</span></li>`)
-    .join("");
-
-  view.innerHTML = `
-    <section class="page page--skills">
-      <h1 class="page__title">Compétences</h1>
-      <section class="page__section">
-        <h2 class="page__section-title">Disciplines</h2>
-        <ul class="disciplines">${disciplines}</ul>
-      </section>
-      <div class="page__cv">
-        ${(state.site.skills ?? [])
-          .map((group) => listSection(group.title, group.items, (item) => `<li><span>${escapeHtml(item)}</span></li>`))
           .join("")}
       </div>
     </section>`;
@@ -657,7 +671,6 @@ const routes = {
   home: renderHome,
   projects: renderHome,
   infos: renderInfos,
-  competences: renderSkills,
   contact: renderContact
 };
 
@@ -666,6 +679,7 @@ function parseRoute() {
   const [section, slug] = path.split("/");
   if (section === "projet" && slug) return { name: "project", slug: decodeURIComponent(slug) };
   if (section === "projets") return { name: "projects" };
+  if (section === "competences") return { name: "infos" };
   if (section in routes) return { name: section };
   return { name: "home" };
 }
@@ -687,7 +701,9 @@ function render() {
     else link.removeAttribute("aria-current");
   });
 
-  sowing.setEnabled(["infos", "competences", "contact"].includes(route.name));
+  // Les fruits suivent la souris sur Infos et Contact, et sur l'accueil uniquement au-dessus du mur de stickers.
+  if (["home", "projects"].includes(route.name)) sowing.setEnabled(true, ".wall");
+  else sowing.setEnabled(["infos", "contact"].includes(route.name));
 
   // Retour depuis un projet : on revient sur sa carte dans la grille.
   const card = route.name === "projects" && previous?.name === "project"
@@ -965,6 +981,7 @@ const sowing = (() => {
   const paths = new Map(names.map((name) => [name, new Path2D(glyphs[name].d)]));
   const sprouts = [];
   let enabled = true;
+  let zone = null;
   let frame = 0;
   let last = null;
   let ratio = 1;
@@ -1025,6 +1042,7 @@ const sowing = (() => {
 
   function onMove(event) {
     if (!enabled || reducedMotion.matches || lightbox.open || event.pointerType !== "mouse") return;
+    if (zone && !event.target.closest?.(zone)) return;
     const point = { x: event.clientX, y: event.clientY };
     if (last && Math.hypot(point.x - last.x, point.y - last.y) < 70) return;
     // Le canvas est sous le contenu : les glyphes n'apparaissent que sur le papier.
@@ -1039,8 +1057,9 @@ const sowing = (() => {
       window.addEventListener("resize", resize);
       window.addEventListener("pointermove", onMove, { passive: true });
     },
-    setEnabled(value) {
+    setEnabled(value, area = null) {
       enabled = value;
+      zone = area;
       if (!value) {
         sprouts.length = 0;
         context.clearRect(0, 0, canvas.width, canvas.height);

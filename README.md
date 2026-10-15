@@ -6,7 +6,7 @@ Site statique (Vite), déployé automatiquement sur GitHub Pages à chaque push 
 
 Tout le contenu est dans **`public/content/projects.json`** :
 
-- `site` : bio et `cv` (page Infos), `skills` (page Compétences), `email`, `instagram` et `credits` (page Contact).
+- `site` : bio, `skills` (compétences) et `cv` (page Infos), `email`, `instagram` et `credits` (page Contact).
 - `categories` : disciplines, avec leur glyphe (dessin tiré de la police Feroniapi) et leur couleur.
 - `projects` : un objet par projet, **dans l’ordre d’affichage**.
   - `folder` : nom du dossier dans `data/` contenant les originaux.

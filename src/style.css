@@ -268,17 +268,32 @@ button:focus-visible > .nav-word {
 
 /* ---------- Accueil : mur de stickers ---------- */
 
+/* Le mur reste collé sous le bandeau ; la page des projets glisse par-dessus. */
 .wall {
-  position: relative;
-  height: calc(100svh - var(--header-h) - 3.2rem);
+  position: sticky;
+  top: var(--header-h);
+  height: calc(100svh - var(--header-h) - 1.6rem);
   min-height: 24rem;
-  margin: 0 var(--gutter);
+}
+
+/* Dégradé blanc en bas du mur, qui se fond dans la page des projets */
+.wall::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 150;
+  height: clamp(3rem, 9vh, 5rem);
+  background: linear-gradient(rgb(255 255 255 / 0%), var(--paper));
+  pointer-events: none;
 }
 
 .sticker {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
   display: block;
   color: inherit;
   text-decoration: none;
@@ -288,29 +303,38 @@ button:focus-visible > .nav-word {
   -webkit-user-drag: none;
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
-  /* Légère ombre portée qui suit la silhouette du sticker */
-  filter: drop-shadow(0 1px 1px rgb(var(--shadow) / 18%)) drop-shadow(0 6px 8px rgb(var(--shadow) / 22%));
+  /* Calque à part : le sticker se déplace d'un bloc, sans laisser de trace d'ombre. */
+  will-change: transform;
   opacity: 0;
-  transition: filter 300ms var(--ease), opacity 500ms var(--ease);
+  transition: opacity 500ms var(--ease);
 }
 
 .wall.is-ready .sticker {
   opacity: 1;
 }
 
-.sticker:hover {
-  filter: drop-shadow(0 1px 1px rgb(var(--shadow) / 18%)) drop-shadow(0 10px 14px rgb(var(--shadow) / 28%));
-}
-
 .sticker.is-grabbed {
   cursor: grabbing;
-  filter: drop-shadow(0 2px 2px rgb(var(--shadow) / 18%)) drop-shadow(0 22px 24px rgb(var(--shadow) / 30%));
 }
 
 .sticker__img {
   width: 100%;
   height: auto;
   pointer-events: none;
+}
+
+/* Légère ombre portée qui suit la silhouette du sticker */
+.wall .sticker__img {
+  filter: drop-shadow(0 1px 1px rgb(var(--shadow) / 18%)) drop-shadow(0 6px 8px rgb(var(--shadow) / 22%));
+  transition: filter 300ms var(--ease);
+}
+
+.sticker:hover .sticker__img {
+  filter: drop-shadow(0 1px 1px rgb(var(--shadow) / 18%)) drop-shadow(0 10px 14px rgb(var(--shadow) / 28%));
+}
+
+.sticker.is-grabbed .sticker__img {
+  filter: drop-shadow(0 2px 2px rgb(var(--shadow) / 18%)) drop-shadow(0 22px 24px rgb(var(--shadow) / 30%));
 }
 
 /* Sans détourage, la couverture fait office de « photo-sticker » à bord blanc */
@@ -320,34 +344,44 @@ button:focus-visible > .nav-word {
   background: #fff;
 }
 
+/* Flèche vers les projets */
 .wall__more {
   position: absolute;
-  bottom: 0.25rem;
+  bottom: 0.6rem;
   left: 50%;
-  z-index: 100;
-  padding: 0.2rem 0.8rem;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  width: 3.2rem;
+  height: 3.2rem;
   color: var(--ink);
-  font-size: 1.15rem;
+  font-size: 2rem;
+  line-height: 1;
   text-decoration: none;
   transform: translateX(-50%);
+  animation: nudge 2.4s ease-in-out infinite;
 }
 
-/* Nom du projet qui suit le curseur, dans un rectangle aux bords flous */
+@keyframes nudge {
+  50% {
+    transform: translate(-50%, 6px);
+  }
+}
+
+/* Nom du projet qui suit le curseur : fond blanc opaque aux bords flous */
 .tooltip {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 40;
   padding: 0.35rem 0.8rem;
-  background: rgb(255 255 255 / 82%);
-  box-shadow: 0 0 14px 10px rgb(255 255 255 / 82%);
+  background: var(--paper);
+  box-shadow: 0 0 12px 9px var(--paper);
   color: var(--accent);
   font-family: var(--font-display);
   font-size: 1.25rem;
   line-height: 1.2;
   white-space: nowrap;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 200ms;
@@ -359,8 +393,32 @@ button:focus-visible > .nav-word {
 
 /* ---------- Projets : grille uniforme ---------- */
 
+/* La page des projets glisse par-dessus le mur de stickers */
 .projects {
-  padding: clamp(2.5rem, 6vw, 4.5rem) var(--gutter) clamp(3rem, 8vw, 6rem);
+  position: relative;
+  z-index: 2;
+  min-height: calc(100svh - var(--header-h));
+  padding: clamp(1.5rem, 4vw, 3rem) var(--gutter) clamp(3rem, 8vw, 6rem);
+  background: var(--paper);
+}
+
+/* Bord supérieur en dégradé, comme le bas du bandeau */
+.projects::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  left: 0;
+  height: 2.2rem;
+  background: linear-gradient(rgb(255 255 255 / 0%), var(--paper));
+  pointer-events: none;
+}
+
+[data-view="home"] .site-footer,
+[data-view="projects"] .site-footer {
+  position: relative;
+  z-index: 2;
+  background: var(--paper);
 }
 
 .filters {
@@ -458,19 +516,27 @@ button:focus-visible > .nav-word {
   font-size: 0.92rem;
 }
 
-/* Aplat bleu qui masque les projets hors filtre */
+/* Aplat qui recouvre les projets hors filtre : il descend avec un bord flou, comme une encre qui se propage.
+   --veil est la position du front (animée grâce à @property). */
+@property --veil {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
 .card__veil {
+  --veil: 0%;
   position: absolute;
   inset: 0;
   background: var(--accent);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 550ms var(--ease);
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(var(--veil) - 40%), transparent var(--veil));
+  mask-image: linear-gradient(to bottom, #000 calc(var(--veil) - 40%), transparent var(--veil));
+  transition: --veil 600ms cubic-bezier(0.33, 0.1, 0.25, 1);
   pointer-events: none;
 }
 
 .card.is-veiled .card__veil {
-  transform: none;
+  --veil: 160%;
 }
 
 .card__title {
@@ -545,9 +611,16 @@ button:focus-visible > .nav-word {
   background: var(--paper);
 }
 
-.project__panel + .project__panel {
-  border-top: 1px solid var(--line);
-  box-shadow: 0 -18px 30px -24px rgb(var(--shadow) / 35%);
+/* Le haut de chaque panneau se fond comme le bas du bandeau, au lieu d'un trait */
+.project__panel + .project__panel::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  left: 0;
+  height: 1.8rem;
+  background: linear-gradient(rgb(255 255 255 / 0%), var(--paper));
+  pointer-events: none;
 }
 
 /* Bandeau d'images horizontal */
@@ -625,26 +698,22 @@ button:focus-visible > .nav-word {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.9rem;
   margin-top: 0.6rem;
   color: var(--ink);
-}
-
-.strip__count {
-  min-width: 4rem;
-  text-align: center;
 }
 
 .strip__arrow {
   display: grid;
   place-items: center;
-  width: 2.75rem;
+  width: 2.5rem;
   height: 2.25rem;
   padding: 0;
   border: 0;
-  border-radius: 999px;
   background: none;
   color: var(--ink);
+  font: inherit;
+  font-size: 1.4rem;
   cursor: pointer;
   transition: color 300ms;
 }
@@ -653,12 +722,52 @@ button:focus-visible > .nav-word {
   color: var(--accent);
 }
 
-.strip__arrow .glyph {
-  height: 1.5rem;
+/* Mini-vignettes : celle de la photo affichée est nette, avec un contour prune */
+.strip__thumbs {
+  display: flex;
+  gap: 0.4rem;
+  max-width: min(70vw, 40rem);
+  margin: 0;
+  padding: 0.25rem;
+  overflow-x: auto;
+  list-style: none;
+  scrollbar-width: none;
 }
 
-.strip__arrow--prev .glyph {
-  transform: scaleX(-1);
+.strip__thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.strip__thumb {
+  display: block;
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 4px;
+  background: var(--paper-deep);
+  cursor: pointer;
+  opacity: 0.45;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: opacity 300ms, outline-color 300ms;
+}
+
+.strip__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.strip__thumb:hover {
+  opacity: 0.8;
+}
+
+.strip__thumb[aria-current="true"] {
+  opacity: 1;
+  outline-color: var(--accent);
 }
 
 .strip--empty .strip__placeholder {
@@ -760,59 +869,61 @@ button:focus-visible > .nav-word {
   content: " ↗";
 }
 
-.project__sticker,
-.next__sticker {
+.project__sticker {
   justify-self: center;
   width: min(100%, 26rem);
   filter: drop-shadow(0 1px 1px rgb(var(--shadow) / 18%)) drop-shadow(0 10px 14px rgb(var(--shadow) / 24%));
   rotate: -6deg;
 }
 
-.project__sticker .sticker__img,
-.next__sticker .sticker__img {
+.project__sticker .sticker__img {
   pointer-events: none;
 }
 
-/* Projet suivant */
+/* Projet suivant : barre fine en bas de page (remplace le pied de page sur les projets) */
 .project__panel--next {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-rows: auto 1fr;
-  align-items: center;
-  gap: 0.5rem 2rem;
-  min-height: 60svh;
-  padding: clamp(2rem, 5vw, 4rem) var(--gutter);
+  --next-bg: #e9e6e3;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  min-height: 4.4rem;
+  padding: 1.1rem var(--gutter);
+  padding-bottom: max(1.1rem, env(safe-area-inset-bottom));
+  background: var(--next-bg);
   color: var(--ink);
   text-decoration: none;
 }
 
+.project__panel--next::before {
+  background: linear-gradient(rgb(233 230 227 / 0%), var(--next-bg)) !important;
+}
+
+[data-view="project"] .site-footer {
+  display: none;
+}
+
 .next__label {
-  grid-column: 1;
+  flex: none;
   color: var(--ink-soft);
 }
 
 .next__title {
-  grid-column: 1;
-  align-self: start;
-  font-size: clamp(2.2rem, 1.4rem + 3.5vw, 5rem);
-  line-height: 1.05;
+  min-width: 0;
+  overflow: hidden;
+  font-size: clamp(1.3rem, 1.1rem + 0.6vw, 1.6rem);
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.next__title::after {
+  content: " →";
+  color: var(--ink-soft);
 }
 
 .project__panel--next:hover .card__title-text,
 .project__panel--next:focus-visible .card__title-text {
   background-position: 0% 0;
-}
-
-.next__sticker {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  width: clamp(9rem, 20vw, 18rem);
-  rotate: 7deg;
-  transition: rotate 600ms var(--ease);
-}
-
-.project__panel--next:hover .next__sticker {
-  rotate: -4deg;
 }
 
 /* ---------- Pages Infos, Compétences, Contact ---------- */
@@ -833,6 +944,11 @@ button:focus-visible > .nav-word {
   font-size: clamp(2.6rem, 7vw, 5.5rem);
   font-weight: 500;
   line-height: 0.95;
+}
+
+.page__intro {
+  display: grid;
+  gap: 2.5rem;
 }
 
 .page__bio p {
@@ -1193,23 +1309,14 @@ button:focus-visible > .nav-word {
     width: min(84vw, calc(var(--strip-h) * var(--ratio)));
   }
 
-  .project__panel--next {
-    grid-template-columns: 1fr;
-  }
-
-  .next__sticker {
-    grid-column: 1;
-    grid-row: auto;
-    justify-self: end;
-  }
-
   .project__panel--info {
     min-height: 0;
   }
 
-  .project__panel--next {
-    min-height: 45svh;
+  .next__title {
+    white-space: normal;
   }
+
 
   .disciplines {
     grid-template-columns: 1fr 1fr;
