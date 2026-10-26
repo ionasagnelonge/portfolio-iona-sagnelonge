@@ -20,8 +20,15 @@
   --pink: #ff3366;
   --shadow: 40 25 35;
 
+  /* Fond très léger du mur de stickers */
+  --wall-bg: #f6f5f5;
+
   /* Au survol, le mot passe progressivement du gris à l'accent, de gauche à droite */
   --sweep: linear-gradient(90deg, var(--accent) 0%, var(--accent) 42%, var(--ink) 58%, var(--ink) 100%);
+  /* Mot déjà sélectionné : prune au repos, rose au survol */
+  --sweep-current: linear-gradient(90deg, var(--pink) 0%, var(--pink) 42%, var(--accent) 58%, var(--accent) 100%);
+  /* Liens dans le texte : gris du texte au repos, prune au survol */
+  --sweep-link: linear-gradient(90deg, var(--accent) 0%, var(--accent) 42%, var(--ink-deep) 58%, var(--ink-deep) 100%);
 
   --font-display: "Feroniapi", "Brush Script MT", cursive;
   --font-text: var(--font-display);
@@ -150,11 +157,32 @@ button:focus-visible > .nav-word {
   background-position: 0% 0;
 }
 
-/* Une fois cliqué, le mot reste gris */
+/* Une fois sélectionné (page en cours, filtre actif), le mot reste prune et passe au rose au survol */
 .nav-word[aria-current="page"],
 [aria-pressed="true"] > .nav-word,
 [aria-expanded="true"] > .nav-word {
+  background-image: var(--sweep-current);
+}
+
+/* Liens dans les textes : même gris que le texte, prune progressif au survol */
+.link {
+  background: var(--sweep-link);
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  transition: background-position 900ms var(--ease), text-decoration-color 900ms var(--ease);
+}
+
+.link:hover,
+.link:focus-visible {
   background-position: 0% 0;
+  text-decoration-color: var(--accent);
 }
 
 /* ---------- Bandeau ---------- */
@@ -164,11 +192,11 @@ button:focus-visible > .nav-word {
   top: 0;
   z-index: 20;
   display: flex;
-  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 0.2rem 2rem;
+  gap: 0.2rem clamp(1rem, 4vw, 2rem);
   padding: 0.55rem var(--gutter) 0.6rem;
+  white-space: nowrap;
   padding-top: max(0.55rem, env(safe-area-inset-top));
   background: var(--paper);
   font-family: var(--font-display);
@@ -186,22 +214,33 @@ button:focus-visible > .nav-word {
   height: 1.8rem;
   background: linear-gradient(var(--paper), rgb(255 255 255 / 0%));
   pointer-events: none;
+  transition: opacity 200ms;
+}
+
+/* La barre des filtres, collée sous le bandeau, porte elle-même le dégradé */
+.has-stuck-filters .site-header::after {
+  opacity: 0;
 }
 
 .site-header__nav {
   display: flex;
-  flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.2rem clamp(1rem, 2.6vw, 2.25rem);
+  gap: 0.2rem clamp(0.9rem, 2.6vw, 2.25rem);
+}
+
+/* Faute de place, le nom se réduit à ses initiales (réglé en JS) */
+.site-header__short,
+.site-header.is-compact .site-header__full {
+  display: none;
+}
+
+.site-header.is-compact .site-header__short {
+  display: inline;
 }
 
 /* Sur l'accueil, le nom reste gris (il ne prend l'accent qu'au survol) */
 .site-header__name[aria-current="page"] {
-  background-position: 100% 0;
-}
-
-.site-header__name[aria-current="page"]:hover {
-  background-position: 0% 0;
+  background-image: var(--sweep);
 }
 
 /* ---------- Barre de défilement ---------- */
@@ -255,6 +294,20 @@ button:focus-visible > .nav-word {
   outline: none;
 }
 
+/* Accueil et projet : le premier volet démarre juste sous le bandeau et colle aussitôt
+   (pas de petit défilement avant qu'il se fixe). */
+[data-view="home"] .view,
+[data-view="projects"] .view,
+[data-view="project"] .view {
+  padding-top: 0;
+}
+
+/* Fond gris très léger sous le mur de stickers (le semis de fruits blancs s'y dessine) */
+body[data-view="home"],
+body[data-view="projects"] {
+  background: var(--wall-bg);
+}
+
 .view.is-entering {
   animation: view-in 600ms var(--ease) both;
 }
@@ -268,25 +321,13 @@ button:focus-visible > .nav-word {
 
 /* ---------- Accueil : mur de stickers ---------- */
 
-/* Le mur reste collé sous le bandeau ; la page des projets glisse par-dessus. */
+/* Le mur reste collé sous le bandeau ; l'édito puis les projets glissent par-dessus. */
 .wall {
   position: sticky;
   top: var(--header-h);
-  height: calc(100svh - var(--header-h) - 1.6rem);
+  z-index: 0;
+  height: calc(100svh - var(--header-h));
   min-height: 24rem;
-}
-
-/* Dégradé blanc en bas du mur, qui se fond dans la page des projets */
-.wall::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 150;
-  height: clamp(3rem, 9vh, 5rem);
-  background: linear-gradient(rgb(255 255 255 / 0%), var(--paper));
-  pointer-events: none;
 }
 
 .sticker {
@@ -330,11 +371,12 @@ button:focus-visible > .nav-word {
 }
 
 .sticker:hover .sticker__img {
-  filter: drop-shadow(0 1px 1px rgb(var(--shadow) / 18%)) drop-shadow(0 10px 14px rgb(var(--shadow) / 28%));
+  filter: drop-shadow(0 1px 1px rgb(var(--shadow) / 18%)) drop-shadow(0 7px 9px rgb(var(--shadow) / 24%));
 }
 
+/* Attrapé : l'ombre s'élargit à peine, le sticker se décolle sans grand halo gris */
 .sticker.is-grabbed .sticker__img {
-  filter: drop-shadow(0 2px 2px rgb(var(--shadow) / 18%)) drop-shadow(0 22px 24px rgb(var(--shadow) / 30%));
+  filter: drop-shadow(0 2px 2px rgb(var(--shadow) / 16%)) drop-shadow(0 9px 10px rgb(var(--shadow) / 22%));
 }
 
 /* Sans détourage, la couverture fait office de « photo-sticker » à bord blanc */
@@ -391,9 +433,51 @@ button:focus-visible > .nav-word {
   opacity: 1;
 }
 
+/* ---------- Édito ---------- */
+
+/* Volet blanc qui glisse sur le mur, colle sous le bandeau, puis les projets le recouvrent */
+.edito {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 1;
+  display: grid;
+  align-items: center;
+  min-height: calc(100svh - var(--header-h));
+  padding: clamp(3rem, 8vw, 6rem) var(--gutter);
+  background: var(--paper);
+}
+
+/* Bord supérieur en dégradé, comme le bas du bandeau */
+.edito::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  left: 0;
+  height: 2.2rem;
+  background: linear-gradient(rgb(255 255 255 / 0%), var(--paper));
+  pointer-events: none;
+}
+
+.edito__text {
+  max-width: 50rem;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 1rem + 1.6vw, 2.4rem);
+  line-height: 1.3;
+}
+
+.edito__text p {
+  margin: 0 0 0.8em;
+}
+
+.edito__text p:last-child {
+  margin-bottom: 0;
+}
+
 /* ---------- Projets : grille uniforme ---------- */
 
-/* La page des projets glisse par-dessus le mur de stickers */
+/* La page des projets glisse par-dessus l'édito */
 .projects {
   position: relative;
   z-index: 2;
@@ -421,15 +505,31 @@ button:focus-visible > .nav-word {
   background: var(--paper);
 }
 
+/* Barre des filtres : collée juste sous le bandeau pendant le défilement des projets */
 .filters {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 5;
   display: flex;
   flex-wrap: wrap;
   gap: 0.2rem clamp(0.9rem, 2vw, 1.75rem);
-  margin: 0 0 clamp(1.5rem, 3vw, 2.5rem);
-  padding: 0;
+  margin: 0 calc(var(--gutter) * -1) clamp(1rem, 2.5vw, 2rem);
+  padding: 0.35rem var(--gutter) 0.5rem;
   list-style: none;
+  background: var(--paper);
   font-family: var(--font-display);
   font-size: clamp(1.15rem, 1rem + 0.5vw, 1.4rem);
+}
+
+.filters::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  height: 1.6rem;
+  background: linear-gradient(var(--paper), rgb(255 255 255 / 0%));
+  pointer-events: none;
 }
 
 .filter,
@@ -455,6 +555,24 @@ button:focus-visible > .nav-word {
   color: inherit;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
+}
+
+.card[hidden] {
+  display: none;
+}
+
+/* Projet écarté par le filtre : il s'efface de haut en bas, en dégradé diffus.
+   --erase est la position du front (animée en JS grâce à @property). */
+@property --erase {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+.card.is-erasing {
+  -webkit-mask-image: linear-gradient(to bottom, transparent calc(var(--erase) - 40%), #000 var(--erase));
+  mask-image: linear-gradient(to bottom, transparent calc(var(--erase) - 40%), #000 var(--erase));
+  pointer-events: none;
 }
 
 .card__frame {
@@ -514,29 +632,6 @@ button:focus-visible > .nav-word {
 .card__image--text span {
   font-family: var(--font-mono);
   font-size: 0.92rem;
-}
-
-/* Aplat qui recouvre les projets hors filtre : il descend avec un bord flou, comme une encre qui se propage.
-   --veil est la position du front (animée grâce à @property). */
-@property --veil {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 0%;
-}
-
-.card__veil {
-  --veil: 0%;
-  position: absolute;
-  inset: 0;
-  background: var(--accent);
-  -webkit-mask-image: linear-gradient(to bottom, #000 calc(var(--veil) - 40%), transparent var(--veil));
-  mask-image: linear-gradient(to bottom, #000 calc(var(--veil) - 40%), transparent var(--veil));
-  transition: --veil 600ms cubic-bezier(0.33, 0.1, 0.25, 1);
-  pointer-events: none;
-}
-
-.card.is-veiled .card__veil {
-  --veil: 160%;
 }
 
 .card__title {
@@ -623,13 +718,19 @@ button:focus-visible > .nav-word {
   pointer-events: none;
 }
 
-/* Bandeau d'images horizontal */
+/* Bandeau d'images horizontal : le volet fait exactement la hauteur de l'écran sous le bandeau.
+   Le haut des images passe légèrement sous le dégradé du bandeau. */
 .project__panel--media {
-  padding: 0 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100svh - var(--header-h));
+  min-height: 22rem;
+  padding: 0.5rem 0 1rem;
 }
 
 .strip {
-  --strip-h: calc(100svh - var(--header-h) - 6rem);
+  --strip-h: calc(100svh - var(--header-h) - 5.6rem);
   position: relative;
 }
 
@@ -691,6 +792,22 @@ button:focus-visible > .nav-word {
 }
 
 .strip__item img.is-loaded {
+  opacity: 1;
+}
+
+/* Cadre prune autour de la dernière image choisie (vignette, flèche ou clic) */
+.strip__item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--accent);
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms var(--ease);
+}
+
+.strip.is-picked .strip__item.is-selected::after {
   opacity: 1;
 }
 
@@ -775,7 +892,7 @@ button:focus-visible > .nav-word {
   place-items: center;
   align-content: center;
   gap: 1.5rem;
-  height: calc(100svh - var(--header-h) - 6rem);
+  height: calc(100svh - var(--header-h) - 2rem);
   margin: 0 var(--gutter);
   border: 1px dashed var(--line);
   border-radius: var(--radius);
@@ -810,13 +927,6 @@ button:focus-visible > .nav-word {
   overflow-wrap: break-word;
 }
 
-.project__year {
-  margin-left: 0.35em;
-  color: var(--ink-soft);
-  font-size: 0.5em;
-  white-space: nowrap;
-}
-
 .project__summary {
   margin: 0.6rem 0 0;
   color: var(--ink);
@@ -824,17 +934,21 @@ button:focus-visible > .nav-word {
   line-height: 1.3;
 }
 
-.project__cats {
-  margin: 0.4rem 0 0;
+/* Partenaire et année, puis le texte : même taille de caractères */
+.project__meta,
+.project__body {
+  font-size: 1rem;
+}
+
+.project__meta {
+  margin: 0.5rem 0 0;
   color: var(--ink-soft);
-  font-size: 0.95rem;
 }
 
 .project__body {
   max-width: 40rem;
   margin-top: 1.6rem;
   color: var(--ink-deep);
-  font-size: 0.98rem;
   line-height: 1.55;
 }
 
@@ -859,21 +973,28 @@ button:focus-visible > .nav-word {
   list-style: none;
 }
 
-.project__links a {
-  color: var(--accent);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.25em;
-}
-
 .project__links a::after {
   content: " ↗";
 }
 
+/* Le sticker du projet s'attrape et se déplace comme sur le mur, sans quitter son volet */
 .project__sticker {
   justify-self: center;
   width: min(100%, 26rem);
-  filter: drop-shadow(0 1px 1px rgb(var(--shadow) / 18%)) drop-shadow(0 10px 14px rgb(var(--shadow) / 24%));
-  rotate: -6deg;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  will-change: transform;
+  transform: rotate(-6deg);
+  filter: drop-shadow(0 1px 1px rgb(var(--shadow) / 18%)) drop-shadow(0 8px 10px rgb(var(--shadow) / 22%));
+  transition: filter 300ms var(--ease);
+}
+
+.project__sticker.is-grabbed {
+  cursor: grabbing;
+  filter: drop-shadow(0 2px 2px rgb(var(--shadow) / 16%)) drop-shadow(0 10px 11px rgb(var(--shadow) / 24%));
 }
 
 .project__sticker .sticker__img {
@@ -1275,11 +1396,6 @@ button:focus-visible > .nav-word {
     font-size: 1.15rem;
   }
 
-  .site-header__nav {
-    width: 100%;
-    justify-content: space-between;
-  }
-
   .scrollbar {
     width: 4px;
   }
@@ -1298,6 +1414,11 @@ button:focus-visible > .nav-word {
 
   .strip {
     --strip-h: 52svh;
+  }
+
+  .project__panel--media {
+    height: auto;
+    min-height: 0;
   }
 
   .strip__track {

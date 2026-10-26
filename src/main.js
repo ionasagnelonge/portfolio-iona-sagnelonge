@@ -6,10 +6,19 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 // La hauteur réelle du bandeau sert de repère aux éléments collants (barre de défilement, panneaux).
 const siteHeader = document.querySelector(".site-header");
+// Hauteur exacte (sous-pixel comprise) : sinon les volets dépassent de l'écran d'une fraction de pixel.
 new ResizeObserver(() => {
-  document.documentElement.style.setProperty("--header-h", `${siteHeader.offsetHeight}px`);
-  if (state.route?.name === "project") stickyPanels.update();
+  fitHeader();
+  document.documentElement.style.setProperty("--header-h", `${siteHeader.getBoundingClientRect().height}px`);
+  if (state.route) stickyPanels.update();
 }).observe(siteHeader);
+
+// Le menu reste sur la ligne du nom ; si la place manque, « Iona Sagnelonge » devient « IS ».
+function fitHeader() {
+  siteHeader.classList.remove("is-compact");
+  if (siteHeader.scrollWidth > siteHeader.clientWidth + 1) siteHeader.classList.add("is-compact");
+}
+document.fonts?.ready.then(fitHeader);
 
 const state = {
   site: null,
@@ -103,6 +112,19 @@ function categoryLabels(project) {
     .join(", ");
 }
 
+// Partenaire ou client du projet (« La Physique Autrement ») ; à défaut, ses disciplines.
+function partnerName(project) {
+  const name = project.partner?.name;
+  return name ? name.charAt(0).toUpperCase() + name.slice(1) : categoryLabels(project);
+}
+
+// Même chose, dans le fil d'une phrase (« avec La Physique Autrement »).
+function partnerPhrase(project) {
+  const { prefix, name } = project.partner ?? {};
+  if (!name) return categoryLabels(project);
+  return prefix ? `${prefix} ${name}` : partnerName(project);
+}
+
 /* ---------- Stickers ---------- */
 
 // Sticker détouré du projet (data/stickers/), sinon sa couverture façon « photo-sticker ».
@@ -139,110 +161,133 @@ function renderHome() {
         .join("")}
       <a class="wall__more" href="#/projets" aria-label="Voir les projets">↓</a>
     </section>
+    ${editoSection()}
     ${projectsSection()}`;
 
   revealImages(view);
   wall.mount(view.querySelector(".wall"));
   applyFilter();
+  stickyPanels.update();
 }
 
-/* Mur d'atelier : stickers éparpillés, qu'on attrape et déplace (souris ou doigt) */
-const wall = (() => {
-  const tooltip = document.createElement("span");
-  tooltip.className = "tooltip";
-  tooltip.setAttribute("aria-hidden", "true");
-  document.body.append(tooltip);
+// Édito : un volet blanc qui glisse sur le mur de stickers, avant les projets.
+function editoSection() {
+  const text = state.site.edito ?? [];
+  if (!text.length) return "";
+  return `<section class="edito" aria-label="Édito">
+    <div class="edito__text">${text.map((block) => `<p>${escapeHtml(block)}</p>`).join("")}</div>
+  </section>`;
+}
 
-  let root = null;
-  let stickers = [];
+/* Stickers qu'on attrape et déplace (souris ou doigt), sur le mur comme dans un projet.
+   Ils restent dans leur cadre : près du bord, ils résistent comme un élastique puis reviennent.
+   En mouvement, ils s'inclinent dans le sens de la trajectoire du curseur. */
+const stickers = (() => {
+  const mounted = new Set();
   let topZ = 10;
-  let lastWidth = 0;
 
-  const random = (min, max) => min + Math.random() * (max - min);
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+  // Positions permises (translate) pour que le sticker, rotation comprise, reste dans son cadre.
+  function limits(sticker) {
+    const s = sticker._state;
+    const frame = sticker.offsetParent;
+    if (!frame) return null;
+    const w = sticker.offsetWidth;
+    const h = sticker.offsetHeight;
+    const angle = ((s.r + s.tilt) * Math.PI) / 180;
+    const cos = Math.abs(Math.cos(angle));
+    const sin = Math.abs(Math.sin(angle));
+    const [top, right, bottom, left] = s.inset;
+    const range = (origin, size, own, extent, before, after) => {
+      let min = before + extent - own / 2 - origin;
+      let max = size - after - extent - own / 2 - origin;
+      if (min > max) min = max = (min + max) / 2;
+      return { min, max, give: [Math.max(1, before), Math.max(1, after)] };
+    };
+    return {
+      x: range(sticker.offsetLeft, frame.clientWidth, w, (w * cos + h * sin) / 2, left, right),
+      y: range(sticker.offsetTop, frame.clientHeight, h, (w * sin + h * cos) / 2, top, bottom)
+    };
+  }
+
+  // Au-delà de la limite, le sticker suit de moins en moins le curseur, sans jamais quitter le cadre.
+  function stretch(value, { min, max, give }) {
+    if (value < min) return min - give[0] * (1 - Math.exp((value - min) / (give[0] * 3)));
+    if (value > max) return max + give[1] * (1 - Math.exp((max - value) / (give[1] * 3)));
+    return value;
+  }
 
   function render(sticker) {
     const s = sticker._state;
-    sticker.style.transform = `translate(${s.x}px, ${s.y}px) rotate(${s.r}deg)`;
+    sticker.style.transform = `translate(${s.x}px, ${s.y}px) rotate(${s.r + s.tilt}deg)`;
   }
 
-  function showTooltip(label, event) {
-    tooltip.textContent = label;
-    // Près du bord droit, l'étiquette passe à gauche du curseur.
-    const x = event.clientX + 16 + tooltip.offsetWidth > window.innerWidth - 12
-      ? event.clientX - 16 - tooltip.offsetWidth
-      : event.clientX + 16;
-    tooltip.style.transform = `translate(${x}px, ${event.clientY + 18}px)`;
-    tooltip.classList.add("is-visible");
+  // Remet un sticker dans son cadre (après un redimensionnement, une dispersion).
+  function contain(sticker) {
+    const lim = limits(sticker);
+    if (!lim) return;
+    const s = sticker._state;
+    s.x = clamp(s.x, lim.x.min, lim.x.max);
+    s.y = clamp(s.y, lim.y.min, lim.y.max);
+    render(sticker);
   }
 
-  function hideTooltip() {
-    tooltip.classList.remove("is-visible");
-  }
-
-  // Grille irrégulière : chaque sticker occupe une case, décalé, tourné, de taille variable.
-  function scatter() {
-    const width = root.clientWidth;
-    const height = root.clientHeight;
-    const narrow = width < 600;
-    const count = stickers.length;
-    const rows = Math.max(1, Math.round(Math.sqrt((count * height) / width)));
-    const cols = Math.ceil(count / rows);
-    const cellW = width / cols;
-    const cellH = height / rows;
-    const slots = Array.from({ length: rows * cols }, (_, index) => index)
-      .sort(() => Math.random() - 0.5)
-      .slice(0, count);
-
-    stickers.forEach((sticker, index) => {
-      const ratio = Number(sticker.style.getPropertyValue("--ratio")) || 1;
-      const slot = slots[index];
-      const col = slot % cols;
-      const row = Math.floor(slot / cols);
-      // Taille : la plus grande dimension remplit 70 à 105 % de la case.
-      const box = Math.min(cellW, cellH) * random(narrow ? 0.72 : 0.7, narrow ? 0.98 : 1.05);
-      const w = ratio >= 1 ? box : box * ratio;
-      const h = w / ratio;
-      sticker.style.width = `${w}px`;
-      const cx = (col + 0.5) * cellW + random(-0.2, 0.2) * cellW;
-      const cy = (row + 0.5) * cellH + random(-0.2, 0.2) * cellH;
-      sticker._state = {
-        x: Math.max(-w * 0.1, Math.min(width - w * 0.9, cx - w / 2)),
-        y: Math.max(0, Math.min(height - h, cy - h / 2)),
-        r: random(-12, 12),
-        vx: 0,
-        vy: 0,
-        frame: 0
-      };
-      sticker.style.zIndex = String(1 + Math.floor(Math.random() * count));
-      render(sticker);
-    });
-    topZ = count + 10;
-    lastWidth = width;
-  }
-
-  function glide(sticker) {
+  // Boucle d'animation : suit le glisser, puis l'élan et le retour dans le cadre une fois lâché.
+  function animate(sticker) {
     const s = sticker._state;
     cancelAnimationFrame(s.frame);
     const step = () => {
-      s.vx *= 0.9;
-      s.vy *= 0.9;
-      s.x += s.vx;
-      s.y += s.vy;
+      const lim = limits(sticker);
+      if (!lim) {
+        s.frame = 0;
+        return;
+      }
+      let outside = false;
+      if (s.drag) {
+        // La vitesse retombe quand le curseur s'arrête : l'inclinaison aussi.
+        s.vx *= 0.8;
+        s.vy *= 0.8;
+      } else {
+        for (const [pos, vel] of [["x", "vx"], ["y", "vy"]]) {
+          const { min, max, give } = lim[pos];
+          s[vel] *= 0.9;
+          s[pos] += s[vel];
+          // Hors du cadre : un ressort amorti le ramène en douceur.
+          if (s[pos] < min || s[pos] > max) {
+            const edge = s[pos] < min ? min : max;
+            s[vel] = s[vel] * 0.5 + (edge - s[pos]) * 0.2;
+            s[pos] = clamp(s[pos], min - give[0], max + give[1]);
+            if (Math.abs(edge - s[pos]) > 0.5) outside = true;
+            else s[pos] = edge;
+          }
+        }
+      }
+      s.tilt += (clamp(s.vx * 0.9, -14, 14) - s.tilt) * 0.18;
       render(sticker);
-      if (Math.abs(s.vx) + Math.abs(s.vy) > 0.3) s.frame = requestAnimationFrame(step);
+      if (s.drag || outside || Math.abs(s.vx) + Math.abs(s.vy) > 0.15 || Math.abs(s.tilt) > 0.05) {
+        s.frame = requestAnimationFrame(step);
+      } else {
+        s.tilt = 0;
+        s.frame = 0;
+        contain(sticker);
+      }
     };
     s.frame = requestAnimationFrame(step);
   }
 
-  function bind(sticker) {
+  function bind(sticker, { tooltip, raise }) {
+    const s = sticker._state;
     let drag = null;
     let holdTimer = 0;
 
     function grab() {
       drag.active = true;
       sticker.classList.add("is-grabbed");
-      topZ += 1;
-      sticker.style.zIndex = String(topZ);
+      if (raise) {
+        topZ += 1;
+        sticker.style.zIndex = String(topZ);
+      }
     }
 
     sticker.addEventListener("dragstart", (event) => event.preventDefault());
@@ -250,9 +295,8 @@ const wall = (() => {
       if (drag) event.preventDefault();
     });
     sticker.addEventListener("pointermove", (event) => {
-      if (event.pointerType === "mouse") showTooltip(sticker.dataset.label, event);
+      if (tooltip && event.pointerType === "mouse") wall.showTooltip(sticker.dataset.label, event);
       if (!drag) return;
-      const s = sticker._state;
       const dx = event.clientX - drag.lastX;
       const dy = event.clientY - drag.lastY;
       drag.moved += Math.hypot(dx, dy);
@@ -266,13 +310,20 @@ const wall = (() => {
         }
         return;
       }
+      drag.rawX += dx;
+      drag.rawY += dy;
       if (drag.moved < 5) return;
-      drag.started = true;
-      s.x += dx;
-      s.y += dy;
+      if (!drag.started) {
+        drag.started = true;
+        s.drag = true;
+        animate(sticker);
+      }
+      const lim = limits(sticker);
+      if (!lim) return;
+      s.x = stretch(drag.rawX, lim.x);
+      s.y = stretch(drag.rawY, lim.y);
       s.vx = dx;
       s.vy = dy;
-      render(sticker);
     });
     sticker.addEventListener(
       "touchmove",
@@ -281,11 +332,14 @@ const wall = (() => {
       },
       { passive: false }
     );
-    sticker.addEventListener("pointerleave", hideTooltip);
+    if (tooltip) sticker.addEventListener("pointerleave", wall.hideTooltip);
     sticker.addEventListener("pointerdown", (event) => {
       if (event.button !== 0) return;
-      cancelAnimationFrame(sticker._state.frame);
-      drag = { lastX: event.clientX, lastY: event.clientY, moved: 0, started: false, active: false, touch: event.pointerType !== "mouse" };
+      cancelAnimationFrame(s.frame);
+      s.frame = 0;
+      s.vx = 0;
+      s.vy = 0;
+      drag = { lastX: event.clientX, lastY: event.clientY, rawX: s.x, rawY: s.y, moved: 0, started: false, active: false, touch: event.pointerType !== "mouse" };
       capturePointer(sticker, event);
       if (event.pointerType === "mouse") {
         grab();
@@ -304,19 +358,108 @@ const wall = (() => {
       if (!drag) return;
       const { started, active, touch } = drag;
       drag = null;
+      s.drag = false;
       sticker.classList.remove("is-grabbed");
       // Un sticker déplacé (ou décollé au doigt) n'ouvre pas le projet.
       if (started || (active && touch)) {
-        // Après un déplacement, on recolle le sticker sans ouvrir le projet.
         sticker.addEventListener("click", (event) => event.preventDefault(), { capture: true, once: true });
       }
-      if (started) {
-        sticker._state.r += random(-6, 6);
-        glide(sticker);
-      }
+      // Lâché : il garde son élan et revient dans le cadre, sans à-coup.
+      if (started) animate(sticker);
     };
     sticker.addEventListener("pointerup", release);
     sticker.addEventListener("pointercancel", release);
+  }
+
+  window.addEventListener("resize", () => {
+    mounted.forEach((sticker) => {
+      if (sticker.isConnected) contain(sticker);
+      else mounted.delete(sticker);
+    });
+  });
+
+  return {
+    // inset : marges [haut, droite, bas, gauche] à garder entre le sticker et le bord de son cadre.
+    mount(sticker, { inset, r = 0, tooltip = false, raise = false }) {
+      sticker._state = { x: 0, y: 0, r, tilt: 0, vx: 0, vy: 0, frame: 0, drag: false, inset };
+      bind(sticker, { tooltip, raise });
+      mounted.add(sticker);
+      render(sticker);
+    },
+    place(sticker, x, y) {
+      Object.assign(sticker._state, { x, y });
+      contain(sticker);
+    },
+    setTopZ(value) {
+      topZ = value;
+    }
+  };
+})();
+
+/* Mur d'atelier : stickers éparpillés sur toute la largeur, sans jamais déborder de l'écran */
+const wall = (() => {
+  const tooltip = document.createElement("span");
+  tooltip.className = "tooltip";
+  tooltip.setAttribute("aria-hidden", "true");
+  document.body.append(tooltip);
+
+  // Zone d'apparition : marges [haut, droite, bas, gauche] ; le haut passe sous le dégradé du bandeau.
+  const INSET = [28, 24, 18, 18];
+
+  let root = null;
+  let items = [];
+  let lastWidth = 0;
+
+  const random = (min, max) => min + Math.random() * (max - min);
+
+  function showTooltip(label, event) {
+    tooltip.textContent = label;
+    // Près du bord droit, l'étiquette passe à gauche du curseur.
+    const x = event.clientX + 16 + tooltip.offsetWidth > window.innerWidth - 12
+      ? event.clientX - 16 - tooltip.offsetWidth
+      : event.clientX + 16;
+    tooltip.style.transform = `translate(${x}px, ${event.clientY + 18}px)`;
+    tooltip.classList.add("is-visible");
+  }
+
+  function hideTooltip() {
+    tooltip.classList.remove("is-visible");
+  }
+
+  // Grille irrégulière : chaque sticker occupe une case, décalé, tourné, de taille variable.
+  function scatter() {
+    const [top, right, bottom, left] = INSET;
+    const width = root.clientWidth - left - right;
+    const height = root.clientHeight - top - bottom;
+    const narrow = root.clientWidth < 600;
+    const count = items.length;
+    const rows = Math.max(1, Math.round(Math.sqrt((count * height) / width)));
+    const cols = Math.ceil(count / rows);
+    const cellW = width / cols;
+    const cellH = height / rows;
+    const slots = Array.from({ length: rows * cols }, (_, index) => index)
+      .sort(() => Math.random() - 0.5)
+      .slice(0, count);
+
+    items.forEach((sticker, index) => {
+      const ratio = Number(sticker.style.getPropertyValue("--ratio")) || 1;
+      const slot = slots[index];
+      const col = slot % cols;
+      const row = Math.floor(slot / cols);
+      // Taille : la plus grande dimension remplit 70 à 100 % de la case.
+      const box = Math.min(cellW, cellH) * random(narrow ? 0.72 : 0.7, narrow ? 0.95 : 1);
+      const w = ratio >= 1 ? box : box * ratio;
+      const h = w / ratio;
+      sticker.style.width = `${w}px`;
+      const cx = left + (col + 0.5) * cellW + random(-0.2, 0.2) * cellW;
+      const cy = top + (row + 0.5) * cellH + random(-0.2, 0.2) * cellH;
+      sticker._state.r = random(-12, 12);
+      sticker.style.zIndex = String(1 + Math.floor(Math.random() * count));
+      // Placé puis ramené dans la zone d'apparition, rotation comprise.
+      stickers.place(sticker, cx - w / 2, cy - h / 2);
+    });
+    stickers.setTopZ(count + 10);
+    lastWidth = root.clientWidth;
   }
 
   window.addEventListener("resize", () => {
@@ -328,8 +471,8 @@ const wall = (() => {
   return {
     mount(element) {
       root = element;
-      stickers = [...root.querySelectorAll(".sticker")];
-      stickers.forEach(bind);
+      items = [...root.querySelectorAll(".sticker")];
+      items.forEach((sticker) => stickers.mount(sticker, { inset: INSET, tooltip: true, raise: true }));
       scatter();
       root.classList.add("is-ready");
     },
@@ -352,10 +495,9 @@ function projectCard(project) {
   return `<a class="card" href="#/projet/${project.slug}" data-categories="${project.categories.join(" ")}">
     <div class="card__frame">
       ${visual}
-      <span class="card__veil" aria-hidden="true"></span>
     </div>
     <h2 class="card__title"><span class="card__title-text">${escapeHtml(project.title)}</span></h2>
-    <p class="card__meta">${escapeHtml(categoryLabels(project))}${project.year ? ` · ${escapeHtml(project.year)}` : ""}</p>
+    <p class="card__meta">${escapeHtml(partnerName(project))}${project.year ? ` · ${escapeHtml(project.year)}` : ""}</p>
   </a>`;
 }
 
@@ -374,16 +516,69 @@ function filterBar() {
   );
 }
 
-function applyFilter() {
-  const grid = view.querySelector(".grid");
-  if (!grid) return;
-  grid.querySelectorAll(".card").forEach((card) => {
-    const match = !state.filter || card.dataset.categories.split(" ").includes(state.filter);
-    card.classList.toggle("is-veiled", !match);
-  });
+/* Filtre : les projets écartés s'effacent en fondu dégradé, puis les autres glissent
+   à leur nouvelle place dans la grille (technique FLIP). */
+let filterRun = 0;
+let erasing = [];
+
+function applyFilter(animate = false) {
   view.querySelectorAll(".filter").forEach((button) => {
     button.setAttribute("aria-pressed", String(button.dataset.filter === (state.filter ?? "")));
   });
+  const grid = view.querySelector(".grid");
+  if (!grid) return;
+
+  const run = ++filterRun;
+  erasing.forEach((animation) => animation.cancel());
+  erasing = [];
+  const cards = [...grid.querySelectorAll(".card")];
+  cards.forEach((card) => card.classList.remove("is-erasing"));
+  const matches = (card) => !state.filter || card.dataset.categories.split(" ").includes(state.filter);
+
+  if (!animate || reducedMotion.matches) {
+    cards.forEach((card) => (card.hidden = !matches(card)));
+    return;
+  }
+
+  const leaving = cards.filter((card) => !card.hidden && !matches(card));
+  const entering = cards.filter((card) => card.hidden && matches(card));
+  const staying = cards.filter((card) => !card.hidden && matches(card));
+
+  erasing = leaving.map((card) => {
+    card.classList.add("is-erasing");
+    return card.animate(
+      [
+        { "--erase": "0%", opacity: 1 },
+        { "--erase": "140%", opacity: 0 }
+      ],
+      { duration: 320, easing: "cubic-bezier(0.5, 0, 0.75, 0)", fill: "forwards" }
+    );
+  });
+
+  Promise.all(erasing.map((animation) => animation.finished)).then(() => {
+    if (run !== filterRun) return;
+    const before = new Map(staying.map((card) => [card, card.getBoundingClientRect()]));
+    leaving.forEach((card) => {
+      card.hidden = true;
+      card.classList.remove("is-erasing");
+    });
+    erasing.forEach((animation) => animation.cancel());
+    erasing = [];
+    entering.forEach((card) => (card.hidden = false));
+
+    const easing = "cubic-bezier(0.22, 1, 0.36, 1)";
+    staying.forEach((card) => {
+      const from = before.get(card);
+      const to = card.getBoundingClientRect();
+      const dx = from.left - to.left;
+      const dy = from.top - to.top;
+      if (Math.abs(dx) + Math.abs(dy) < 1) return;
+      card.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "none" }], { duration: 520, easing });
+    });
+    entering.forEach((card) => {
+      card.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 420, delay: 120, easing, fill: "backwards" });
+    });
+  }, () => {});
 }
 
 function projectsSection() {
@@ -397,7 +592,7 @@ function projectsSection() {
 function scrollToProjects(behavior = "smooth") {
   const section = view.querySelector("#projets");
   if (!section) return;
-  const top = section.getBoundingClientRect().top + window.scrollY - siteHeader.offsetHeight;
+  const top = section.getBoundingClientRect().top + window.scrollY - siteHeader.getBoundingClientRect().height;
   window.scrollTo({ top, behavior: reducedMotion.matches ? "auto" : behavior });
 }
 
@@ -458,8 +653,10 @@ function renderProject(slug) {
   setTitle(project.title);
 
   const links = (project.links ?? [])
-    .map((link) => `<li><a href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${escapeHtml(link.label)}</a></li>`)
+    .map((link) => `<li><a class="link" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${escapeHtml(link.label)}</a></li>`)
     .join("");
+  // Sous le sous-titre : « avec La Physique Autrement, 2025 »
+  const meta = [partnerPhrase(project), project.year].filter(Boolean).join(", ");
 
   view.innerHTML = `
     <article class="project">
@@ -469,9 +666,9 @@ function renderProject(slug) {
 
       <section class="project__panel project__panel--info">
         <div class="project__text">
-          <h1 class="project__title">${escapeHtml(project.title)}${project.year ? ` <span class="project__year">${escapeHtml(project.year)}</span>` : ""}</h1>
+          <h1 class="project__title">${escapeHtml(project.title)}</h1>
           ${project.summary ? `<p class="project__summary">${escapeHtml(project.summary)}</p>` : ""}
-          ${project.categories.length ? `<p class="project__cats">${escapeHtml(categoryLabels(project))}</p>` : ""}
+          ${meta ? `<p class="project__meta">${escapeHtml(meta)}</p>` : ""}
           ${project.body ? `<div class="project__body">${paragraphs(project.body)}</div>` : ""}
           ${project.credits ? `<p class="project__credits">${escapeHtml(project.credits)}</p>` : ""}
           ${links ? `<ul class="project__links">${links}</ul>` : ""}
@@ -489,12 +686,21 @@ function renderProject(slug) {
   view.querySelector(".project")._project = project;
   strip.mount(view.querySelector(".strip"), project);
   stickyPanels.update();
+  const projectSticker = view.querySelector(".project__sticker");
+  if (projectSticker) stickers.mount(projectSticker, { inset: [16, 16, 16, 16], r: -6 });
 }
 
-/* Bandeau d'images horizontal : défilement, glisser à la souris, flèches, compteur */
+/* Bandeau d'images horizontal : défilement, glisser à la souris, flèches, vignettes.
+   L'image choisie (vignette, flèche ou clic) reste sélectionnée et encadrée, même la première
+   ou la dernière quand le défilement ne peut pas la centrer. */
 const strip = (() => {
+  let root = null;
   let track = null;
   let drag = null;
+  let selected = -1;
+  // Pendant un défilement lancé par un choix, la sélection ne suit pas le défilement.
+  let steering = false;
+  let settle = 0;
 
   function items() {
     return [...track.querySelectorAll(".strip__item")];
@@ -514,23 +720,14 @@ const strip = (() => {
     return best;
   }
 
-  function go(index) {
+  // La vignette et l'image sélectionnées sont mises en avant.
+  function select(index) {
     const list = items();
-    const target = list[Math.max(0, Math.min(list.length - 1, index))];
-    if (!target) return;
-    track.scrollTo({
-      left: target.offsetLeft - (track.clientWidth - target.offsetWidth) / 2,
-      behavior: reducedMotion.matches ? "auto" : "smooth"
-    });
-  }
-
-  // La vignette de la photo affichée est mise en avant.
-  let active = -1;
-  function update() {
-    const index = current();
-    if (index === active) return;
-    active = index;
-    const thumbs = track.closest(".strip").querySelectorAll(".strip__thumb");
+    index = Math.max(0, Math.min(list.length - 1, index));
+    if (index === selected) return;
+    selected = index;
+    list.forEach((item, position) => item.classList.toggle("is-selected", position === index));
+    const thumbs = root.querySelectorAll(".strip__thumb");
     thumbs.forEach((thumb, position) => {
       if (position === index) thumb.setAttribute("aria-current", "true");
       else thumb.removeAttribute("aria-current");
@@ -541,19 +738,46 @@ const strip = (() => {
     if (row) row.scrollLeft = thumb.offsetLeft - (row.clientWidth - thumb.offsetWidth) / 2;
   }
 
+  function release(delay) {
+    clearTimeout(settle);
+    settle = setTimeout(() => (steering = false), delay);
+  }
+
+  // Choisit une image et la centre autant que possible.
+  function go(index, { picked = true } = {}) {
+    const list = items();
+    select(index);
+    if (picked) root.classList.add("is-picked");
+    const target = list[selected];
+    if (!target) return;
+    steering = true;
+    release(700);
+    track.scrollTo({
+      left: target.offsetLeft - (track.clientWidth - target.offsetWidth) / 2,
+      behavior: reducedMotion.matches ? "auto" : "smooth"
+    });
+  }
+
+  function onScroll() {
+    if (steering) release(150);
+    else select(current());
+  }
+
   return {
     mount(element, project) {
       if (!element || element.classList.contains("strip--empty")) return;
+      root = element;
       track = element.querySelector(".strip__track");
-      track.addEventListener("scroll", update, { passive: true });
+      selected = -1;
+      steering = false;
+      track.addEventListener("scroll", onScroll, { passive: true });
       element.querySelectorAll(".strip__arrow").forEach((arrow) => {
-        arrow.addEventListener("click", () => go(current() + Number(arrow.dataset.step)));
+        arrow.addEventListener("click", () => go(selected + Number(arrow.dataset.step)));
       });
       element.querySelectorAll(".strip__thumb").forEach((thumb) => {
         thumb.addEventListener("click", () => go(Number(thumb.dataset.goto)));
       });
-      active = -1;
-      requestAnimationFrame(update);
+      select(0);
 
       // Glisser à la souris pour faire défiler les images.
       track.addEventListener("pointerdown", (event) => {
@@ -573,7 +797,7 @@ const strip = (() => {
         if (!drag) return;
         if (drag.moved > 5) {
           track.addEventListener("click", (event) => event.stopPropagation(), { capture: true, once: true });
-          setTimeout(() => go(current()), 0);
+          setTimeout(() => go(current(), { picked: false }), 0);
         }
         drag = null;
         track.classList.remove("is-dragging");
@@ -583,7 +807,9 @@ const strip = (() => {
       track.addEventListener("dragstart", (event) => event.preventDefault());
       track.addEventListener("click", (event) => {
         const item = event.target.closest(".strip__item");
-        if (item) openLightbox(project, Number(item.dataset.index));
+        if (!item) return;
+        go(items().indexOf(item));
+        openLightbox(project, Number(item.dataset.index));
       });
     }
   };
@@ -593,8 +819,8 @@ const strip = (() => {
    Un panneau plus haut que l'écran colle par le bas, pour qu'on puisse lire toute sa hauteur. */
 const stickyPanels = (() => {
   function update() {
-    const headerHeight = siteHeader.offsetHeight;
-    document.querySelectorAll(".project__panel").forEach((panel) => {
+    const headerHeight = siteHeader.getBoundingClientRect().height;
+    document.querySelectorAll(".project__panel, .edito").forEach((panel) => {
       const top = Math.min(headerHeight, window.innerHeight - panel.offsetHeight);
       panel.style.top = `${top}px`;
     });
@@ -713,6 +939,7 @@ function render() {
   else if (route.name === "projects") requestAnimationFrame(() => scrollToProjects(samePage ? "smooth" : "auto"));
   else if (route.name === "home" && samePage) window.scrollTo({ top: 0, behavior: reducedMotion.matches ? "auto" : "smooth" });
   else window.scrollTo(0, 0);
+  requestAnimationFrame(updateScrolled);
 
   if (samePage) {
     scrollbar.update();
@@ -985,7 +1212,6 @@ const sowing = (() => {
   let frame = 0;
   let last = null;
   let ratio = 1;
-  let colors = ["#2626b8"];
 
   function resize() {
     ratio = Math.min(window.devicePixelRatio || 1, 2);
@@ -1004,7 +1230,6 @@ const sowing = (() => {
       w: shape.w,
       h: shape.h,
       rotation: (Math.random() - 0.5) * 0.9,
-      color: colors[Math.floor(Math.random() * colors.length)],
       born: performance.now(),
       life: 2200 + Math.random() * 1400
     });
@@ -1015,6 +1240,11 @@ const sowing = (() => {
   function draw(now) {
     context.setTransform(1, 0, 0, 1, 0, 0);
     context.clearRect(0, 0, canvas.width, canvas.height);
+    // Fruits blancs, détachés du fond par une ombre très douce.
+    context.fillStyle = "#ffffff";
+    context.shadowColor = "rgb(40 25 35 / 22%)";
+    context.shadowBlur = 5 * ratio;
+    context.shadowOffsetY = 1 * ratio;
 
     for (let i = sprouts.length - 1; i >= 0; i -= 1) {
       const sprout = sprouts[i];
@@ -1033,7 +1263,6 @@ const sowing = (() => {
       context.scale(scale, scale);
       context.translate(-sprout.w / 2, -sprout.h);
       context.globalAlpha = alpha;
-      context.fillStyle = sprout.color;
       context.fill(paths.get(sprout.name));
     }
     context.globalAlpha = 1;
@@ -1051,8 +1280,7 @@ const sowing = (() => {
   }
 
   return {
-    init(categories) {
-      colors = ["#2626b8", "#2626b8", ...Object.values(categories).map((category) => category.color)];
+    init() {
       resize();
       window.addEventListener("resize", resize);
       window.addEventListener("pointermove", onMove, { passive: true });
@@ -1072,14 +1300,27 @@ const sowing = (() => {
 
 function updateScrolled() {
   document.body.classList.toggle("is-scrolled", window.scrollY > 4);
+  // Barre de filtres collée sous le bandeau : elle prend le relais du dégradé du bandeau.
+  const filters = view.querySelector(".filters");
+  const stuck = Boolean(filters) && filters.getBoundingClientRect().top <= siteHeader.getBoundingClientRect().height + 1;
+  document.body.classList.toggle("has-stuck-filters", stuck);
 }
 
 document.addEventListener("click", (event) => {
+  // Menu déjà sélectionné : on revient en haut de la page (ou du début des projets).
+  const navLink = event.target.closest(".site-header [data-route]");
+  if (navLink && navLink.getAttribute("href") === (location.hash || "#/")) {
+    event.preventDefault();
+    if (navLink.dataset.route === "projects") scrollToProjects();
+    else window.scrollTo({ top: 0, behavior: reducedMotion.matches ? "auto" : "smooth" });
+    return;
+  }
+
   const filterButton = event.target.closest("[data-filter]");
   if (filterButton) {
     const key = filterButton.dataset.filter || null;
     state.filter = state.filter === key ? null : key;
-    applyFilter();
+    applyFilter(true);
     return;
   }
 
@@ -1124,7 +1365,7 @@ try {
   state.categories = content.categories;
   state.projects = content.projects;
   state.images = Object.fromEntries(Object.entries(images).map(([key, value]) => [key.normalize("NFC"), value]));
-  sowing.init(state.categories);
+  sowing.init();
   render();
 } catch (error) {
   console.error(error);
