@@ -327,23 +327,23 @@
    }
   ]
  },
- "un-point-bleu-pale/320A0355.JPG": {
-  "w": 4326,
-  "h": 5950,
-  "color": "#dfe1e0",
-  "lqip": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAAAwBgCdASoYACEAPuVgqE2pJaQiNVQMASAciWMAyvA5X4y5Ijsa38Kl8ukHYTBS9GstTie+6NPu4qj8AP72CM9MGmBv5jcuRxRslE4VcgTAStxOK/IQG9aiuJaNHZ8P0bt+JA68l0/kUJMQaN9SLyavVU3plEOKLe8yK6ZJzt56KrtRWpumLZrgJaXPWZo462d93J5jHnTNBW+JA6CbjT42jM2dYsTB0pMNMotHnN1D0VkAAAA=",
+ "un-point-bleu-pale/320A0565.jpf": {
+  "w": 3737,
+  "h": 3403,
+  "color": "#c1c5cb",
+  "lqip": "data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAAAQBQCdASoYABYAPu1or1CppaSiqAqpMB2JZwDO7Yx2aLF4Kkl+8gQv37sdxK70oYRAAP7n1riKHLaG7+C113lu9/ELERQb02dQTxYfa7i7hGUFbCPtxhdk9In7hX3HhEq/ClfT8Lrn3sVFt9l6N8FeHUBRZRL2X9sNjVCVkTsIYy0WAv9QoAsYvC6QBDlUOPG2rvEjR6veIyo7N/UXG66eZU62H4C9BCNx9spIdYrMcWqpQAAAAA==",
   "srcset": [
    {
     "w": 640,
-    "src": "images/un-point-bleu-pale/320a0355-640.webp"
+    "src": "images/un-point-bleu-pale/320a0565-640.webp"
    },
    {
     "w": 1280,
-    "src": "images/un-point-bleu-pale/320a0355-1280.webp"
+    "src": "images/un-point-bleu-pale/320a0565-1280.webp"
    },
    {
     "w": 2000,
-    "src": "images/un-point-bleu-pale/320a0355-2000.webp"
+    "src": "images/un-point-bleu-pale/320a0565-2000.webp"
    }
   ]
  },
@@ -367,6 +367,46 @@
    }
   ]
  },
+ "un-point-bleu-pale/320A0762.JPG": {
+  "w": 4480,
+  "h": 6242,
+  "color": "#8f9797",
+  "lqip": "data:image/webp;base64,UklGRgYBAABXRUJQVlA4IPoAAADQBgCdASoYACEAPu1epU2ppSMiNVQMATAdiWcAyF3doYkLyCA3b0W45QeJOMFpe2s0xXD24YyQK2tdpX9FLAAA/uqNt1NvxonZgEnrnuRxH0H0AbAZ7tmKugmtqSU3dvOjlVirasd5VJQ/8gj4Qr96O+LzGF72kZGCzboS9SDhqgsprdaLg3qDY1IUesUwTVW3gi0tyXM0vRS0oafglhJZR7p4kRS88/tW1ecisTFgNYywZYyrIkkGN5iWsjYtE1L28Lj9bN5WZUCFB+ooGkz1eVuEeLAAOrjoIwuHPRSI5gVek6tAfePw3bkDBhhEql7U9glHZBo8VQAA",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/un-point-bleu-pale/320a0762-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/un-point-bleu-pale/320a0762-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/un-point-bleu-pale/320a0762-2000.webp"
+   }
+  ]
+ },
+ "un-point-bleu-pale/320A0355.JPG": {
+  "w": 4326,
+  "h": 5950,
+  "color": "#dfe1e0",
+  "lqip": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAAAwBgCdASoYACEAPuVgqE2pJaQiNVQMASAciWMAyvA5X4y5Ijsa38Kl8ukHYTBS9GstTie+6NPu4qj8AP72CM9MGmBv5jcuRxRslE4VcgTAStxOK/IQG9aiuJaNHZ8P0bt+JA68l0/kUJMQaN9SLyavVU3plEOKLe8yK6ZJzt56KrtRWpumLZrgJaXPWZo462d93J5jHnTNBW+JA6CbjT42jM2dYsTB0pMNMotHnN1D0VkAAAA=",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/un-point-bleu-pale/320a0355-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/un-point-bleu-pale/320a0355-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/un-point-bleu-pale/320a0355-2000.webp"
+   }
+  ]
+ },
  "un-point-bleu-pale/320A0493t.jpg": {
   "w": 1815,
   "h": 2440,
@@ -387,23 +427,23 @@
    }
   ]
  },
- "un-point-bleu-pale/320A0565.jpf": {
-  "w": 3737,
-  "h": 3403,
-  "color": "#c1c5cb",
-  "lqip": "data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAAAQBQCdASoYABYAPu1or1CppaSiqAqpMB2JZwDO7Yx2aLF4Kkl+8gQv37sdxK70oYRAAP7n1riKHLaG7+C113lu9/ELERQb02dQTxYfa7i7hGUFbCPtxhdk9In7hX3HhEq/ClfT8Lrn3sVFt9l6N8FeHUBRZRL2X9sNjVCVkTsIYy0WAv9QoAsYvC6QBDlUOPG2rvEjR6veIyo7N/UXG66eZU62H4C9BCNx9spIdYrMcWqpQAAAAA==",
+ "un-point-bleu-pale/320A0730.JPG": {
+  "w": 3888,
+  "h": 5825,
+  "color": "#939195",
+  "lqip": "data:image/webp;base64,UklGRhwBAABXRUJQVlA4IBABAABwBwCdASoYACQAPu1urFEppqQiqrgKATAdiWUAyNXdaYgXLojqLXAVxxEb9sP9/P99838lXR+SVr882uKcPgTQn+4mAAD+83KAB43X6ew3drjgSAOL9WPnSqtuj1cRo70elgtUkmhYCJ/TdSDr0XxCc4nsogi6pqgtz4omvVofM7pihnakl52MUpHvSJoUBjKu6KHLBTftQzed6CCp27bW6AKvwDKzROfleTGyJZpupvPaxKH1cxdB5s2c9v7CMfX5PEH9sly9v77HnAu4fL/8faahXtTr1bg/AV/kB8c/XeVuhHsmPLULN9Sl9hdt2x4si2ao67MY+/7t079hxMZc3Nm7JB5GiRuNqeRVRYkAAA==",
   "srcset": [
    {
     "w": 640,
-    "src": "images/un-point-bleu-pale/320a0565-640.webp"
+    "src": "images/un-point-bleu-pale/320a0730-640.webp"
    },
    {
     "w": 1280,
-    "src": "images/un-point-bleu-pale/320a0565-1280.webp"
+    "src": "images/un-point-bleu-pale/320a0730-1280.webp"
    },
    {
     "w": 2000,
-    "src": "images/un-point-bleu-pale/320a0565-2000.webp"
+    "src": "images/un-point-bleu-pale/320a0730-2000.webp"
    }
   ]
  },
@@ -447,26 +487,6 @@
    }
   ]
  },
- "un-point-bleu-pale/320A0730.JPG": {
-  "w": 3888,
-  "h": 5825,
-  "color": "#939195",
-  "lqip": "data:image/webp;base64,UklGRhwBAABXRUJQVlA4IBABAABwBwCdASoYACQAPu1urFEppqQiqrgKATAdiWUAyNXdaYgXLojqLXAVxxEb9sP9/P99838lXR+SVr882uKcPgTQn+4mAAD+83KAB43X6ew3drjgSAOL9WPnSqtuj1cRo70elgtUkmhYCJ/TdSDr0XxCc4nsogi6pqgtz4omvVofM7pihnakl52MUpHvSJoUBjKu6KHLBTftQzed6CCp27bW6AKvwDKzROfleTGyJZpupvPaxKH1cxdB5s2c9v7CMfX5PEH9sly9v77HnAu4fL/8faahXtTr1bg/AV/kB8c/XeVuhHsmPLULN9Sl9hdt2x4si2ao67MY+/7t079hxMZc3Nm7JB5GiRuNqeRVRYkAAA==",
-  "srcset": [
-   {
-    "w": 640,
-    "src": "images/un-point-bleu-pale/320a0730-640.webp"
-   },
-   {
-    "w": 1280,
-    "src": "images/un-point-bleu-pale/320a0730-1280.webp"
-   },
-   {
-    "w": 2000,
-    "src": "images/un-point-bleu-pale/320a0730-2000.webp"
-   }
-  ]
- },
  "un-point-bleu-pale/320A0732.JPG": {
   "w": 4278,
   "h": 6108,
@@ -484,26 +504,6 @@
    {
     "w": 2000,
     "src": "images/un-point-bleu-pale/320a0732-2000.webp"
-   }
-  ]
- },
- "un-point-bleu-pale/320A0762.JPG": {
-  "w": 4480,
-  "h": 6242,
-  "color": "#8f9797",
-  "lqip": "data:image/webp;base64,UklGRgYBAABXRUJQVlA4IPoAAADQBgCdASoYACEAPu1epU2ppSMiNVQMATAdiWcAyF3doYkLyCA3b0W45QeJOMFpe2s0xXD24YyQK2tdpX9FLAAA/uqNt1NvxonZgEnrnuRxH0H0AbAZ7tmKugmtqSU3dvOjlVirasd5VJQ/8gj4Qr96O+LzGF72kZGCzboS9SDhqgsprdaLg3qDY1IUesUwTVW3gi0tyXM0vRS0oafglhJZR7p4kRS88/tW1ecisTFgNYywZYyrIkkGN5iWsjYtE1L28Lj9bN5WZUCFB+ooGkz1eVuEeLAAOrjoIwuHPRSI5gVek6tAfePw3bkDBhhEql7U9glHZBo8VQAA",
-  "srcset": [
-   {
-    "w": 640,
-    "src": "images/un-point-bleu-pale/320a0762-640.webp"
-   },
-   {
-    "w": 1280,
-    "src": "images/un-point-bleu-pale/320a0762-1280.webp"
-   },
-   {
-    "w": 2000,
-    "src": "images/un-point-bleu-pale/320a0762-2000.webp"
    }
   ]
  },
@@ -707,6 +707,66 @@
    }
   ]
  },
+ "50-ans-pour-la-biodiversite/carte_blanche20260401_22591310.jpg": {
+  "w": 2430,
+  "h": 3433,
+  "color": "#828282",
+  "lqip": "data:image/webp;base64,UklGRjIBAABXRUJQVlA4ICYBAADQBwCdASoYACIAPu1oq1AppaOiqrgMATAdiWMAvYtMp0+1+WBpAmjAgMPDK10wqN3VYNlkqzb7xK3K6yR/gW+n62BiBpY4AAD+Ztg9HzhATFclfldqX21UAy0kJn7BExy473PZdvWAUXLKSfNzKnmFFeP5P8h1BQcTTmAzq84X+zjSIcHm2Q86BCthMBFsiVAD4MWCTy14zAtxzp3mnD+vlHvD8lXxa29SMFGPNinEsKAWQaP2rFynxeCc9rzuzgNpyOXmNJxxTsLUNFoey2bphC1p+B/EtulBn0Pkd+P2SFq6stRgvO8b35cJEjZQDMrq2ovdt5TtjKo6oZiT/XpS8vm3fxnpfFx+TwREDgeKxM/XutX02bO12YMtgZd9G+k7CceoAAA=",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/50-ans-pour-la-biodiversite/carte-blanche20260401-22591310-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/50-ans-pour-la-biodiversite/carte-blanche20260401-22591310-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/50-ans-pour-la-biodiversite/carte-blanche20260401-22591310-2000.webp"
+   }
+  ]
+ },
+ "50-ans-pour-la-biodiversite/Capture d’écran 2025-04-15 à 09.16.40.png": {
+  "w": 2044,
+  "h": 1404,
+  "color": "#b0c3ac",
+  "lqip": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZgCdAYx2yUhRPsgvuToC44cAAP7I1XZxYG1DS47X+ODGrnPscNuxihpjGWbUyXqvaa0igKvtFjdxnYLVt/SaSioKICYfXGwJFWXBLf0BbMXubdn4Q+h/tQvlQxuMH1Zt9Yk1PIkqN94eBzUvZe62M8fOV5IFe3vkzGUMhlCV8tFt2tbeuJhPlTzQThzgAAA=",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/50-ans-pour-la-biodiversite/capture-decran-2025-04-15-a-09-16-40-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/50-ans-pour-la-biodiversite/capture-decran-2025-04-15-a-09-16-40-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/50-ans-pour-la-biodiversite/capture-decran-2025-04-15-a-09-16-40-2000.webp"
+   }
+  ]
+ },
+ "50-ans-pour-la-biodiversite/carte_blanche20260401_23015199.jpg": {
+  "w": 2481,
+  "h": 3507,
+  "color": "#d3d3d0",
+  "lqip": "data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAACwBQCdASoYACIAPu1ysFOppqQipWgBMB2JZwDPKFDb/SdJdIOHmiXpsmR5bhUV2cD7CZQTAAAA/vZzouQR0ebBkvOFxPDbZ3/zdTBtFaLymANT9pre/4wRy8DHa5WBLlg6fYQNEqA577HuIbV3OlHGC788GtGnIfdmcCm50ErmLmnNzkNqqqiGi4xzyMg0KeiaB6YItHFlKUtUIciECzl8BV/KBbBBag7BWuU8zXygKSD5t3XKlKQA",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/50-ans-pour-la-biodiversite/carte-blanche20260401-23015199-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/50-ans-pour-la-biodiversite/carte-blanche20260401-23015199-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/50-ans-pour-la-biodiversite/carte-blanche20260401-23015199-2000.webp"
+   }
+  ]
+ },
  "50-ans-pour-la-biodiversite/mock up bouteille jus.png": {
   "w": 2000,
   "h": 2667,
@@ -724,6 +784,26 @@
    {
     "w": 2000,
     "src": "images/50-ans-pour-la-biodiversite/mock-up-bouteille-jus-2000.webp"
+   }
+  ]
+ },
+ "50-ans-pour-la-biodiversite/carte_blanche20260401_23034513.jpg": {
+  "w": 2481,
+  "h": 3507,
+  "color": "#dcdedd",
+  "lqip": "data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAABwBQCdASoYACIAPu1uslKppiSipWmZMB2JZwDPoAt23WAKGyh8VVPd6rK2Weo6QnqY1KYAAP7X4vjNl7OZruqAZ0D91TO92DhNlGqMajnATuvJjMeoqhUhrHu83voNX8Bq0m7SSeSCpj7BFXj3D5FYbnQpkok3GP0sLb8ARb+OEGjv5DSri51kLGVAEDWVhMLq5+Z24VpCcQZYI1F/4kZJSvB3+uN28UujIAAA",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/50-ans-pour-la-biodiversite/carte-blanche20260401-23034513-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/50-ans-pour-la-biodiversite/carte-blanche20260401-23034513-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/50-ans-pour-la-biodiversite/carte-blanche20260401-23034513-2000.webp"
    }
   ]
  },
@@ -1761,6 +1841,22 @@
    {
     "w": 354,
     "src": "images/stickers/carte-blanche-stickers-354.webp"
+   }
+  ]
+ },
+ "stickers/CENALsace Stickers.png": {
+  "w": 583,
+  "h": 610,
+  "color": "transparent",
+  "lqip": "",
+  "srcset": [
+   {
+    "w": 360,
+    "src": "images/stickers/cenalsace-stickers-360.webp"
+   },
+   {
+    "w": 583,
+    "src": "images/stickers/cenalsace-stickers-583.webp"
    }
   ]
  }

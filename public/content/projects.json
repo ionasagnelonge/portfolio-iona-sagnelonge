@@ -296,7 +296,7 @@
       },
       "body": "Dans le cadre de sa nouvelle exposition ZOOM, le musée Würth met en avant une collection de photographies argentiques de portraits d’artistes. À cette occasion, j’ai conçu un dispositif de médiation autour de la photographie argentique mêlant illustrations et prise de vues.\n\nComme l’exposition valorise principalement le sujet photographié et non le photographe, cette installation explore la technique du photographe, et son espace de travail : le laboratoire. L’installation reprend donc l’organisation d’un labo photo : un éclairage sombre, des clichés qui sèchent, une zone de prise de vue…",
       "folder": "ZOOM",
-      "cover": "IMG_6186.jpg",
+      "cover": "ZOOm in situ.png",
       "sticker": "",
       "images": [
         "IMG_6186.jpg",
@@ -329,15 +329,15 @@
       "cover": "320A0355.JPG",
       "sticker": "",
       "images": [
-        "320A0355.JPG",
-        "320A0400.JPG",
-        "320A0493t.jpg",
         "320A0565.jpf",
+        "320A0400.JPG",
+        "320A0762.JPG",
+        "320A0355.JPG",
+        "320A0493t.jpg",
+        "320A0730.JPG",
         "320A0592.JPG",
         "320A0629t.jpg",
-        "320A0730.JPG",
-        "320A0732.JPG",
-        "320A0762.JPG"
+        "320A0732.JPG"
       ],
       "links": [
         {
@@ -400,10 +400,14 @@
       "body": "À l’occasion des 50 ans du Conservatoire d’Espaces Naturels d’Alsace, j’ai réalisé la nouvelle identité festive de l’association, elle sera utilisée toute l’année 2026.\n\nInventorier, protéger, gérer, rassembler, partager, observer, sont les missions que le conservatoire vise à transmettre. Cette identité inspirée des plans de gestion de l’association, a été détournée sur divers supports : affiche, brochure, programme, étiquettes de boissons, invitation, cartes postales…",
       "folder": "50 ans pour la biodiversité_",
       "cover": "Poster Mockup proposition 1.png",
-      "sticker": "",
+      "sticker": "CENALsace Stickers.png",
       "images": [
         "Poster Mockup proposition 1.png",
-        "mock up bouteille jus.png"
+        "carte_blanche20260401_22591310.jpg",
+        "Capture d’écran 2025-04-15 à 09.16.40.png",
+        "carte_blanche20260401_23015199.jpg",
+        "mock up bouteille jus.png",
+        "carte_blanche20260401_23034513.jpg"
       ],
       "links": []
     },
