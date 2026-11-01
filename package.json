@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "cms": "vite --open /cms/",
     "build": "vite build",
     "preview": "vite preview"
   },

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contenu — Iona Sagnelonge</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/cms/cms.css" />
+    <script type="module" src="/cms/cms.js"></script>
+  </head>
+  <body>
+    <header class="bar">
+      <h1 class="bar__title">Contenu du portfolio</h1>
+      <a class="bar__link" href="/" target="_blank" rel="noopener">Voir le site</a>
+      <span class="bar__status" data-status>…</span>
+      <button class="button button--primary" type="button" data-publish>Publier sur GitHub</button>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="sidebar__head">
+          <button class="button sidebar__new" type="button" data-new>+ Nouveau projet</button>
+          <input class="input" type="search" placeholder="Rechercher un projet…" aria-label="Rechercher un projet" data-search />
+          <p class="hint">
+            <span data-count></span> · ordre d’affichage : glisser, ou ↑ ↓ (Alt+↑/↓) sur le projet sélectionné.
+          </p>
+        </div>
+        <ol class="projects" data-projects></ol>
+      </aside>
+
+      <main class="editor" data-editor>
+        <p class="empty">Chargement…</p>
+      </main>
+    </div>
+
+    <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+    <dialog class="dialog" data-dialog>
+      <form method="dialog" class="dialog__body">
+        <h2 data-dialog-title></h2>
+        <div data-dialog-content></div>
+        <div class="dialog__actions" data-dialog-actions></div>
+      </form>
+    </dialog>
+  </body>
+</html>

@@ -2,7 +2,27 @@
 
 Site statique (Vite), déployé automatiquement sur GitHub Pages à chaque push sur `main`.
 
-## Modifier le contenu
+## Éditer les projets depuis l’interface
+
+```sh
+npm install
+pip install pillow
+npm run cms      # ouvre http://localhost:5173/cms/
+```
+
+L’interface permet de créer, modifier, réordonner et supprimer les projets : titre, catégories,
+résumé, méta (préfixe, partenaire, année), description, images ordonnées (glisser-déposer, ★ pour
+la couverture) et sticker.
+
+- **Enregistrer** (ou Ctrl+S) écrit `projects.json`, range les originaux envoyés dans `data/`
+  et lance l’optimisation des images.
+- **Publier sur GitHub** fait un commit de `data/`, `public/content/` et `public/images/`
+  puis un `git push` : le site se met à jour tout seul. Les autres fichiers ne sont jamais publiés
+  par ce bouton. Il faut que `git push` fonctionne déjà depuis ce poste (clé SSH configurée).
+
+L’interface n’existe qu’en local (`npm run cms` / `npm run dev`), pas sur le site en ligne.
+
+## Modifier le contenu à la main
 
 Tout le contenu est dans **`public/content/projects.json`** :
 
