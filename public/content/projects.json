@@ -228,6 +228,30 @@
   },
   "projects": [
     {
+      "slug": "lune",
+      "title": "Lune",
+      "year": "2025",
+      "categories": [
+        "illustration",
+        "photographie",
+        "didactique"
+      ],
+      "summary": "blabla ",
+      "partner": {
+        "prefix": "pour",
+        "name": "Le Vaisseau & Cap Science"
+      },
+      "body": "blalalalal",
+      "folder": "lune",
+      "cover": "Illustration_sans_titre.jpg",
+      "sticker": "Lune Stickers.PNG",
+      "images": [
+        "Illustration_sans_titre.jpg",
+        "lune expo bordeaux-2.tif"
+      ],
+      "links": []
+    },
+    {
       "slug": "carte-blanche",
       "title": "Carte blanche",
       "year": "2026",
@@ -253,9 +277,9 @@
       "title": "ZOOM",
       "year": "2026",
       "categories": [
+        "illustration",
         "photographie",
-        "didactique",
-        "illustration"
+        "didactique"
       ],
       "summary": "Installation didactique pour le musée Würth",
       "partner": {

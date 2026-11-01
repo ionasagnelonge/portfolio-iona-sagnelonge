@@ -1,4 +1,44 @@
 {
+ "lune/Illustration_sans_titre.jpg": {
+  "w": 4409,
+  "h": 12953,
+  "color": "#898793",
+  "lqip": "data:image/webp;base64,UklGRuQBAABXRUJQVlA4INgBAACQCQCdASoYAEYAPu1sp08ppiMiLNv6qTAdiWIAuGMQ2Vy0AoC55g2IIuwl6yyHSRd/aSF1UeKM4/SUZXEYrgpO5AnQnYaFKHTIstxk4/CDhTps+PAAAP7c6N/HQE0LF5HEFTJGgFbXwU0C1QUhuxr0xuGR4siWFYG2zrjBC0p2q71beAAUVm/+cZ/Eq4WjQKhILC8dHKHvak4WlxGCx5oAeYqiFm353dKHmsL00Gf6SUZu8KH15W1MuH0t8rqQrdws2GP4KNsMW7q2Os4GYx6CMTFZ9Ojo3xGTfQ2J9MKv4gZUri1c78UYpxQf247Wkh/xkPVo/vOpJrH+0XXqA3AvCvCjNALBvlZfD6BQ2WvBmeB1fV8Mfv07BdYKDzdwN7F9+tikeOYR7PxGE5OwBoiXCk7dyb1o26QJiDbl2Oag8rWuTxPbxcy9Am6xJqB18CmhJ/C7ZCVi19tSw1s9GhGTL96IobcGO9cQeOrVU4xd2sp+4Ouo52vNb9lqbADkJYbFy7DB7GzAtW7Hint7oByTW+NX86bJvr934PGwXR3TxN5jIjaxpVqu7gqs1idY55Oh9l983+T05JGjcAMurbAHqCD8QciwSwbsrgh6DLRKF9SdYa0eAAAA",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/lune/illustration-sans-titre-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/lune/illustration-sans-titre-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/lune/illustration-sans-titre-2000.webp"
+   }
+  ]
+ },
+ "lune/lune expo bordeaux-2.tif": {
+  "w": 3024,
+  "h": 4032,
+  "color": "#6a645b",
+  "lqip": "data:image/webp;base64,UklGRlYBAABXRUJQVlA4IEoBAACwBgCdASoYACAAPu1gpk6ppSMiMBgMATAdiWQAwqDvEeJ4yZtJPrDVVe1G6tl3oYmVxzkzVyYxvWVc1SpggAD+7pgMJQF+IGpzrhVrG/lvg5s1+TM/0sq/yOYSGE+w9zbJ5pWWXOczCAqihqljc7LYivDXwoqHKBfRvQJH169svoJuq9n9glatrXuK+Z+pKFAdWXMecDVJCJEm0LTVO5pZ1tLGLohtKLbWyiq345BWE0ZFvRPpDCdoGebwHLJ7IWbarVNE7QkyoS/EB5hCil1MxTYc0Uch27ue+PMTPbSZCQz+V0wjs9n3bHVF7tGiSIhT/cDz4cDd5ozjw1M+KEoodWoC/0x8o3Gv1UvguasSDp2br6w9pXXuuF61Q1mPfs+o16j7zE03+klHlAlzJfb7bXjsSehtZIS0YVcmGCgURcEXOnbcql8dQAA=",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/lune/lune-expo-bordeaux-2-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/lune/lune-expo-bordeaux-2-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/lune/lune-expo-bordeaux-2-2000.webp"
+   }
+  ]
+ },
  "zoom/IMG_6186.jpg": {
   "w": 2835,
   "h": 3808,
@@ -1561,6 +1601,22 @@
    {
     "w": 2000,
     "src": "images/formation-anatomie/img-5186-2000.webp"
+   }
+  ]
+ },
+ "stickers/Lune Stickers.PNG": {
+  "w": 725,
+  "h": 759,
+  "color": "transparent",
+  "lqip": "",
+  "srcset": [
+   {
+    "w": 360,
+    "src": "images/stickers/lune-stickers-360.webp"
+   },
+   {
+    "w": 720,
+    "src": "images/stickers/lune-stickers-720.webp"
    }
   ]
  }
