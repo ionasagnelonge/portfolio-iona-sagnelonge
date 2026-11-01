@@ -21,7 +21,7 @@
   --shadow: 40 25 35;
 
   /* Fond très léger du mur de stickers */
-  --wall-bg: #f6f5f5;
+  --wall-bg: #ecebeb;
 
   /* Au survol, le mot passe progressivement du gris à l'accent, de gauche à droite */
   --sweep: linear-gradient(90deg, var(--accent) 0%, var(--accent) 42%, var(--ink) 58%, var(--ink) 100%);
@@ -304,7 +304,8 @@ button:focus-visible > .nav-word {
 
 /* Fond gris très léger sous le mur de stickers (le semis de fruits blancs s'y dessine) */
 body[data-view="home"],
-body[data-view="projects"] {
+body[data-view="projects"],
+body[data-view="infos"] {
   background: var(--wall-bg);
 }
 
@@ -499,7 +500,8 @@ body[data-view="projects"] {
 }
 
 [data-view="home"] .site-footer,
-[data-view="projects"] .site-footer {
+[data-view="projects"] .site-footer,
+[data-view="infos"] .site-footer {
   position: relative;
   z-index: 2;
   background: var(--paper);
@@ -559,20 +561,6 @@ body[data-view="projects"] {
 
 .card[hidden] {
   display: none;
-}
-
-/* Projet écarté par le filtre : il s'efface de haut en bas, en dégradé diffus.
-   --erase est la position du front (animée en JS grâce à @property). */
-@property --erase {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 0%;
-}
-
-.card.is-erasing {
-  -webkit-mask-image: linear-gradient(to bottom, transparent calc(var(--erase) - 40%), #000 var(--erase));
-  mask-image: linear-gradient(to bottom, transparent calc(var(--erase) - 40%), #000 var(--erase));
-  pointer-events: none;
 }
 
 .card__frame {
@@ -1047,18 +1035,9 @@ body[data-view="projects"] {
   background-position: 0% 0;
 }
 
-/* ---------- Pages Infos, Compétences, Contact ---------- */
-
-.page {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: clamp(2rem, 6vw, 6rem);
-  align-items: start;
-  padding: clamp(1.5rem, 4vw, 3.5rem) var(--gutter) 5rem;
-}
+/* ---------- Infos : titres et textes ---------- */
 
 .page__title {
-  grid-column: 1 / -1;
   margin: 0;
   color: var(--ink);
   font-family: var(--font-display);
@@ -1067,20 +1046,10 @@ body[data-view="projects"] {
   line-height: 0.95;
 }
 
-.page__intro {
-  display: grid;
-  gap: 2.5rem;
-}
-
 .page__bio p {
   margin: 0 0 1em;
   font-size: clamp(1.15rem, 1rem + 0.7vw, 1.55rem);
   line-height: 1.4;
-}
-
-.page__cv {
-  display: grid;
-  gap: 2.5rem;
 }
 
 .page__section-title {
@@ -1089,62 +1058,6 @@ body[data-view="projects"] {
   font-family: var(--font-mono);
   font-size: 0.92rem;
   font-weight: 400;
-}
-
-.page__list {
-  display: grid;
-  gap: 0.8rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.page__list li {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.9rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--line);
-  line-height: 1.4;
-}
-
-.page__list li:not(:has(time)) {
-  grid-template-columns: 1fr;
-}
-
-.page__list time {
-  min-width: 2.6rem;
-  color: var(--ink);
-  font-family: var(--font-mono);
-  font-size: 0.92rem;
-  line-height: 1.9;
-}
-
-.disciplines {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.1rem 1.5rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  color: var(--ink);
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem);
-}
-
-.skill--discipline {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-}
-
-.skill--discipline .glyph {
-  height: 1.2em;
-}
-
-.page--contact {
-  grid-template-columns: 1fr;
-  align-content: start;
 }
 
 .contact__links {
@@ -1158,13 +1071,6 @@ body[data-view="projects"] {
 
 .contact__links a {
   overflow-wrap: anywhere;
-}
-
-.contact__empty {
-  margin: 0;
-  color: var(--ink-soft);
-  font-family: var(--font-text);
-  font-size: 1.1rem;
 }
 
 .credits-toggle {
@@ -1372,6 +1278,156 @@ body[data-view="projects"] {
   background: rgb(var(--shadow) / 8%);
 }
 
+/* ---------- Infos ---------- */
+
+/* Gris du fond (fruits au survol), fondu vers la prune des compétences,
+   puis fondu vers le blanc du parcours. */
+.infos {
+  --fade: clamp(5rem, 14vw, 10rem);
+  --plum: rgb(153 0 102);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+/* La page occupe toute la hauteur : le blanc du bas rejoint le pied de page. */
+[data-view="infos"] .view {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+}
+
+.infos__intro {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  max-width: 62rem;
+  padding: clamp(2rem, 5vw, 4rem) var(--gutter) var(--fade);
+}
+
+.infos__intro .page__bio p:last-child {
+  margin-bottom: 0;
+}
+
+.infos__intro .contact__links {
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2.6rem);
+}
+
+.infos__skills {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
+  padding: var(--fade) var(--gutter);
+  background: linear-gradient(var(--wall-bg), var(--plum) var(--fade), var(--plum) calc(100% - var(--fade)), var(--paper));
+  color: #fff;
+}
+
+.skill-group__title {
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  margin: 0 0 1.1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.skill-group__title .glyph {
+  flex: none;
+  height: 1em;
+  fill: currentColor;
+}
+
+.skill-group__list {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(1.1rem, 1rem + 0.35vw, 1.3rem);
+  line-height: 1.35;
+}
+
+.infos__cv {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+  padding: clamp(1rem, 3vw, 2rem) var(--gutter) clamp(2rem, 5vw, 4rem);
+  background: var(--paper);
+}
+
+.cv-column__list {
+  display: grid;
+  gap: 1.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cv-entry {
+  display: grid;
+  gap: 0.2rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--line);
+  line-height: 1.4;
+}
+
+.cv-entry:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.cv-entry__title {
+  margin: 0;
+  color: var(--ink-deep);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.cv-entry__place {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.cv-entry__text {
+  margin: 0;
+}
+
+.cv-entry__date {
+  margin: 0.2rem 0 0;
+  color: var(--accent);
+  font-size: 0.92rem;
+}
+
+/* Les clients n'ont qu'un nom : liste serrée */
+.cv-entry:not(:has(p)) {
+  padding-bottom: 0.7rem;
+}
+
+.cv-column:has(.cv-entry:not(:has(p))) .cv-column__list {
+  gap: 0.7rem;
+}
+
+.infos__credits {
+  flex: 1;
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  padding: 0 var(--gutter) 5rem;
+  background: var(--paper);
+}
+
+@media (max-width: 900px) {
+  .infos__skills,
+  .infos__cv {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1000px) {
@@ -1381,7 +1437,6 @@ body[data-view="projects"] {
 }
 
 @media (max-width: 900px) {
-  .page,
   .project__panel--info {
     grid-template-columns: 1fr;
   }
@@ -1436,11 +1491,6 @@ body[data-view="projects"] {
 
   .next__title {
     white-space: normal;
-  }
-
-
-  .disciplines {
-    grid-template-columns: 1fr 1fr;
   }
 
   .lightbox__nav {

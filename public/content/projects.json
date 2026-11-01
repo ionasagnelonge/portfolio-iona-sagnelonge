@@ -9,82 +9,168 @@
       "Iona Sagnelonge est designer graphique et illustratrice. Elle conçoit des images, des objets et des dispositifs de médiation qui rendent sensibles le vivant, les sciences et les territoires.",
       "Entre papier fait main, cartes en volume, livres pop-up et affiches, son travail cherche à transmettre : faire manipuler, observer, sentir, pour mieux comprendre."
     ],
-    "email": "",
+    "email": "ionasagnelonge@hotmail.fr",
+    "phone": "06 20 16 40 30",
+    "linkedin": "",
     "instagram": "",
     "cv": [
       {
-        "title": "Formation",
+        "title": "Formations",
         "items": [
           {
-            "year": "2026",
-            "text": "DNSEP Communication — mémoire « Carte blanche »"
+            "title": "DNSEP Communication",
+            "text": [
+              "Didactique visuelle avec mention professionnelle + Certificat d’illustration médicale décerné par l’Institut d’Anatomie de l’hôpital Civil de Strasbourg"
+            ],
+            "place": "HEAR, Strasbourg",
+            "date": "2024-2026"
           },
           {
-            "year": "2023",
-            "text": "DNMADe Graphisme — mémoire « Images sensorielles »"
+            "title": "DNA Communication",
+            "text": [
+              "Didactique visuelle avec les félicitations"
+            ],
+            "place": "HEAR, Strasbourg",
+            "date": "2023-2024"
+          },
+          {
+            "title": "DN MADe Graphisme",
+            "text": [
+              "Image et création numérique avec les félicitations"
+            ],
+            "place": "Lycée Ambroise Vollard, La Réunion",
+            "date": "2020-2023"
+          },
+          {
+            "title": "DEUG droit",
+            "text": [
+              "Diplôme d’études générales de droit"
+            ],
+            "place": "Université Montesquieu, Bordeaux",
+            "date": "2018-2020"
+          },
+          {
+            "title": "Baccalauréat économique & social",
+            "text": [
+              "Spécialité mathématiques, avec mention bien"
+            ],
+            "place": "Lycée de la Mer, Bassin d’Arcachon",
+            "date": "2018"
           }
         ]
       },
       {
-        "title": "Expériences & commandes",
+        "title": "Expériences",
         "items": [
           {
-            "year": "2026",
-            "text": "Musée Würth — installation didactique pour l’exposition ZOOM"
+            "title": "Musée Würth",
+            "place": "Erstein",
+            "text": [
+              "Réalisation d’une installation didactique sur la photographie argentique dans le cadre de l’exposition ZOOM."
+            ],
+            "date": "2026"
           },
           {
-            "year": "2025",
-            "text": "La Physique Autrement (stage) — exposition « Un point bleu pâle »"
+            "title": "La Physique Autrement",
+            "place": "Paris",
+            "text": [
+              "Freelance & stage",
+              "Un point bleu pâle : réalisation d’une exposition itinérante sur la Terre.",
+              "Un point bleu pâle (la suite) : réalisation d’une série de posters pédagogiques reprenant le sujet du projet éponyme.",
+              "Vidéos : réalisation d’illustrations didactiques dans le cadre d’un projet de vidéos."
+            ],
+            "date": "2025-2026"
           },
           {
-            "year": "2025",
-            "text": "Conservatoire d’Espaces Naturels d’Alsace — identité des 50 ans"
+            "title": "Conservatoire d’Espaces Naturels",
+            "place": "Alsace",
+            "text": [
+              "Réalisation de la charte graphique et des supports de communication à l’occasion des 50 ans du CEN Alsace."
+            ],
+            "date": "2025"
           },
           {
-            "year": "2024",
-            "text": "Office français de la biodiversité (partenariat) — installation « Phytoplanctons »"
+            "title": "Le Vaisseau",
+            "place": "Strasbourg",
+            "text": [
+              "Modélisation 3D d’une ville, et illustration de celle-ci pour l’exposition « La Lune » du Vaisseau et de Cap Sciences Bordeaux."
+            ],
+            "date": "Décembre 2024"
           },
           {
-            "year": "2024",
-            "text": "Bärenpark (collaboration) — livre pop-up « Ours »"
+            "title": "Le Pougniq Festival",
+            "place": "Salles",
+            "text": [
+              "Réalisation des affiches, des flyers ainsi que du logo du festival."
+            ],
+            "date": "2022, 2023, 2024 & 2025"
+          },
+          {
+            "title": "Betterpress Lab",
+            "place": "Rome, Italie",
+            "text": [
+              "Stage",
+              "Impression d’art à l’aide de presses typographiques, et restauration de caractères en plomb."
+            ],
+            "date": "Avril à juillet 2022"
           }
         ]
       },
       {
-        "title": "Expositions & publications",
+        "title": "Clients et collaborations",
         "items": [
           {
-            "year": "2025",
-            "text": "Biennale Internationale du Design de Saint-Étienne — « Ultimate very last hope »"
+            "title": "La Physique Autrement"
           },
           {
-            "year": "2025",
-            "text": "Bibliothèque d’Orsay (Fête de la science), LUMEN, Laboratoire de Physique des Solides — « Un point bleu pâle »"
+            "title": "Conservatoire d’Espaces Naturels Alsace"
           },
           {
-            "year": "2024",
-            "text": "« Graphisme en France » n°30, 30e anniversaire"
+            "title": "OFB"
+          },
+          {
+            "title": "Le Vaisseau"
+          },
+          {
+            "title": "Le Parc naturel marin du Bassin d’Arcachon"
+          },
+          {
+            "title": "Le Pougniq Festival"
           }
         ]
       }
     ],
     "skills": [
       {
-        "title": "Savoir-faire",
+        "title": "Graphisme",
+        "glyph": "cerise",
+        "items": [
+          "Identité visuelle et charte graphique",
+          "Affiches, flyers et supports de communication",
+          "Édition",
+          "Impression typographique"
+        ]
+      },
+      {
+        "title": "Illustration",
+        "glyph": "poire",
+        "items": [
+          "Illustration scientifique et médicale",
+          "Modélisation 3D et illustration",
+          "Animation",
+          "Prise de vue argentique"
+        ]
+      },
+      {
+        "title": "Didactique visuelle",
+        "glyph": "fraise",
         "items": [
           "Médiation scientifique et dispositifs didactiques",
           "Scénographie et installation",
           "Livre pop-up et jeux en papier",
           "Papier fait main et sculpture de papier",
-          "Identité visuelle",
-          "Contre-cartographie et cartes en volume",
-          "Prise de vue argentique",
-          "Animation"
+          "Contre-cartographie et cartes en volume"
         ]
-      },
-      {
-        "title": "Outils",
-        "items": []
       }
     ],
     "credits": [

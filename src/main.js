@@ -516,11 +516,8 @@ function filterBar() {
   );
 }
 
-/* Filtre : les projets écartés s'effacent en fondu dégradé, puis les autres glissent
+/* Filtre : les projets écartés disparaissent aussitôt, les autres glissent
    à leur nouvelle place dans la grille (technique FLIP). */
-let filterRun = 0;
-let erasing = [];
-
 function applyFilter(animate = false) {
   view.querySelectorAll(".filter").forEach((button) => {
     button.setAttribute("aria-pressed", String(button.dataset.filter === (state.filter ?? "")));
@@ -528,57 +525,23 @@ function applyFilter(animate = false) {
   const grid = view.querySelector(".grid");
   if (!grid) return;
 
-  const run = ++filterRun;
-  erasing.forEach((animation) => animation.cancel());
-  erasing = [];
   const cards = [...grid.querySelectorAll(".card")];
-  cards.forEach((card) => card.classList.remove("is-erasing"));
   const matches = (card) => !state.filter || card.dataset.categories.split(" ").includes(state.filter);
+  const staying = animate && !reducedMotion.matches ? cards.filter((card) => !card.hidden && matches(card)) : [];
+  const before = new Map(staying.map((card) => [card, card.getBoundingClientRect()]));
 
-  if (!animate || reducedMotion.matches) {
-    cards.forEach((card) => (card.hidden = !matches(card)));
-    return;
-  }
+  // Un glissement encore en cours (clics rapprochés) est arrêté : on repart de la position mesurée.
+  cards.forEach((card) => card.getAnimations().forEach((animation) => animation.cancel()));
+  cards.forEach((card) => (card.hidden = !matches(card)));
 
-  const leaving = cards.filter((card) => !card.hidden && !matches(card));
-  const entering = cards.filter((card) => card.hidden && matches(card));
-  const staying = cards.filter((card) => !card.hidden && matches(card));
-
-  erasing = leaving.map((card) => {
-    card.classList.add("is-erasing");
-    return card.animate(
-      [
-        { "--erase": "0%", opacity: 1 },
-        { "--erase": "140%", opacity: 0 }
-      ],
-      { duration: 320, easing: "cubic-bezier(0.5, 0, 0.75, 0)", fill: "forwards" }
-    );
+  staying.forEach((card) => {
+    const from = before.get(card);
+    const to = card.getBoundingClientRect();
+    const dx = from.left - to.left;
+    const dy = from.top - to.top;
+    if (Math.abs(dx) + Math.abs(dy) < 1) return;
+    card.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "none" }], { duration: 520, easing: "cubic-bezier(0.22, 1, 0.36, 1)" });
   });
-
-  Promise.all(erasing.map((animation) => animation.finished)).then(() => {
-    if (run !== filterRun) return;
-    const before = new Map(staying.map((card) => [card, card.getBoundingClientRect()]));
-    leaving.forEach((card) => {
-      card.hidden = true;
-      card.classList.remove("is-erasing");
-    });
-    erasing.forEach((animation) => animation.cancel());
-    erasing = [];
-    entering.forEach((card) => (card.hidden = false));
-
-    const easing = "cubic-bezier(0.22, 1, 0.36, 1)";
-    staying.forEach((card) => {
-      const from = before.get(card);
-      const to = card.getBoundingClientRect();
-      const dx = from.left - to.left;
-      const dy = from.top - to.top;
-      if (Math.abs(dx) + Math.abs(dy) < 1) return;
-      card.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "none" }], { duration: 520, easing });
-    });
-    entering.forEach((card) => {
-      card.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 420, delay: 120, easing, fill: "backwards" });
-    });
-  }, () => {});
 }
 
 function projectsSection() {
@@ -831,64 +794,70 @@ const stickyPanels = (() => {
 })();
 
 
-/* ---------- Infos, compétences, contact ---------- */
+/* ---------- Infos : présentation et contacts, compétences, parcours ---------- */
 
-function listSection(title, items, renderItem) {
-  if (!items?.length) return "";
-  return `<section class="page__section">
-    <h2 class="page__section-title">${escapeHtml(title)}</h2>
-    <ul class="page__list">${items.map(renderItem).join("")}</ul>
-  </section>`;
+function contactLinks(site) {
+  const phone = (site.phone ?? "").replace(/s+/g, "");
+  return [
+    site.email ? `<a class="nav-word" href="mailto:${escapeHtml(site.email)}">${escapeHtml(site.email)}</a>` : "",
+    phone ? `<a class="nav-word" href="tel:+33${escapeHtml(phone.replace(/^0/, ""))}">${escapeHtml(site.phone)}</a>` : "",
+    site.linkedin ? `<a class="nav-word" href="${escapeHtml(site.linkedin)}" target="_blank" rel="noopener">Linkedin</a>` : ""
+  ].filter(Boolean);
+}
+
+// Une entrée du parcours : titre, lieu, description, date (seul le titre est obligatoire).
+function cvEntry(item) {
+  const text = [].concat(item.text ?? []);
+  return `<li class="cv-entry">
+    <h3 class="cv-entry__title">${escapeHtml(item.title)}</h3>
+    ${item.place ? `<p class="cv-entry__place">${escapeHtml(item.place)}</p>` : ""}
+    ${text.map((line) => `<p class="cv-entry__text">${escapeHtml(line)}</p>`).join("")}
+    ${item.date ? `<p class="cv-entry__date">${escapeHtml(item.date)}</p>` : ""}
+  </li>`;
 }
 
 function renderInfos() {
   setTitle("Infos");
   const site = state.site;
+  const contacts = contactLinks(site);
+
   view.innerHTML = `
-    <section class="page page--infos">
-      <h1 class="page__title">Infos</h1>
-      <div class="page__intro">
+    <article class="infos">
+      <section class="infos__intro">
+        <h1 class="page__title">Infos</h1>
         <div class="page__bio">${site.bio.map((text) => `<p>${escapeHtml(text)}</p>`).join("")}</div>
-        <section class="page__section">
-          <h2 class="page__section-title">Disciplines</h2>
-          <ul class="disciplines">${Object.values(state.categories)
-            .map((category) => `<li class="skill--discipline">${glyph(category.glyph)}<span>${escapeHtml(category.label)}</span></li>`)
-            .join("")}</ul>
-        </section>
+        ${contacts.length ? `<div class="contact__links">${contacts.join("")}</div>` : ""}
+      </section>
+
+      <section class="infos__skills" aria-label="Compétences">
         ${(site.skills ?? [])
-          .map((group) => listSection(group.title, group.items, (item) => `<li><span>${escapeHtml(item)}</span></li>`))
-          .join("")}
-      </div>
-      <div class="page__cv">
-        ${(site.cv ?? [])
-          .map((section) =>
-            listSection(section.title, section.items, (item) => `<li><time>${escapeHtml(item.year)}</time><span>${escapeHtml(item.text)}</span></li>`)
+          .map(
+            (group) => `<section class="skill-group">
+              <h2 class="skill-group__title">${glyph(group.glyph ?? "fleuron4")}<span>${escapeHtml(group.title)}</span></h2>
+              <ul class="skill-group__list">${group.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </section>`
           )
           .join("")}
-      </div>
-    </section>`;
-}
+      </section>
 
-function renderContact() {
-  setTitle("Contact");
-  const site = state.site;
-  const handle = (site.instagram ?? "").replace(/^@/, "");
-  const lines = [
-    site.email ? `<a class="nav-word" href="mailto:${escapeHtml(site.email)}">${escapeHtml(site.email)}</a>` : "",
-    handle ? `<a class="nav-word" href="https://www.instagram.com/${escapeHtml(handle)}/" target="_blank" rel="noopener">instagram</a>` : ""
-  ].filter(Boolean);
+      <section class="infos__cv" aria-label="Parcours">
+        ${(site.cv ?? [])
+          .map(
+            (column) => `<section class="cv-column">
+              <h2 class="page__section-title">${escapeHtml(column.title)}</h2>
+              <ul class="cv-column__list">${column.items.map(cvEntry).join("")}</ul>
+            </section>`
+          )
+          .join("")}
+      </section>
 
-  view.innerHTML = `
-    <section class="page page--contact">
-      <h1 class="page__title">Contact</h1>
-      <div class="contact__links">
-        ${lines.length ? lines.join("") : `<p class="contact__empty">Coordonnées bientôt disponibles.</p>`}
-      </div>
-      <button class="credits-toggle" type="button" aria-expanded="false" aria-controls="credits"><span class="nav-word">Crédits</span></button>
-      <dl class="credits" id="credits" hidden>
-        ${(site.credits ?? []).map((credit) => `<dt>${escapeHtml(credit.label)}</dt><dd>${escapeHtml(credit.text)}</dd>`).join("")}
-      </dl>
-    </section>`;
+      <footer class="infos__credits">
+        <button class="credits-toggle" type="button" aria-expanded="false" aria-controls="credits"><span class="nav-word">Crédits</span></button>
+        <dl class="credits" id="credits" hidden>
+          ${(site.credits ?? []).map((credit) => `<dt>${escapeHtml(credit.label)}</dt><dd>${escapeHtml(credit.text)}</dd>`).join("")}
+        </dl>
+      </footer>
+    </article>`;
 }
 
 /* ---------- Routeur ---------- */
@@ -896,8 +865,7 @@ function renderContact() {
 const routes = {
   home: renderHome,
   projects: renderHome,
-  infos: renderInfos,
-  contact: renderContact
+  infos: renderInfos
 };
 
 function parseRoute() {
@@ -905,7 +873,8 @@ function parseRoute() {
   const [section, slug] = path.split("/");
   if (section === "projet" && slug) return { name: "project", slug: decodeURIComponent(slug) };
   if (section === "projets") return { name: "projects" };
-  if (section === "competences") return { name: "infos" };
+  // Anciennes adresses, réunies dans Infos.
+  if (section === "competences" || section === "contact") return { name: "infos" };
   if (section in routes) return { name: section };
   return { name: "home" };
 }
@@ -927,9 +896,9 @@ function render() {
     else link.removeAttribute("aria-current");
   });
 
-  // Les fruits suivent la souris sur Infos et Contact, et sur l'accueil uniquement au-dessus du mur de stickers.
+  // Les fruits suivent la souris au-dessus du mur de stickers et de la présentation d'Infos.
   if (["home", "projects"].includes(route.name)) sowing.setEnabled(true, ".wall");
-  else sowing.setEnabled(["infos", "contact"].includes(route.name));
+  else sowing.setEnabled(route.name === "infos", ".infos__intro");
 
   // Retour depuis un projet : on revient sur sa carte dans la grille.
   const card = route.name === "projects" && previous?.name === "project"
