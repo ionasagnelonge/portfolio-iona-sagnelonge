@@ -39,6 +39,138 @@
    }
   ]
  },
+ "carte-blanche/DV_sagnelonge_04.jpg": {
+  "w": 1520,
+  "h": 1140,
+  "color": "#d6dace",
+  "lqip": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAwBQCdASoYABIAPu1ep06ppKMiMBgMATAdiUAZQAIbrXbe2QIu7iWXeOD/AjvddwNg0AD+77/UQ/G39e+QCrCvZ3FkTkW7QPFioPU/s8UcfPZbQmQppDtipaIpyXD3GJnB2C/ghHVz/hB4WMFg8BoTRY9hpXLXsLYqCBjM1AMbudw7K1kQXgnV10V3R6XLjhD6BUmzgAA=",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/carte-blanche/dv-sagnelonge-04-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/carte-blanche/dv-sagnelonge-04-1280.webp"
+   },
+   {
+    "w": 1520,
+    "src": "images/carte-blanche/dv-sagnelonge-04-1520.webp"
+   }
+  ]
+ },
+ "carte-blanche/carte_blanche20260401_22423436.png": {
+  "w": 2039,
+  "h": 2683,
+  "color": "#a1a58e",
+  "lqip": "data:image/webp;base64,UklGRgIBAABXRUJQVlA4IPYAAACQBQCdASoYACAAPu1oqk8ppiOiMBgIATAdiUAZQLWgGdXBIMP9tP6BbYNAQ3VjO2SgvucGAAD+t7DvmF01GyIni2VvNgV9tIpu1mvGZMgOwp6SREsi0KePkdx1t5Etz74Z7zkk/Fm9Geb3ZL4I7X6Su43fv23ysosC6tmZOWlYAUcNzIWin9VxHFtSQlC5IUxWS7Cov4V4CgbrWWO7IhmFwbjbBy+/4DTrzb9zUKPku1T2ZEqyqDDLdlv9vxIlooFJ4+nc9na8ERyYYzqACUtegeAilZ0luXv8N/DkTqdfRsZrs9bcmAlRI9Ouw+ELQKPqCi4AAAA=",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/carte-blanche/carte-blanche20260401-22423436-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/carte-blanche/carte-blanche20260401-22423436-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/carte-blanche/carte-blanche20260401-22423436-2000.webp"
+   }
+  ]
+ },
+ "carte-blanche/carte_blanche20260401_22455385.jpg": {
+  "w": 2481,
+  "h": 3507,
+  "color": "#eaeade",
+  "lqip": "data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAABQBgCdASoYACIAPu1eqk4ppKQiMBVdUTAdiWUAzNAKJ7+DTHCZXPiuHB2qUkqH0YaSWXFev+5TP89YAAD+4g641DPMuOOPPe+l2L7HDla8QNjkzyAuH+UXYOqCIDIbt4glXy8FkA723i5YB9LcDUxoHDkoKByzGC/s4oyYQbbuoZbACrpNfdUpOTrZpXcxTZTVi1G8nu7oY4PwIc0Lq4VY/kF7Uhvs/q022i82kBIP1zkE3B5IFoYZJQAAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/carte-blanche/carte-blanche20260401-22455385-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/carte-blanche/carte-blanche20260401-22455385-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/carte-blanche/carte-blanche20260401-22455385-2000.webp"
+   }
+  ]
+ },
+ "carte-blanche/corneille mono.jpg": {
+  "w": 1268,
+  "h": 1653,
+  "color": "#a5b89f",
+  "lqip": "data:image/webp;base64,UklGRhIBAABXRUJQVlA4IAYBAAAQBgCdASoYAB8APu1mq08ppaOiKA1RMB2JagC06d3LgY6/YBLTiEIoSPh/5IpWxo/4VMRH/t4ibgAA/uhJaYePFud9AtwEIGq6TeyVRDOp9kFjXMp21pKyxweonjEhBfJTjScSuL0m0rQDuvDM10f+tklDw/zPqrwKYDvEsGGDh59prcN2XAIdlgf9iFTT3bBcqMqWfjGBP50XxbHp8wuFzBctlhOYcuhGajTX++JGOJhIy//ceFosRFqwNaNu/bne4QYgTIcH81r1co7h7/HbkFQ6OFYkLwYhU3Ra50Fp4RDQIsru/hkHX+is4QvVi0NWPaq3dlK5jhq/TFkOnhpxY0mRAAAA",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/carte-blanche/corneille-mono-640.webp"
+   },
+   {
+    "w": 1268,
+    "src": "images/carte-blanche/corneille-mono-1268.webp"
+   }
+  ]
+ },
+ "carte-blanche/carte_blanche20260401_22473928.jpg": {
+  "w": 2481,
+  "h": 3507,
+  "color": "#dedddd",
+  "lqip": "data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAABQBgCdASoYACIAPu1iqE4ppSOiMBVdUTAdiWcAAB91dpPSC9neoDR6EmurdNvzdONemAN/qdUutrV4MAD+7g7+C60dZbLmRJ7kCjhkE6xoDtQFof8yl8cbdHtO9ZcNEI7nsyMO1h0PzhTSNJ7fDFI1Vj/MY+FJAomxM8vDPPLVdHa1FXgF4aya4JdPbR7emRw2cJNPkQL+mgvzkRLvZvjpmbbYDKvqw5PvTPm9Ssfc0UsPFD9MO8a0qhAAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/carte-blanche/carte-blanche20260401-22473928-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/carte-blanche/carte-blanche20260401-22473928-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/carte-blanche/carte-blanche20260401-22473928-2000.webp"
+   }
+  ]
+ },
+ "carte-blanche/carte_blanche20260401_22482491.jpg": {
+  "w": 2481,
+  "h": 3507,
+  "color": "#eff0ee",
+  "lqip": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAAAwBgCdASoYACIAPu1mqVEppSOiqrgMATAdiWcAzyhGGfmZI3+r0C35vnRzN+Md9GxLWbIYMqm5gU2AAP74LyKUzolkS1JQcq6joBJlOopS12XOOTGk6z7dtUpyeF9fRh9LI+/rpVEcdLojJ3msG4rrir0Wo6Y0g9/0Aoxfzz8QCloILBBQTdFhI5EgAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/carte-blanche/carte-blanche20260401-22482491-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/carte-blanche/carte-blanche20260401-22482491-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/carte-blanche/carte-blanche20260401-22482491-2000.webp"
+   }
+  ]
+ },
+ "carte-blanche/héron mono.jpg": {
+  "w": 654,
+  "h": 967,
+  "color": "#c2d5c6",
+  "lqip": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAACwBQCdASoYACMAPu1uslKppiSipWmZMB2JZWbvVAU/4DOA7CO2qA/YKxqbLTIvqfYDo2+ZxeAA/vAX8CbiiV06f8iu26uA9L4gDV23jHz1KI3CNU43E9lr67vTv5pP+++cMOjS3YGhzrAAp/vv8uqxIMb0s1Kl6KoCpzW6BlVRJojs6MwsOMgqRqqa0RA+9N4xUAiHxcocQDl8gfaE4MI9rs7iw6Tn8tw/WqyYlNUWQvBhcdlrpzZz3hlFefg5w3aJ8QH/VyAAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/carte-blanche/heron-mono-640.webp"
+   },
+   {
+    "w": 654,
+    "src": "images/carte-blanche/heron-mono-654.webp"
+   }
+  ]
+ },
  "zoom/IMG_6186.jpg": {
   "w": 2835,
   "h": 3808,
@@ -1617,6 +1749,18 @@
    {
     "w": 720,
     "src": "images/stickers/lune-stickers-720.webp"
+   }
+  ]
+ },
+ "stickers/Carte blanche stickers.png": {
+  "w": 354,
+  "h": 261,
+  "color": "transparent",
+  "lqip": "",
+  "srcset": [
+   {
+    "w": 354,
+    "src": "images/stickers/carte-blanche-stickers-354.webp"
    }
   ]
  }

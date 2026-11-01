@@ -266,10 +266,18 @@
         "name": "DNSEP Communication"
       },
       "body": "Mémoire de DNSEP Communication.\n\nQu’ils rampent, volent ou s’immergent dans les profondeurs, les animaux partagent notre quotidien. Malgré sa présence constante dans tous les écosystèmes, la faune reste la grande absente de nos outils cartographiques traditionnels. Envisager l’animal comme un « alter-vivant » impose une mutation de nos modes de représentation.\n\nEn développant une cartographie dynamique, narrative et vivante, nous pouvons rendre compte de l’interdépendance des espèces et inciter à une planification du territoire qui respecte enfin le maillage du vivant.",
-      "folder": "",
-      "cover": "",
-      "sticker": "",
-      "images": [],
+      "folder": "carte-blanche",
+      "cover": "DV_sagnelonge_04.jpg",
+      "sticker": "Carte blanche stickers.png",
+      "images": [
+        "DV_sagnelonge_04.jpg",
+        "carte_blanche20260401_22423436.png",
+        "carte_blanche20260401_22455385.jpg",
+        "corneille mono.jpg",
+        "carte_blanche20260401_22473928.jpg",
+        "carte_blanche20260401_22482491.jpg",
+        "héron mono.jpg"
+      ],
       "links": []
     },
     {
