@@ -1439,6 +1439,26 @@
    }
   ]
  },
+ "phytoplanctons/desktop.jpg": {
+  "w": 1600,
+  "h": 1000,
+  "color": "#9ca39d",
+  "lqip": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAACwAwCdASoYAA8APu1iqU2ppaOiMAgBMB2JZgDE2CFiprICMLHTAAD91a3PQHcLOFckyarsb0P89eMAs67+J1iCfX9taxQAGjU8ZCQtyvzglrM860y4+zPs5REWv6TNSedsC0zK1DrWyuYj/FBRIVxe5GwxQ12Hjii3aumOw6eNU5av+9iP/xcTHgd/oo//RTEAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/phytoplanctons/desktop-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/phytoplanctons/desktop-1280.webp"
+   },
+   {
+    "w": 1600,
+    "src": "images/phytoplanctons/desktop-1600.webp"
+   }
+  ]
+ },
  "des-petits-problemes/Capture d’écran 2025-11-01 à 12.54.15.png": {
   "w": 3022,
   "h": 1696,
@@ -2333,6 +2353,22 @@
    {
     "w": 720,
     "src": "images/stickers/lune-stickers-720.webp"
+   }
+  ]
+ },
+ "stickers/phyto stickers.png": {
+  "w": 672,
+  "h": 403,
+  "color": "transparent",
+  "lqip": "",
+  "srcset": [
+   {
+    "w": 360,
+    "src": "images/stickers/phyto-stickers-360.webp"
+   },
+   {
+    "w": 672,
+    "src": "images/stickers/phyto-stickers-672.webp"
    }
   ]
  },

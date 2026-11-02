@@ -522,12 +522,13 @@
       "body": "Très discrets, les phytoplanctons sont partout. Ce sont des micro-algues qui jouent un rôle crucial dans l’écosystème aquatique. Le Rhin et l’Ill, qui traversent Strasbourg, en sont riches. Ces algues sont des indicateurs précieux de la qualité de l’eau.\n\nCette installation vise à donner de la visibilité à ces organismes fascinants et souvent méconnus. En sculptant le papier et les perles, j’ai créé une réinterprétation des taxons phytoplanctoniques que l’on pourrait observer au microscope dans les environs de Strasbourg.\n\nCette installation a été réalisée dans le cadre d’un partenariat avec l’OFB afin de présenter la biodiversité aquatique locale, et d’explorer les questions liées aux milieux, à leur protection et à leur gestion, qui doivent simultanément prendre en compte les contraintes environnementales et techniques, et répondre aux exigences sociales.",
       "folder": "Phytoplanctons",
       "cover": "phyto 1.jpg",
-      "sticker": "",
+      "sticker": "phyto stickers.png",
       "images": [
         "phyto 1.jpg",
         "25-10-16 PasseMu - ADEUS 0444 © Bartosch Salmanski.jpg",
         "photo intalation phyto.jpg",
-        "illustration taxon phyto.jpg"
+        "illustration taxon phyto.jpg",
+        "desktop.jpg"
       ],
       "links": []
     },
