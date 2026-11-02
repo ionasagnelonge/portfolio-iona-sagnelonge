@@ -139,6 +139,46 @@
    }
   ]
  },
+ "un-point-bleu-pale/320A0695.JPG": {
+  "w": 6383,
+  "h": 4255,
+  "color": "#968b87",
+  "lqip": "data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAADQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JQBdg7UpsqDpGnyj+/lROG/iA9aZkAAD+qoHno9hxVWDVEElXzO2m542Wp2YyxScLPmApd/WIkKXs+b7CyYSO02258DBbofnpch6JTohvkpZYP8t7+vM+T23zi/vBah/xaPv6Tl+nsr40uuQKgPSc7qFzmaeJqep6iCdYrrUeKGmWiemx78PfAN/H98EfOgqBWWz74d9k3WzOeNq84Rz6DWlYbJyEfz32CHDQiCHYlL1gAAA=",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/un-point-bleu-pale/320a0695-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/un-point-bleu-pale/320a0695-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/un-point-bleu-pale/320a0695-2000.webp"
+   }
+  ]
+ },
+ "un-point-bleu-pale/320A0553.JPG": {
+  "w": 4501,
+  "h": 3001,
+  "color": "#d4d3d4",
+  "lqip": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABQBACdASoYABAAPu1iqk4ppaQiMAgBMB2JYwAu/8B5HeN79ob7/s7cI14AAP7qdcEAWlKVrKWt7n7+hLQgWlcueVLSrViC+7oaXBANhdVzP4Ri73s55fl2Q8MvM5aCambpbqU5AcagYopqcW3f0ngDsTuNVn898z29yovTwxab0AAA",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/un-point-bleu-pale/320a0553-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/un-point-bleu-pale/320a0553-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/un-point-bleu-pale/320a0553-2000.webp"
+   }
+  ]
+ },
  "un-point-bleu-pale/320A0629t.jpg": {
   "w": 4318,
   "h": 5112,
@@ -176,6 +216,186 @@
    {
     "w": 2000,
     "src": "images/un-point-bleu-pale/320a0732-2000.webp"
+   }
+  ]
+ },
+ "un-point-bleu-pale/320A0679.JPG": {
+  "w": 6720,
+  "h": 4480,
+  "color": "#83766e",
+  "lqip": "data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAACwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOmXlbJTZXFgkfAbJnhxROjhj5gAPz2mtjzlo+wBaZtCCvFvtFctVMBXHdSHPFCohT1wyqLtq5Z7w2TDvqZFa41Qi9yGJ7keehw3z7pyuRSAmTVNflLulz8Ggv7XXMlLbWH08z7qjXL32obzmqyAZlW/7G7Bst2+J8gHH0kooyU4LsNAbArIKxroriUkqBYkxM0AAA=",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/un-point-bleu-pale/320a0679-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/un-point-bleu-pale/320a0679-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/un-point-bleu-pale/320a0679-2000.webp"
+   }
+  ]
+ },
+ "un-point-bleu-pale/320A0337.JPG": {
+  "w": 4480,
+  "h": 6115,
+  "color": "#918f8c",
+  "lqip": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAABQBQCdASoYACEAPuleqE2pJSOiNVgIASAdCWUAyrQUQCcrDs2Hqw5Fl0i9pWah4IxVqYAA/tbDqMVY+2jXvsOlxNa9DuBReoIoebRITS8QjrliCYEDEikdQ3RGQFIjMBw2OVnK9lDWQyuyMouhwkPrT5cUX0o9EQ0nRd4BDMgsKM6q1RPEgeYmHRpfsC3kfkK1pVwX6dVauAh1Z8p6LHPjAAA=",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/un-point-bleu-pale/320a0337-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/un-point-bleu-pale/320a0337-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/un-point-bleu-pale/320a0337-2000.webp"
+   }
+  ]
+ },
+ "un-point-bleu-pale/320A0468.JPG": {
+  "w": 4898,
+  "h": 3686,
+  "color": "#c8ced3",
+  "lqip": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABwBACdASoYABIAPu1sq1EppaOjqAqpMB2JQBjIMY2OZUqX+rpLKv7AOhRxAAD+6o/6eYnYF45bSU+fPhK8LLnqq0ydEMNvG30s/esEFsMUJk0FAwlBuXHOVIIEjaCsAR8L0ZzDI7B4Sh7R2QTFpWekztGJn+yP4U5IO8DcNm76zNgiCVJUXtKS0RPO8ZsudpAAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/un-point-bleu-pale/320a0468-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/un-point-bleu-pale/320a0468-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/un-point-bleu-pale/320a0468-2000.webp"
+   }
+  ]
+ },
+ "un-point-bleu-pale/320A0760.JPG": {
+  "w": 4480,
+  "h": 5418,
+  "color": "#8d8b8a",
+  "lqip": "data:image/webp;base64,UklGRgQBAABXRUJQVlA4IPgAAAAQBgCdASoYAB0APuVepk2pJSOiN/VYASAciWUAxvdwAc1iGvi+tK0KZtAbdh/RMSAlS1e9LgClZwAA/vYQuGi3IgPujREJEVTEEZFBeON6nINZHt6PJy1TAlekGO+EybMtb4pEJlojGfuzblQTteuQ9foqsHnCbyksgMT2uyG+dmcIxr3x8ezrM0UzUpTdXqQEBX8YnAxOVi5PB9okwDZcGTAi1ppOnC7Q88y2rUpe1CmrSra5VxI//yKmXW8XpAApZF5LI1+jyxEVH1aMGgmqFLO/+95Bhw1BX7vEUUtg4E2+A83uyg1T+Vzj5J49ulm8JyUjagAAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/un-point-bleu-pale/320a0760-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/un-point-bleu-pale/320a0760-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/un-point-bleu-pale/320a0760-2000.webp"
+   }
+  ]
+ },
+ "un-point-bleu-pale/320A0407t.jpg": {
+  "w": 4308,
+  "h": 5457,
+  "color": "#adb3b0",
+  "lqip": "data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAABQBQCdASoYAB4APu1sqlGppaOiqAqpMB2JZQABHuz8RHYrW/dqQWL7lQjC29HWeXDWsnQA/mzbtF1iJwCJbfUQVsaRsKY8ckNXulnezwuAYLs0dQmIZRRG9KK5rw9RZjfmL16d1zOg/jFft119VQOdfpB6tfshQYWWstgtkGQz+x7Ynmcin+1UI7ddRkYCwOdjSDtR2HCPhFZtak1ybAAn/h5k1g87ESmuAVYVGIS8JhvRrJpB3SI2WvSelreLgAA=",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/un-point-bleu-pale/320a0407t-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/un-point-bleu-pale/320a0407t-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/un-point-bleu-pale/320a0407t-2000.webp"
+   }
+  ]
+ },
+ "un-point-bleu-pale/320A0405.JPG": {
+  "w": 4480,
+  "h": 6384,
+  "color": "#a7afbc",
+  "lqip": "data:image/webp;base64,UklGRvIAAABXRUJQVlA4IOYAAACwBgCdASoYACIAPu1oqlAppaOiqqoBMB2JYwDGBYvgnSGVFI+PSys8jiu4tU+SijWdMDwxItbJ4vCvtmL6WAD+8DsBgt5oIF5ZZe5tYkMAuXarzGv3ueApm7UzXP93vIIxzlIT3erBnD2qSsnFjZGZ+BD7HOkkvLkFcYTtEABnjh7DBxgUICbFqCGcsegmSJgL8L/vpNFF1fTCgMGEBK+O/9tgCiViImwTel+XdS2ZD/jZ7tcPj95U37VuD1D25IuWNtuRsPLweqIjDOE+kBC0dWBbCd/n8hcep7bczOjGYG0Ig+AAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/un-point-bleu-pale/320a0405-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/un-point-bleu-pale/320a0405-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/un-point-bleu-pale/320a0405-2000.webp"
+   }
+  ]
+ },
+ "un-point-bleu-pale/IMG_4493.JPG": {
+  "w": 3024,
+  "h": 4032,
+  "color": "#898081",
+  "lqip": "data:image/webp;base64,UklGRjYBAABXRUJQVlA4ICoBAACwBgCdASoYACAAPu1kq0+ppSOiMBgIATAdiWgApzF46qBQMW64avUbrrv768iMhnM/HKNWcJ5LwJQaobRQkAD+ayz5FPqVcrARNg80YpF/QGFqrBwODVN4ww/QN0yxgwIouqm6PF01d81LFQoM0bDf1YtpKWMEPt90w2n39zuvOYuHH+Z8eUnA0o0bUrA6cwLRbJKV2RNozTkdZePEDITGVIiIfXputC6j5qqw5jRMF9UQwlxJJiiPDBdbgtZGwNdS/EiDNU3uqWljoedem4SU2ADyFjHMxXbHWKZOum+Y4Qpz4Uv8SVlJ/NDWYCIwB4m60Ji3cSOHxmhOrJux2ocvbdWU2t55BjPY800h3+fLra9fRcqC2nZXVFzUnzVf9zKHTG0eT0u2OfAA",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/un-point-bleu-pale/img-4493-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/un-point-bleu-pale/img-4493-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/un-point-bleu-pale/img-4493-2000.webp"
+   }
+  ]
+ },
+ "un-point-bleu-pale/vie equipe LPA IMG_7877.jpg": {
+  "w": 3024,
+  "h": 4032,
+  "color": "#9e6946",
+  "lqip": "data:image/webp;base64,UklGRnABAABXRUJQVlA4IGQBAADwBwCdASoYACAAPu1sq1EppaOiqAqpMB2JbACdMoR+JwS7RGA22fP/6ZnvNZzAOFuLZtJUftTZUmeN0JmRyc6eAFm/KtGnmYAA/d/p0f03FPCyHVL1VM2qC+2KDu/Q+tWUV/EZHIafEKdUaltSq+N8xD/r/s6ag1FW4qc2+2tsVgJf4fEop0D8cEyHI1yFtF1Z18CWcY9fxiw11rf8qFrSBzDU6dz7iu8BKco+vQftVcQgrt0LCA3jr3s5dvkvi+H+St9M9n38+M92LfaruS7FZqIsU+vBWejxsE4V3aHk2jNeeojmP14VWM2oiybZlOaFgjUjJkLlXWWbN+j6q2ULCzt5aClVn8yjg50uX0j+kJRZnZjuvjjXeetADAozpohCdThFoxxSQo04N4PhOnodf1w8r9RLlW48lv+4fOXVW5SKIG4GcWjNBq5IAOYqJcg0RJsWuoy8OTz2Pu10bGB7EhgAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/un-point-bleu-pale/vie-equipe-lpa-img-7877-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/un-point-bleu-pale/vie-equipe-lpa-img-7877-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/un-point-bleu-pale/vie-equipe-lpa-img-7877-2000.webp"
+   }
+  ]
+ },
+ "un-point-bleu-pale/vie equipe LPA IMG_7361.jpg": {
+  "w": 3024,
+  "h": 4032,
+  "color": "#a58b5e",
+  "lqip": "data:image/webp;base64,UklGRigBAABXRUJQVlA4IBwBAAAwBgCdASoYACAAPu1oqk8ppiOiMBgIATAdiWwArDLVOk7d4WAGM/me2eVupe7Tyw9dKIX6G1xMdXUAAP4Jqt3EGeeqD5vqxhBFeRNFnvvGVh2UFAQ+bBBICcGPR8EucaTmIc1KVJcUod48G7vR74GhgEvPc3Iy6nHqUn5ZW3oDWy1+P1jsJcok+YQfmixr7TSXmV7RekQYRafJgM8r0x6hc1Ia4Bh3qij9HT/+O70/l0b6nYQ66qRnKy1LWfyNtN0GaNxVSoxJsf4gk2/QodZxWU88HrvG/4YFHaW3koNs6obO4RYsDiQ/tLuB69FDcnhtUluQJt0eBNhxDFePwN0933R/eOENeFppwrIcuKGU//q9SS5hD3x0JAAAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/un-point-bleu-pale/vie-equipe-lpa-img-7361-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/un-point-bleu-pale/vie-equipe-lpa-img-7361-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/un-point-bleu-pale/vie-equipe-lpa-img-7361-2000.webp"
    }
   ]
  },
@@ -1516,6 +1736,23 @@
    }
   ]
  },
+ "des-petits-problemes/peluche.gif": {
+  "w": 2480,
+  "h": 3508,
+  "color": "#ceddd5",
+  "lqip": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAAAQBQCdASoYACIAPuleqE2pJSQiNVgIASAdCWcAAD6QSn1ibPscrsWRajazHJmmXfaAAP7tN2krB2LjfaOtM050r9SNar4sChJAPj31o6+UAt2riGprdB0FdfYULF9eR4lIXTvh9Awl2OM2hN1xHYeECHKonOKTmt8y1mdYE4aW4hL00mwAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/des-petits-problemes/peluche-640.webp"
+   },
+   {
+    "w": 1080,
+    "src": "images/des-petits-problemes/peluche-1080.webp"
+   }
+  ],
+  "animated": true
+ },
  "des-petits-problemes/Capture d’écran 2025-11-01 à 12.52.58.png": {
   "w": 3022,
   "h": 1696,
@@ -1555,6 +1792,60 @@
     "src": "images/des-petits-problemes/planche-voiture-3-2000.webp"
    }
   ]
+ },
+ "des-petits-problemes/voiture coté.gif": {
+  "w": 3508,
+  "h": 2480,
+  "color": "#9aaeaa",
+  "lqip": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAADwBACdASoYABEAPu1ur1IppiQiqAgBMB2JZQATkYClF4x7g6EkHZsgrdkLYljaVwgA/t8k1rYYpl0xtVTrK17Or2HdHcW4dyoFBUMJELy2Nc1NccfmQXbPKkVbA5AbdV2GBdYTLH9u/Z4DTgeOiPEsJuIleDLcBe4zyAyqJxqFYfsqFTcUgSYB0UMhRmwEgtOuCnz7K1R0jib9YEAAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/des-petits-problemes/voiture-cote-640.webp"
+   },
+   {
+    "w": 1080,
+    "src": "images/des-petits-problemes/voiture-cote-1080.webp"
+   }
+  ],
+  "animated": true
+ },
+ "des-petits-problemes/voiture face.gif": {
+  "w": 2360,
+  "h": 1640,
+  "color": "#ecf6e8",
+  "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAwCdASoYABEAPu1kqU2ppaQiMAgBMB2JZQAAW+qtE2Y0UZAv0AD+83Qc8cnZnPAgQq//wElqSjAnixeKILQAAYrRGKoTduQb+cq6uYK6AAAA",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/des-petits-problemes/voiture-face-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/des-petits-problemes/voiture-face-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/des-petits-problemes/voiture-face-2000.webp"
+   }
+  ]
+ },
+ "des-petits-problemes/main.gif": {
+  "w": 4961,
+  "h": 7016,
+  "color": "#181d1d",
+  "lqip": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAAAwAwCdASoYACIAPu12s1QppySjJWgBMB2JaQDPoA8KmggAAP7v22agkOkYQAAA",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/des-petits-problemes/main-640.webp"
+   },
+   {
+    "w": 1080,
+    "src": "images/des-petits-problemes/main-1080.webp"
+   }
+  ],
+  "animated": true
  },
  "ours/DSC_0593.jpg": {
   "w": 5623,
@@ -2276,19 +2567,19 @@
    }
   ]
  },
- "stickers/un point bleu pâle stickers-2.png": {
-  "w": 604,
-  "h": 604,
+ "stickers/poster LPA stickers 2-2.png": {
+  "w": 753,
+  "h": 1424,
   "color": "transparent",
   "lqip": "",
   "srcset": [
    {
     "w": 360,
-    "src": "images/stickers/un-point-bleu-pale-stickers-2-360.webp"
+    "src": "images/stickers/poster-lpa-stickers-2-2-360.webp"
    },
    {
-    "w": 604,
-    "src": "images/stickers/un-point-bleu-pale-stickers-2-604.webp"
+    "w": 720,
+    "src": "images/stickers/poster-lpa-stickers-2-2-720.webp"
    }
   ]
  },
