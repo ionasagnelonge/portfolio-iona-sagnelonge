@@ -228,26 +228,110 @@
   },
   "projects": [
     {
-      "slug": "lune",
-      "title": "Lune",
+      "slug": "un-point-bleu-pale",
+      "title": "Un point bleu pâle",
       "year": "2025",
+      "categories": [
+        "didactique",
+        "illustration",
+        "volume"
+      ],
+      "summary": "9 cubes pour découvrir le globe",
+      "partner": {
+        "prefix": "avec",
+        "name": "La Physique Autrement"
+      },
+      "body": "Capturée par le satellite Voyager 1, « Pale Blue Dot » reste à ce jour la photographie la plus lointaine de la Terre, prise à près de 6 milliards de km. Cette image a donné son nom à cette exposition, qui occupe le musée d’un mètre carré conçu par Alexandre Echasseriau. Ce projet a été réalisé dans le cadre d’un stage à La Physique Autrement.\n\nÀ vous d’ouvrir, observer, retourner les 9 cubes du musée pour redécouvrir la Terre sous de nouveaux angles. En illustrations, en vidéo, en BD ou en sculptures, toute l’exposition est réalisée à la main sur du papier maison recyclé.\n\nCe dispositif a été exposé à la Bibliothèque d’Orsay à l’occasion des fêtes de la science du campus de Paris-Saclay en 2025, au LUMEN, et au Laboratoire de Physique des Solides d’Orsay.",
+      "folder": "un point bleu pâle",
+      "cover": "320A0565.jpf",
+      "sticker": "un point bleu pale cube stickers.png",
+      "images": [
+        "320A0565.jpf",
+        "320A0400.JPG",
+        "320A0762.JPG",
+        "320A0355.JPG",
+        "320A0493t.jpg",
+        "320A0730.JPG",
+        "320A0592.JPG",
+        "320A0629t.jpg",
+        "320A0732.JPG"
+      ],
+      "links": [
+        {
+          "label": "Le projet sur vulgarisation.fr",
+          "url": "https://vulgarisation.fr/projet/un_point_bleu_pale/"
+        }
+      ]
+    },
+    {
+      "slug": "zoom",
+      "title": "ZOOM",
+      "year": "2026",
       "categories": [
         "illustration",
         "photographie",
         "didactique"
       ],
-      "summary": "blabla ",
+      "summary": "Installation didactique pour le musée Würth",
       "partner": {
-        "prefix": "pour",
-        "name": "Le Vaisseau & Cap Science"
+        "prefix": "pour le",
+        "name": "musée Würth"
       },
-      "body": "blalalalal",
-      "folder": "lune",
-      "cover": "Illustration_sans_titre.jpg",
-      "sticker": "Lune Stickers.PNG",
+      "body": "Dans le cadre de sa nouvelle exposition ZOOM, le musée Würth met en avant une collection de photographies argentiques de portraits d’artistes. À cette occasion, j’ai conçu un dispositif de médiation autour de la photographie argentique mêlant illustrations et prise de vues.\n\nComme l’exposition valorise principalement le sujet photographié et non le photographe, cette installation explore la technique du photographe, et son espace de travail : le laboratoire. L’installation reprend donc l’organisation d’un labo photo : un éclairage sombre, des clichés qui sèchent, une zone de prise de vue…",
+      "folder": "ZOOM",
+      "cover": "ZOOm in situ.png",
+      "sticker": "zoom stickers.png",
       "images": [
-        "Illustration_sans_titre.jpg",
-        "lune expo bordeaux-2.tif"
+        "Le Labo photo.jpg",
+        "Le labo photo 2.jpg",
+        "ZOOm in situ.png",
+        "IMG_6186.jpg",
+        "illu_photo-01.jpg",
+        "illu_photo-02.jpg",
+        "illu_photo-03.jpg",
+        "illu_photo-04.jpg",
+        "illu_photo-05.jpg",
+        "illu_photo-06.jpg",
+        "prise de vue 2-01.jpg",
+        "prise de vue 2-02.jpg",
+        "prise de vue 2-03.jpg",
+        "prise de vue 2-04.jpg",
+        "proposition-dvlp-01.jpg",
+        "proposition-dvlp-02.jpg",
+        "proposition-dvlp-03.jpg",
+        "proposition-dvlp-04.jpg",
+        "proposition tirage-01.jpg",
+        "proposition tirage-02.jpg",
+        "proposition tirage-03.jpg",
+        "proposition tirage-04.jpg"
+      ],
+      "links": []
+    },
+    {
+      "slug": "50-ans-pour-la-biodiversite",
+      "title": "50 ans d’actions pour la biodiversité",
+      "year": "2026",
+      "categories": [
+        "illustration",
+        "affiche",
+        "edition"
+      ],
+      "summary": "Conservatoire d’Espaces Naturels Alsace",
+      "partner": {
+        "prefix": "pour le",
+        "name": "Conservatoire d’Espaces Naturels d’Alsace"
+      },
+      "body": "À l’occasion des 50 ans du Conservatoire d’Espaces Naturels d’Alsace, j’ai réalisé la nouvelle identité festive de l’association, elle sera utilisée toute l’année 2026.\n\nInventorier, protéger, gérer, rassembler, partager, observer, sont les missions que le conservatoire vise à transmettre. Cette identité inspirée des plans de gestion de l’association, a été détournée sur divers supports : affiche, brochure, programme, étiquettes de boissons, invitation, cartes postales…",
+      "folder": "50 ans pour la biodiversité_",
+      "cover": "Poster Mockup proposition 1.png",
+      "sticker": "CENALsace Stickers.png",
+      "images": [
+        "Poster Mockup proposition 1.png",
+        "carte_blanche20260401_22591310.jpg",
+        "Capture d’écran 2025-04-15 à 09.16.40.png",
+        "carte_blanche20260401_23015199.jpg",
+        "mock up bouteille jus.png",
+        "carte_blanche20260401_23034513.jpg"
       ],
       "links": []
     },
@@ -281,72 +365,6 @@
       "links": []
     },
     {
-      "slug": "zoom",
-      "title": "ZOOM",
-      "year": "2026",
-      "categories": [
-        "illustration",
-        "photographie",
-        "didactique"
-      ],
-      "summary": "Installation didactique pour le musée Würth",
-      "partner": {
-        "prefix": "pour le",
-        "name": "musée Würth"
-      },
-      "body": "Dans le cadre de sa nouvelle exposition ZOOM, le musée Würth met en avant une collection de photographies argentiques de portraits d’artistes. À cette occasion, j’ai conçu un dispositif de médiation autour de la photographie argentique mêlant illustrations et prise de vues.\n\nComme l’exposition valorise principalement le sujet photographié et non le photographe, cette installation explore la technique du photographe, et son espace de travail : le laboratoire. L’installation reprend donc l’organisation d’un labo photo : un éclairage sombre, des clichés qui sèchent, une zone de prise de vue…",
-      "folder": "ZOOM",
-      "cover": "ZOOm in situ.png",
-      "sticker": "",
-      "images": [
-        "IMG_6186.jpg",
-        "illu_photo-01.jpg",
-        "illu_photo-02.jpg",
-        "illu_photo-03.jpg",
-        "ZOOm in situ.png",
-        "illu_photo-04.jpg",
-        "illu_photo-05.jpg",
-        "illu_photo-06.jpg"
-      ],
-      "links": []
-    },
-    {
-      "slug": "un-point-bleu-pale",
-      "title": "Un point bleu pâle",
-      "year": "2025",
-      "categories": [
-        "didactique",
-        "illustration",
-        "volume"
-      ],
-      "summary": "9 cubes pour découvrir le globe",
-      "partner": {
-        "prefix": "avec",
-        "name": "La Physique Autrement"
-      },
-      "body": "Capturée par le satellite Voyager 1, « Pale Blue Dot » reste à ce jour la photographie la plus lointaine de la Terre, prise à près de 6 milliards de km. Cette image a donné son nom à cette exposition, qui occupe le musée d’un mètre carré conçu par Alexandre Echasseriau. Ce projet a été réalisé dans le cadre d’un stage à La Physique Autrement.\n\nÀ vous d’ouvrir, observer, retourner les 9 cubes du musée pour redécouvrir la Terre sous de nouveaux angles. En illustrations, en vidéo, en BD ou en sculptures, toute l’exposition est réalisée à la main sur du papier maison recyclé.\n\nCe dispositif a été exposé à la Bibliothèque d’Orsay à l’occasion des fêtes de la science du campus de Paris-Saclay en 2025, au LUMEN, et au Laboratoire de Physique des Solides d’Orsay.",
-      "folder": "un point bleu pâle",
-      "cover": "320A0355.JPG",
-      "sticker": "",
-      "images": [
-        "320A0565.jpf",
-        "320A0400.JPG",
-        "320A0762.JPG",
-        "320A0355.JPG",
-        "320A0493t.jpg",
-        "320A0730.JPG",
-        "320A0592.JPG",
-        "320A0629t.jpg",
-        "320A0732.JPG"
-      ],
-      "links": [
-        {
-          "label": "Le projet sur vulgarisation.fr",
-          "url": "https://vulgarisation.fr/projet/un_point_bleu_pale/"
-        }
-      ]
-    },
-    {
       "slug": "un-point-bleu-pale-la-suite",
       "title": "Un point bleu pâle, la suite…",
       "year": "2025",
@@ -363,7 +381,7 @@
       "body": "Suite à l’exposition éponyme, une série de 9 affiches a été réalisée pour permettre à tous d’accéder à son contenu. N’hésitez pas à télécharger cette série puis l’imprimer, c’est gratuit !",
       "folder": "un point bleu pâle la suite____",
       "cover": "Sans titre - 1-01.jpg",
-      "sticker": "",
+      "sticker": "un point bleu pâle stickers-2.png",
       "images": [
         "Sans titre - 1-01.jpg",
         "Sans titre - 1-02.jpg",
@@ -384,30 +402,25 @@
       ]
     },
     {
-      "slug": "50-ans-pour-la-biodiversite",
-      "title": "50 ans d’actions pour la biodiversité",
-      "year": "2025",
+      "slug": "un-point-de-vies",
+      "title": "Un point de vies ",
+      "year": "2026",
       "categories": [
         "illustration",
-        "affiche",
-        "edition"
+        "edition",
+        "didactique"
       ],
-      "summary": "Conservatoire d’Espaces Naturels Alsace",
-      "partner": {
-        "prefix": "pour le",
-        "name": "Conservatoire d’Espaces Naturels d’Alsace"
-      },
-      "body": "À l’occasion des 50 ans du Conservatoire d’Espaces Naturels d’Alsace, j’ai réalisé la nouvelle identité festive de l’association, elle sera utilisée toute l’année 2026.\n\nInventorier, protéger, gérer, rassembler, partager, observer, sont les missions que le conservatoire vise à transmettre. Cette identité inspirée des plans de gestion de l’association, a été détournée sur divers supports : affiche, brochure, programme, étiquettes de boissons, invitation, cartes postales…",
-      "folder": "50 ans pour la biodiversité_",
-      "cover": "Poster Mockup proposition 1.png",
-      "sticker": "CENALsace Stickers.png",
+      "summary": "Faisons le point sur l’apparition de la vie sur Terre",
+      "body": "Nous voyons de la vie partout sur Terre et avons un vague souvenir de son évolution. Mais finalement, connaissons-nous vraiment les mécanismes de son apparition ? Ce livre est réalisé à la main en papier découpé et monotype en sérigraphie. Il propose des illustrations éloignées des représentations habituelles du globe, pour laisser le public se questionner sur sa perception des vivants. Comprendre ce qui nous relie tous permet aussi de respecter chaque composante de notre écosystème. D’ailleurs, la vie a commencé au fond des eaux, et celle-ci nous constitue en grande partie.",
+      "folder": "un-point-de-vies",
+      "cover": "IMG_7567.tif",
+      "sticker": "un point de vies.png",
       "images": [
-        "Poster Mockup proposition 1.png",
-        "carte_blanche20260401_22591310.jpg",
-        "Capture d’écran 2025-04-15 à 09.16.40.png",
-        "carte_blanche20260401_23015199.jpg",
-        "mock up bouteille jus.png",
-        "carte_blanche20260401_23034513.jpg"
+        "img20260526_14303357.tif",
+        "un point de vie 1.jpg",
+        "un point de vie 2.jpg",
+        "un point de vie 3.jpg",
+        "IMG_7567.tif"
       ],
       "links": []
     },
@@ -429,13 +442,12 @@
       "credits": "Avec Garance Coppens et Chloé Pesnec. Photographies © Bartosch Salmanski.",
       "folder": "Sous nos pieds",
       "cover": "25-10-16 PasseMu - ADEUS 0404 © Bartosch Salmanski.jpg",
-      "sticker": "",
+      "sticker": "nappe stickers-3.png",
       "images": [
         "25-10-16 PasseMu - ADEUS 0404 © Bartosch Salmanski.jpg",
-        "25-10-16 PasseMu - ADEUS 0407 © Bartosch Salmanski.jpg",
+        "IMG_4990.tif",
         "25-10-16 PasseMu - ADEUS 0526 © Bartosch Salmanski.jpg",
-        "25-10-16 PasseMu - ADEUS 0444 © Bartosch Salmanski.jpg",
-        "IMG_4990.tif"
+        "25-10-16 PasseMu - ADEUS 0407 © Bartosch Salmanski.jpg"
       ],
       "links": []
     },
@@ -444,7 +456,8 @@
       "title": "Ultimate very last hope",
       "year": "2024",
       "categories": [
-        "edition"
+        "edition",
+        "didactique"
       ],
       "summary": "A desperate artist’s guide to surviving AI in 2050",
       "partner": {
@@ -455,7 +468,7 @@
       "credits": "Avec Garance Coppens, Giuliano Alzerreca et Noémie Oury.",
       "folder": "ultimate very last hope",
       "cover": "Biennalesvg.svg",
-      "sticker": "",
+      "sticker": "ultimate very last hope stickers.png",
       "images": [
         "Biennalesvg.svg",
         "IMG_2380.jpg",
@@ -469,6 +482,29 @@
           "url": "https://www.cnap.fr/actualites/graphisme-en-france/revues/ndeg30-graphisme-en-france-30e-anniversaire-2024"
         }
       ]
+    },
+    {
+      "slug": "lune",
+      "title": "Lune",
+      "year": "2025",
+      "categories": [
+        "illustration",
+        "didactique"
+      ],
+      "summary": "Une cité fictive sur la Lune ? ",
+      "partner": {
+        "prefix": "pour",
+        "name": "Le Vaisseau & Cap Science"
+      },
+      "body": "Le Vaisseau (Strasbourg) et Cap Sciences (Bordeaux) se sont associés pour concevoir l’exposition pédagogique « Lune », une aventure immersive entre réel et imaginaire qui explore la possibilité de s’installer sur la Lune. À cette occasion, j’ai imaginé l’identité de Bigan, la cité du loisir. Mon travail a consisté à illustrer l’ambiance et la vie quotidienne de cette cité fictive, ainsi qu’à modéliser en 3D une pièce de jeu interactive destinée au public. Librement inspirée par la célèbre partie de golf d’Alan Shepard sur la Lune en 1971 (Apollo 14), cette cité réinterprète l’esthétique Space Age des années 70. À travers des formes ovoïdales et organiques, j’ai conçu un univers vivant, dédié aux loisirs, au sport et à la culture.",
+      "folder": "lune",
+      "cover": "Illustration_sans_titre.jpg",
+      "sticker": "Lune Stickers.PNG",
+      "images": [
+        "Illustration_sans_titre.jpg",
+        "lune expo bordeaux-2.tif"
+      ],
+      "links": []
     },
     {
       "slug": "phytoplanctons",
@@ -489,6 +525,7 @@
       "sticker": "",
       "images": [
         "phyto 1.jpg",
+        "25-10-16 PasseMu - ADEUS 0444 © Bartosch Salmanski.jpg",
         "photo intalation phyto.jpg",
         "illustration taxon phyto.jpg"
       ],
@@ -502,15 +539,15 @@
         "illustration",
         "animation"
       ],
-      "summary": "Animer l’emprise",
+      "summary": "Reportage sur l'emprise des drogues",
       "partner": {
         "prefix": "avec",
-        "name": "Lina et Léa, étudiantes en électroacoustique"
+        "name": "Lina Chailloux et Léa Vernet"
       },
-      "body": "Fruit d’une collaboration avec Lina et Léa, étudiantes en électroacoustique, « Des petits problèmes » donne vie à un récit familial, celui d’une femme victime de violences. Loin d’être une simple spectatrice, elle a subi de plein fouet les affres de l’addiction de son compagnon, vivant l’enfer aux côtés de sa fille.\n\nL’animation plonge le spectateur dans un univers onirique et énigmatique, où se mêlent des émotions fortes et contradictoires : peur, angoisse, amour, passion et douleur. Le contraste entre la douceur du texte et les visuels sombres accentue le trouble et l’ambivalence de cette expérience. Le paysage flou et étrange reflète l’univers glauque de la drogue qui engloutit petit à petit la mère et sa fille dans une sorte de tourbillon oppressant.",
+      "body": "Fruit d’une collaboration avec Lina et Léa, étudiantes en électroacoustique, « Des petits problèmes » donne vie à un récit familial, celui d’une femme victime de violences. Loin d’être une simple spectatrice, elle a subi de plein fouet les affres de l’addiction de son compagnon, vivant l’enfer aux côtés de sa fille. L’animation plonge le spectateur dans un univers onirique et énigmatique, où se mêlent des émotions fortes et contradictoires : peur, angoisse, amour, passion et douleur. Le contraste entre la douceur du texte et les visuels sombres accentue le trouble et l’ambivalence de cette expérience. Le paysage flou et étrange reflète l’univers glauque de la drogue qui engloutit petit à petit la mère et sa fille dans une sorte de tourbillon oppressant.",
       "folder": "Des petits problèmes_",
       "cover": "Capture d’écran 2025-11-01 à 12.54.15.png",
-      "sticker": "",
+      "sticker": "Des petits problèmes stickers-2.png",
       "images": [
         "Capture d’écran 2025-11-01 à 12.54.15.png",
         "rouge à lèvre 1.gif",
@@ -522,10 +559,11 @@
     },
     {
       "slug": "ours",
-      "title": "Ours",
+      "title": "L'Ours",
       "year": "2024",
       "categories": [
         "illustration",
+        "edition",
         "didactique"
       ],
       "summary": "Quand l’ours rencontre l’humain",
@@ -536,14 +574,14 @@
       "body": "Jurka vivait une existence paisible dans la nature sauvage, loin de l’agitation humaine. Mais son destin bascule lorsqu’elle croise le chemin de l’homme. Ce livre pop-up, réalisé en collaboration avec le parc allemand Bärenpark, raconte son histoire à travers un récit sur le ton de l’humour noir et des jeux en papier.\n\nCe livre nous incite à réfléchir à notre impact sur l’environnement et à adopter un comportement plus responsable envers les animaux sauvages.",
       "folder": "ours",
       "cover": "couverture.jpg",
-      "sticker": "",
+      "sticker": "ours stickers.png",
       "images": [
-        "couverture.jpg",
         "DSC_0593.jpg",
-        "DSC_0583.jpg",
         "crottes multicolores.jpg",
+        "couverture.jpg",
         "DSC_0589.jpg",
-        "ours tapis.jpg"
+        "ours tapis.jpg",
+        "DSC_0583.jpg"
       ],
       "links": []
     },
@@ -584,7 +622,7 @@
       "body": "Mémoire de DNMADe Graphisme.\n\nNotre société offre à nos yeux une immensité d’images sur tous supports : nous avons tendance à délaisser l’usage de nos autres sens pourtant précieux dans la traduction du monde. Sans eux, la représentation que l’on s’en fait ne peut exister. L’illustration est un moyen qui permet de retranscrire un univers. Mais elle pourrait élargir son exploration en dehors du visuel, en intégrant d’autres sens : elle pourrait offrir une communication plus forte de l’imaginaire en intégrant le corps dans toutes ses acceptions au cœur de l’image. Il s’agirait alors de placer l’homme dans la perception de nouvelles facettes de l’image.\n\nTel sera donc l’objet de notre réflexion : en quoi l’implication des sens dans l’illustration augmente-t-elle l’expérience de l’image ?",
       "folder": "images sensorielles",
       "cover": "DSC_0016ok.jpg",
-      "sticker": "",
+      "sticker": "images sensorielles stickers.png",
       "images": [
         "DSC_0016ok.jpg",
         "set design 5-12.jpg",
@@ -595,57 +633,62 @@
     },
     {
       "slug": "intervalles",
-      "title": "Intervalles",
-      "year": "",
+      "title": "[Intervalles]",
+      "year": "2024",
       "categories": [
         "edition",
         "photographie"
       ],
-      "summary": "",
-      "body": "",
+      "summary": "Dialogues temporels ",
+      "body": "En collaboration avec Chloé Pesnec et Marion Nguyen, deux designeuses, nous avons élaboré une revue autour de la thématique commune de la représentation du temps. Ce projet collaboratif a permis de confronter nos regards et nos approches respectives, enrichissant ainsi notre réflexion et aboutissant à une création collective nommée [Intervalles]. Dans le cadre de ces dialogues temporels, j’ai eu la chance de m’entretenir avec Clément Borderie, un artiste plasticien dont le travail se distingue par sa capacité à observer et à capturer l’essence des choses. Notre conversation a porté sur ce vaste sujet, explorant les différentes manières dont le temps peut être représenté et perçu. Inspirée par les réflexions de Clément Borderie, j’ai réalisé une série de photographies argentiques. Mon objectif n’était pas de figer des instants précis, mais plutôt de capturer des moments un peu plus longs, en jouant avec les temps de pose et en explorant les différentes textures et lumières. ",
       "folder": "Intervalles",
-      "cover": "revue couv.png",
-      "sticker": "",
+      "cover": "revue image.png",
+      "sticker": "intervalles stickers.png",
       "images": [
         "revue couv.png",
         "revue image.png",
         "intervalle_bleu.jpg",
         "saison 4.jpg"
       ],
-      "links": []
+      "links": [],
+      "partner": {
+        "prefix": "avec ",
+        "name": "Chloé Pesnec & Marion Nguyen"
+      }
     },
     {
       "slug": "mais-punaise",
       "title": "Mais punaise !",
-      "year": "",
+      "year": "2024",
       "categories": [
-        "illustration"
+        "didactique"
       ],
-      "summary": "",
-      "body": "",
+      "summary": " Insecte cauchemardesque ? Deviens maître de ton destin !",
+      "body": "Prêt à relever un défi redoutable ? Incarne une victime de punaises de lit et découvre les solutions pour te débarrasser de ces indésirables squatteurs. Aïe, ça pique ! Ressens l’inconfort et la frustration face à ces insectes voraces qui perturbent ton sommeil et ton quotidien. Heureusement, tu n’es pas seul ! Explore un éventail de solutions pour éradiquer ces nuisibles : traitements chimiques, méthodes naturelles, pièges ingénieux, et bien plus encore. Chaque choix est crucial pour garder ton pognon... Apprends à identifier les signes d’infestation, à prévenir leur propagation et à choisir la stratégie d’éradication la plus efficace. Bonne chance ! Ton objectif : retrouver un sommeil paisible et un chez-soi sain. ",
       "folder": "Mais punaise !",
       "cover": "Capture d’écran 2024-01-18 à 00.50.24.png",
-      "sticker": "",
+      "sticker": "Fichier 39@2x.png",
       "images": [
         "Capture d’écran 2024-01-18 à 00.50.24.png",
+        "IMMEUBLE SCROLL2.jpg",
         "Capture d’écran 2024-01-18 à 00.50.47.png",
         "Capture d’écran 2024-01-18 à 00.51.06.png",
         "Capture d’écran 2024-01-18 à 01.01.13.png",
-        "IMMEUBLE SCROLL2.jpg",
         "teléphone.jpg"
       ],
       "links": []
     },
     {
       "slug": "par-enchantement",
-      "title": "Par enchantement",
-      "year": "",
+      "title": "Par enchantement des lieux",
+      "year": "2023",
       "categories": [
+        "cartographie",
         "edition",
-        "volume"
+        "photographie"
       ],
-      "summary": "",
-      "body": "",
+      "summary": "Regards croisés sur un quartier en mouvement",
+      "body": "Née en 2006 au cœur de Koenigshoffen à Strasbourg, l’association Par Enchantement tisse des liens entre les habitants et encourage leur implication au cœur du quartier. Cette association propose également aux habitants de découvrir de nouveaux horizons à travers des sorties et des ateliers. Ce reportage photographique explore les multiples facettes de l’association à travers un jeu de diptyques. Chaque double page présente des trajectoires empruntées par les membres de l’association. Proche d’une carte, cette édition photo propose la découverte d’un quartier en mouvement, où les initiatives locales et la solidarité font naître l’enchantement.",
       "folder": "Par enchantemet_",
       "cover": "DSC_0331.jpg",
       "sticker": "",
@@ -654,20 +697,24 @@
         "DSC_0194.jpg",
         "photo docu 5.jpg"
       ],
-      "links": []
+      "links": [],
+      "partner": {
+        "prefix": "avec ",
+        "name": "l'association PAR ENchantement"
+      }
     },
     {
       "slug": "reves",
       "title": "Rêves",
-      "year": "",
+      "year": "2023",
       "categories": [
         "affiche"
       ],
-      "summary": "",
-      "body": "",
+      "summary": "Entre intimité et voyeurisme",
+      "body": "Cette affiche a été créée dans le cadre d’un projet de cours. Elle présente le livre Rêves de Max Yvetot, qui plonge le lecteur dans l’intimité des nuits de l’auteur. Le concept central de cette affiche repose sur l’exploration de l’intimité et de la relation parfois malsaine que nous ressentons lors de la lecture. Les « langues » invitent à un jeu de découverte : elles se soulèvent et révèlent différents textes issus du livre. Ce geste évoque alors le voyeurisme, un sentiment de culpabilité qui s’installe progressivement chez le lecteur, témoin impudique des rêves de Max Yvetot.",
       "folder": "rêves",
       "cover": "affiche r^ve.jpg",
-      "sticker": "",
+      "sticker": "rêves stickers.png",
       "images": [
         "affiche r^ve.jpg",
         "reve.jpg"
@@ -677,14 +724,15 @@
     {
       "slug": "formation-anatomie",
       "title": "Formation anatomie",
-      "year": "",
+      "year": "2025",
       "categories": [
-        "illustration"
+        "illustration",
+        "didactique"
       ],
       "summary": "",
       "body": "",
       "folder": "formation anatomie",
-      "cover": "IMG_5179.jpg",
+      "cover": "IMG_5168.jpg",
       "sticker": "",
       "images": [
         "IMG_5179.jpg",
