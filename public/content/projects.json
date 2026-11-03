@@ -613,12 +613,20 @@
       "body": "Ce coffret est un kit pédagogique qui invite à s’approprier les odeurs et à prendre conscience de notre environnement olfactif. Grâce à des cartes et une application numérique, il développe le langage par le biais de modules visuels. Chaque module retranscrit différentes sensations ressenties lors de l’olfaction.\n\nEn les manipulant, vous donnez vie à des créatures hybrides qui incarnent les émotions et les odeurs perçues. Les modules visuels sont des traductions illustrées d’un vocabulaire utilisé dans le domaine olfactif. Pour définir ces formes, l’imagerie a été illustrée et définie d’après un questionnaire distribué à plus de 70 personnes, afin d’avoir la représentation la plus fidèle des odeurs.",
       "folder": "imagerie olfactive",
       "cover": "IMAGERIE OLFACTIVE 2.jpg",
-      "sticker": "",
+      "sticker": "RÉPERTOIRE ILLU.png",
       "images": [
         "IMAGERIE OLFACTIVE 2.jpg",
         "IMAGERIE OLFACTIVE 1.jpg",
         "IMAGERIE OLFACTIVE 7.jpg",
-        "IMAGERIE OLFACTIVE 8.jpg"
+        "IMAGERIE OLFACTIVE 8.jpg",
+        "tableau périodique OK.jpg",
+        "IMAGERIE OLFACTIVE 3 copie.jpg",
+        "IMAGERIE OLFACTIVE 4 copie.jpg",
+        "IMAGERIE OLFACTIVE 5 copie.jpg",
+        "IMAGERIE OLFACTIVE 6 copie.jpg",
+        "IMAGERIE OLFACTIVE 9 copie.jpg",
+        "IMAGERIE OLFACTIVE 11 copie.jpg",
+        "IMAGERIE OLFACTIVE 12 copie.jpg"
       ],
       "links": []
     },
@@ -707,11 +715,13 @@
       "body": "Née en 2006 au cœur de Koenigshoffen à Strasbourg, l’association Par Enchantement tisse des liens entre les habitants et encourage leur implication au cœur du quartier. Cette association propose également aux habitants de découvrir de nouveaux horizons à travers des sorties et des ateliers. Ce reportage photographique explore les multiples facettes de l’association à travers un jeu de diptyques. Chaque double page présente des trajectoires empruntées par les membres de l’association. Proche d’une carte, cette édition photo propose la découverte d’un quartier en mouvement, où les initiatives locales et la solidarité font naître l’enchantement.",
       "folder": "Par enchantemet_",
       "cover": "DSC_0331.jpg",
-      "sticker": "",
+      "sticker": "parenchantement stickers-2.png",
       "images": [
         "DSC_0331.jpg",
         "DSC_0194.jpg",
-        "photo docu 5.jpg"
+        "photo docu 5.jpg",
+        "DSC_0270.jpg",
+        "photo docu 4.jpg"
       ],
       "links": [],
       "partner": {
@@ -734,27 +744,6 @@
       "images": [
         "affiche r^ve.jpg",
         "reve.jpg"
-      ],
-      "links": []
-    },
-    {
-      "slug": "formation-anatomie",
-      "title": "Formation anatomie",
-      "year": "2025",
-      "categories": [
-        "illustration",
-        "didactique"
-      ],
-      "summary": "",
-      "body": "",
-      "folder": "formation anatomie",
-      "cover": "IMG_5168.jpg",
-      "sticker": "",
-      "images": [
-        "IMG_5179.jpg",
-        "IMG_5168.jpg",
-        "IMG_5182.jpg",
-        "IMG_5186.jpg"
       ],
       "links": []
     }

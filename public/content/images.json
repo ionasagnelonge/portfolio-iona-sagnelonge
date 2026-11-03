@@ -2047,6 +2047,166 @@
    }
   ]
  },
+ "imagerie-olfactive/tableau périodique OK.jpg": {
+  "w": 5906,
+  "h": 3508,
+  "color": "#f5f4f4",
+  "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABQAwCdASoYAA4APu1iqU2ppaQiMAgBMB2JaQAAetFIrdK+AAD+8JQM3J5ebJ2F4XEOjXD8WfjYEcvRZc1Owz5AgZsbuC9fbZLT+r/xQT1m9tPF4cAAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/imagerie-olfactive/tableau-periodique-ok-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/imagerie-olfactive/tableau-periodique-ok-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/imagerie-olfactive/tableau-periodique-ok-2000.webp"
+   }
+  ]
+ },
+ "imagerie-olfactive/IMAGERIE OLFACTIVE 3 copie.jpg": {
+  "w": 2481,
+  "h": 3508,
+  "color": "#dfdfdc",
+  "lqip": "data:image/webp;base64,UklGRl4BAABXRUJQVlA4IFIBAADQBwCdASoYACIAPu1qqVCppiOiqrgMATAdiWMAysAP+tct2cH9aBGKNvLjwZX7pSkEatdpISZ036G9qQIR794oDgtaTYliAAD+9NzJTsfm8nbdTxqlC5U/0y8uJjLdiPUFdZXf177FoaqdkAqfjR7qmAqlsCBptcaZQSE7wWhxHUV/ScgDC+NrkZzppBMQ3KtRCUp4odc7/xln6JJ60f/UfeTImmw8MRpT+8xrJDIU3Ekt8C/yy2dbN+2Xkl6bra6Y8czVfSrEqCkQzLidwES0BXYpvRxPfhC82g/oY507RS/mMI4SykfoLy9EIx69GFRosjbnDFEbJEQCqZ7ziV4b3j8tWh6b0E0PuV3IQiTOpARJ8/XkEHU4tNs04VJUo8/iLaAo8hv7TxO3qSv0G2axzG/VqiaJpw/cieYy3tYYLqHPw+e9PTFWcev5YsAD3AAAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-3-copie-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-3-copie-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-3-copie-2000.webp"
+   }
+  ]
+ },
+ "imagerie-olfactive/IMAGERIE OLFACTIVE 4 copie.jpg": {
+  "w": 2456,
+  "h": 1420,
+  "color": "#a7b6d6",
+  "lqip": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAADwAwCdASoYAA4APu1mqk2ppaQiMAgBMB2JbACdMoADTquAR0cn/yoAAOJ9631mvMWzIJ1rGamBJRJ9ydBIIM0RJ2AgF9O1eB9ocj5z0FkYE0dX5X+DJrZYwRQ+ZKV+9l98sjLfPnagb4ztgSsgAIkt8PqxHlhbCD9M9IQinfijrSR5KBSUlvRJj4t4EKfeAAA=",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-4-copie-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-4-copie-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-4-copie-2000.webp"
+   }
+  ]
+ },
+ "imagerie-olfactive/IMAGERIE OLFACTIVE 5 copie.jpg": {
+  "w": 2719,
+  "h": 1805,
+  "color": "#92a2d1",
+  "lqip": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAABwBACdASoYABAAPu1kqU2ppaOiMAgBMB2JbACdMoMYAEJWz7xQsVQb5UAycAD+gQY8FOw0Hnw7HrG5xVQOivqhewii8O6g84XuA4Gs4+4Y6MOp+ELsjmXRewWBa2sePllmh7rmvLRS2mfSR8wFLwew1pRqdHvBdzwoOplx1XA4U/nGCrE/ezm1zXFnd8c+Dvz/x/rrXnqiKzGff2Jn6K1yvAA=",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-5-copie-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-5-copie-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-5-copie-2000.webp"
+   }
+  ]
+ },
+ "imagerie-olfactive/IMAGERIE OLFACTIVE 6 copie.jpg": {
+  "w": 2665,
+  "h": 1848,
+  "color": "#bbbebd",
+  "lqip": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAADQBACdASoYABEAPu1ur1IppiQiqAgBMB2JZAC1CTwDAAZyJ3mEcfU+Ln2RpO69AAD+yoEoKX6TESsofpx/kRpUpqRvHnAa3o5tmy2Tp4kUMpbootbgHwnVgm2COlIEmebpOaSBSVz3vjfHr1eAuXUUjNqg7jQ3Uc4ojEypVg9alTDEaSN+o1Ew3PafaYc273aus25EWGlpstcWKVQ9+mdBb0l6h81k4pKAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-6-copie-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-6-copie-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-6-copie-2000.webp"
+   }
+  ]
+ },
+ "imagerie-olfactive/IMAGERIE OLFACTIVE 9 copie.jpg": {
+  "w": 2784,
+  "h": 1848,
+  "color": "#7991c8",
+  "lqip": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbACdMoAC/2jGaSYVGQcAh2mYAAD+nqdbBCzVZ268qcbr+2qrcHndSNIyzBS7unTntP/SBJ73OJYot1E3UPizZkz8Bixx1CsS+sFNxi0unvcPeFGo4ezJ0/C0QB2GI3y4XwoiwtPXK0ZobqllW9ijFAwAMd52O/uKxVwq1QWv8UnsNiGWtevD5TPVMr+UlLoAkJ02KanofUgA",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-9-copie-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-9-copie-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-9-copie-2000.webp"
+   }
+  ]
+ },
+ "imagerie-olfactive/IMAGERIE OLFACTIVE 11 copie.jpg": {
+  "w": 2591,
+  "h": 1681,
+  "color": "#afb4c1",
+  "lqip": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOhglYFVjg3RxnkIkiAAP6PK8Ov8ZJJdq/DFAj4DIYcaWLBlzjM7rOHvkenNAwN5B6XmyGSjAz1O+bwD/WAHtaz37G5bDaeBppJjbLVwIbzJl1ZfyACv10yKiCNNUHGpC7H30yNPRvhFoNa+8h0m4S2NYDuZCkgiY+Cyy23EvZnN3qQZOzAAAA=",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-11-copie-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-11-copie-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-11-copie-2000.webp"
+   }
+  ]
+ },
+ "imagerie-olfactive/IMAGERIE OLFACTIVE 12 copie.jpg": {
+  "w": 2463,
+  "h": 1848,
+  "color": "#738bc5",
+  "lqip": "data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAADQBACdASoYABIAPu1gp06ppSMpsBgMATAdiWwAnTM0OknQuILdLdXGP0YCSmuIQAD+dnz9XQe3n4ZMeORjAw3y2LfTav/uJBucdPknqQxH8sIxJi5XHUqqZ7lv/nINowDU9bWUMsIK2lSYFe/n8SbjrASLAdu305+KjCmCFDJfMoZ9uXp7+rh6niYqmEULFky+LYDHX9+2IpXYncUP6CEivnqYGa3VEV9zi4Sfa0J2kJuCfdQgV1nf0MXlPgCFkCfbUsowZWYH9QzQae6AJAAA",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-12-copie-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-12-copie-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/imagerie-olfactive/imagerie-olfactive-12-copie-2000.webp"
+   }
+  ]
+ },
  "images-sensorielles/DSC_0016ok.jpg": {
   "w": 3260,
   "h": 3906,
@@ -2387,6 +2547,46 @@
    }
   ]
  },
+ "par-enchantement/DSC_0270.jpg": {
+  "w": 2783,
+  "h": 3680,
+  "color": "#888b8b",
+  "lqip": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAADwBACdASoYACAAPu1uq1EppiOiqAqpMB2JZwDM0BInoOgiylVG9U7l9v/BDSkSPYAA+Fp6bIKnuKtD23mBVo20ZSBFJjoI8zR3vg/IbcKqNHFk50lWYG8clCkpQ9n4/y5B/wBLumrFZGUw5DzyufQBzCuip+jig6cswdhsH8nhBLN2ak9XzlfGD1A1tnHOKaPzO0qvigeEVMAA",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/par-enchantement/dsc-0270-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/par-enchantement/dsc-0270-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/par-enchantement/dsc-0270-2000.webp"
+   }
+  ]
+ },
+ "par-enchantement/photo docu 4.jpg": {
+  "w": 3285,
+  "h": 4961,
+  "color": "#624c3c",
+  "lqip": "data:image/webp;base64,UklGRv4AAABXRUJQVlA4IPIAAACQBgCdASoYACQAPu1srlIppaQipWsxMB2JYgC06C6EZG3/0yG9wqE7BsEsuqJUTczQLVceIRiPgNpFrjRgAP7j/wksp2uLsuwtVcpvTym8m/Ub4j6bc4jxtrXwTJL2WDvZB7gvgeGfIlxpPHVpq/du/lzGbBVhgqI27LkVglgB9/DyGtjswTDDU1Fxg2Vybly1A0T3DeCRqevPBarqLzXm7nqs6khQJ/e183jJLLfRpGFBi4hDLnE++bdNzaSi/OKwct/p8gEip/NrexyovPuXlDtpwScaM4mgHRlZnhVpz1hVvftrhwKmQ0h8nAzVxHAAAA==",
+  "srcset": [
+   {
+    "w": 640,
+    "src": "images/par-enchantement/photo-docu-4-640.webp"
+   },
+   {
+    "w": 1280,
+    "src": "images/par-enchantement/photo-docu-4-1280.webp"
+   },
+   {
+    "w": 2000,
+    "src": "images/par-enchantement/photo-docu-4-2000.webp"
+   }
+  ]
+ },
  "reves/affiche r^ve.jpg": {
   "w": 3024,
   "h": 4032,
@@ -2424,86 +2624,6 @@
    {
     "w": 2000,
     "src": "images/reves/reve-2000.webp"
-   }
-  ]
- },
- "formation-anatomie/IMG_5179.jpg": {
-  "w": 3024,
-  "h": 4032,
-  "color": "#a8b1ba",
-  "lqip": "data:image/webp;base64,UklGRhIBAABXRUJQVlA4IAYBAADQBQCdASoYACAAPu1kq0+ppSOiMBgIATAdiWUAuwQIGXbhgmaSUI3B0nSJjGrG8sAJRfWCpafQAP7rNsTXO3QKMPlp6GMnmfs7BDK1Kmz0tdliwfg4SUaiQN9mjLCY6y7Gsz47+VpwvtrWIuq03Ah/lcYXANpLAHK5X/eZZw/qv8uvD+zlcN0h7dZYC8CWlv10XN+UJIl0BQqYZD4Zhn3ORo18f11XEGRLnOUQedQeHUAv+GAWSYJdM5K6Y7a4gbbvohwsTeMWG7FxAKm/62AAZLO8ZHE0oSaHMymVdZaJYyGsYKjeuhYQNJi6VQNfkvzdJFGwFvw1jmBWBGxMI9V191WoXAAA",
-  "srcset": [
-   {
-    "w": 640,
-    "src": "images/formation-anatomie/img-5179-640.webp"
-   },
-   {
-    "w": 1280,
-    "src": "images/formation-anatomie/img-5179-1280.webp"
-   },
-   {
-    "w": 2000,
-    "src": "images/formation-anatomie/img-5179-2000.webp"
-   }
-  ]
- },
- "formation-anatomie/IMG_5168.jpg": {
-  "w": 3389,
-  "h": 2606,
-  "color": "#bab5ac",
-  "lqip": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAACQBACdASoYABIAPu1sq1EppaOiqAqpMB2JZwDA3BDOi6RUwVmroUyOKE2TDQAA/uuLYll0kz28UB4JlzgSil33KZxBBPmO+NeeYFCoENXq59rG1Kv6n50MRRFkVHUHEXSFadw7nRfjbD6wknOhsS7n7E4XNJDAR/llHqO/cuiASiWejOx9BXQvPbC1ndToQVnJ9OnhXPP5pSjlRfXR4xcNuzCzPwHAAAA=",
-  "srcset": [
-   {
-    "w": 640,
-    "src": "images/formation-anatomie/img-5168-640.webp"
-   },
-   {
-    "w": 1280,
-    "src": "images/formation-anatomie/img-5168-1280.webp"
-   },
-   {
-    "w": 2000,
-    "src": "images/formation-anatomie/img-5168-2000.webp"
-   }
-  ]
- },
- "formation-anatomie/IMG_5182.jpg": {
-  "w": 3024,
-  "h": 4032,
-  "color": "#cecacb",
-  "lqip": "data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAABwBQCdASoYACAAPu1gp02ppSOiMAgBMB2JaQDNwdz5hKbdn4Gxb8uJYoW2n6gpzfVNBXQAAP7zc8Ah/VnvB0CjlhHmnpPXZodczWrSp7hq0A2A8N+UutDer0//Bj7SsFgHgtuoPnao+ekBOJVPT01mZz86183ZieOUrQXgCY3pKKjZNpoijddElXYLqF++R+R3/7pBlKhkxZKl7YJ4no8Zp9Toi/7obIVu6s2mb2BPRP97t25gAA==",
-  "srcset": [
-   {
-    "w": 640,
-    "src": "images/formation-anatomie/img-5182-640.webp"
-   },
-   {
-    "w": 1280,
-    "src": "images/formation-anatomie/img-5182-1280.webp"
-   },
-   {
-    "w": 2000,
-    "src": "images/formation-anatomie/img-5182-2000.webp"
-   }
-  ]
- },
- "formation-anatomie/IMG_5186.jpg": {
-  "w": 3024,
-  "h": 4032,
-  "color": "#bcbfbe",
-  "lqip": "data:image/webp;base64,UklGRv4AAABXRUJQVlA4IPIAAAAwBgCdASoYACAAPu1qqk8ppiOiMBgIATAdiWcACBA4gXBsdsykz8CO3CU7BUObgLMNYcOyh7gsOaAAAP7yNQAE2OPaQjywIrEUPW95DWJ8rzpL4/3vGBUtm0agM02iquSUtkpX2ef6tCUOEg+U337rtuT33aucpqRqPLll8oL0Zh64lcL2zQWI7zA9mJyj/jg3xzJZgbT6o/hv9JE1GStMV3lQedl4z9HJss5qweGlvvxum4PLQrTSbHCyLeCnp1f7QpBlzFHWQTsdxQYxUclo3ZDTm91GrIVPwwZrvxN5PZc6jt/OyLciJuibfY+ZwAAAAA==",
-  "srcset": [
-   {
-    "w": 640,
-    "src": "images/formation-anatomie/img-5186-640.webp"
-   },
-   {
-    "w": 1280,
-    "src": "images/formation-anatomie/img-5186-1280.webp"
-   },
-   {
-    "w": 2000,
-    "src": "images/formation-anatomie/img-5186-2000.webp"
    }
   ]
  },
@@ -2695,6 +2815,22 @@
    }
   ]
  },
+ "stickers/RÉPERTOIRE ILLU.png": {
+  "w": 700,
+  "h": 1119,
+  "color": "transparent",
+  "lqip": "",
+  "srcset": [
+   {
+    "w": 360,
+    "src": "images/stickers/repertoire-illu-360.webp"
+   },
+   {
+    "w": 700,
+    "src": "images/stickers/repertoire-illu-700.webp"
+   }
+  ]
+ },
  "stickers/images sensorielles stickers.png": {
   "w": 583,
   "h": 532,
@@ -2740,6 +2876,22 @@
    {
     "w": 720,
     "src": "images/stickers/fichier-39-2x-720.webp"
+   }
+  ]
+ },
+ "stickers/parenchantement stickers-2.png": {
+  "w": 752,
+  "h": 356,
+  "color": "transparent",
+  "lqip": "",
+  "srcset": [
+   {
+    "w": 360,
+    "src": "images/stickers/parenchantement-stickers-2-360.webp"
+   },
+   {
+    "w": 720,
+    "src": "images/stickers/parenchantement-stickers-2-720.webp"
    }
   ]
  },
